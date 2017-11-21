@@ -43,7 +43,7 @@ namespace Sistema_Servicio_Social
                 }
                 else
                 {
-                    MessageBox.Show("Usuario no encontrado");
+                    MessageBox.Show("Usuario no encontrado o contraseña incorrecta");
                     this.txtUser.Text = "";
                     this.txtPassword.Password = "";
                 }

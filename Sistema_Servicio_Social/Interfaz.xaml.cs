@@ -29,7 +29,7 @@ namespace Sistema_Servicio_Social
         {
             Login l = new Login();
             l.Show();
-            //this.Close();
+            this.Close();
         }
 
         private void btnAbrir(object sender, RoutedEventArgs e)
@@ -51,11 +51,16 @@ namespace Sistema_Servicio_Social
                 "1000");
             
                 string ruta = txtBox.Text;
+               bool mostrarExitoso = true;
                try {
                     ConexionMySQL conexionMySQL = new ConexionMySQL();
                     conexionMySQL.leerCSV(ruta, Int32.Parse(numExpI));
                } catch(Exception ex) {
+                    mostrarExitoso = false;
                     MessageBox.Show("Error: "+ex.Message);
+               }
+               if (mostrarExitoso){
+                    MessageBox.Show("Datos Cargados Exitosamente");
                }
             
         }
