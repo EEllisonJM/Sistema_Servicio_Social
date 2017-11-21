@@ -43,5 +43,9 @@ namespace Sistema_Servicio_Social
                 txtBox.Text = filename;
             }
         }
+        private void btnCargar(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }

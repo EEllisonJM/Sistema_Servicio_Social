@@ -13,6 +13,7 @@
             <Button Name="btn_Regresar" Click="btnRegresar" Content="Regresar" Background="#545d6a" Foreground="White" FontSize="20"/>
             <TextBox Name="txtBox" Text=""/>
             <Button Name="btn_Abrir" Click="btnAbrir" Content="Abrir csv" Background="#545d6a" Foreground="White" FontSize="20"/>
+            <Button Name="btn_Cargar" Click="btnCargar" Content="Cargar Datos" Background="#545d6a" Foreground="White" FontSize="20"/>
             <Image x:Name="image" Height="100" Source="Images/csv.png"/>
 
 
