@@ -49,20 +49,24 @@ namespace Sistema_Servicio_Social
                 "Favor de ingresar el número de expediente inicial",
                 "Número de expediente",
                 "1000");
-            
-                string ruta = txtBox.Text;
-               bool mostrarExitoso = true;
-               try {
-                    ConexionMySQL conexionMySQL = new ConexionMySQL();
-                    conexionMySQL.leerCSV(ruta, Int32.Parse(numExpI));
-               } catch(Exception ex) {
-                    mostrarExitoso = false;
-                    MessageBox.Show("Error: "+ex.Message);
-               }
-               if (mostrarExitoso){
-                    MessageBox.Show("Datos Cargados Exitosamente");
-               }
-            
+
+            string ruta = txtBox.Text;
+            bool mostrarExitoso = true;
+            try
+            {
+                ConexionMySQL conexionMySQL = new ConexionMySQL();
+                conexionMySQL.leerCSV(ruta, Int32.Parse(numExpI));
+            }
+            catch (Exception ex)
+            {
+                mostrarExitoso = false;
+                MessageBox.Show("Error: " + ex.Message);
+            }
+            if (mostrarExitoso)
+            {
+                MessageBox.Show("Datos Cargados Exitosamente");
+            }
+
         }
-     }
+    }
 }
