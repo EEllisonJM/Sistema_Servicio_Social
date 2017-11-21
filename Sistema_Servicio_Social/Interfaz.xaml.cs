@@ -45,14 +45,18 @@ namespace Sistema_Servicio_Social
         }
         private void btnCargar(object sender, RoutedEventArgs e)
         {
-            int numExpI = Int32.Parse(Microsoft.VisualBasic.Interaction.InputBox(
+            string numExpI = Microsoft.VisualBasic.Interaction.InputBox(
                 "Favor de ingresar el número de expediente inicial",
                 "Número de expediente",
-                "1000"));
+                "1000");
             
                 string ruta = txtBox.Text;
-                ConexionMySQL conexionMySQL = new ConexionMySQL();
-                conexionMySQL.leerCSV(ruta, numExpI);
+               try {
+                    ConexionMySQL conexionMySQL = new ConexionMySQL();
+                    conexionMySQL.leerCSV(ruta, Int32.Parse(numExpI));
+               } catch(Exception ex) {
+                    MessageBox.Show("Error: "+ex.Message);
+               }
             
         }
      }
