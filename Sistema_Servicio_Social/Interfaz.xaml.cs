@@ -47,7 +47,7 @@ namespace Sistema_Servicio_Social
         {
             string ruta = txtBox.Text;
             ConexionMySQL conexionMySQL = new ConexionMySQL();
-            conexionMySQL.leerCSV(ruta);
+            conexionMySQL.leerCSV(ruta, 100);
           }
      }
 }

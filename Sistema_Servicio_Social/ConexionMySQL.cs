@@ -76,9 +76,9 @@ namespace Sistema_Servicio_Social
                }
           }
           //----
-          public void leerCSV(string ruta)
+          public void leerCSV(string ruta, int expedienteI)
           {
-               int numExp = 1001;
+               int numExp = expedienteI;
                foreach (string line in File.ReadLines(@""+ruta))
                {
                     String[] values = line.Split(',');
