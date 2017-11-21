@@ -45,7 +45,9 @@ namespace Sistema_Servicio_Social
         }
         private void btnCargar(object sender, RoutedEventArgs e)
         {
-            
-        }
-    }
+            string ruta = txtBox.Text;
+            ConexionMySQL conexionMySQL = new ConexionMySQL();
+            conexionMySQL.leerCSV(ruta);
+          }
+     }
 }

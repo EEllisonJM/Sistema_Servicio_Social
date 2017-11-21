@@ -73,6 +73,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ConexionMySQL.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Interfaz.xaml.cs">
       <DependentUpon>Interfaz.xaml</DependentUpon>
