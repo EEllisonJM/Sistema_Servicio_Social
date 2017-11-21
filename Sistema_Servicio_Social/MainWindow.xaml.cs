@@ -24,5 +24,11 @@ namespace Sistema_Servicio_Social
         {
             InitializeComponent();
         }
+
+        private void ButtonLogin(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new Login();
+        }
+        
     }
 }
