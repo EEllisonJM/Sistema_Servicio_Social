@@ -24,7 +24,8 @@ namespace Sistema_Servicio_Social
             l.Show();
             this.Close();
         }
-
+        private void btnSiguiente(object sender, RoutedEventArgs e)
+        { }
         private void btnAbrir(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
