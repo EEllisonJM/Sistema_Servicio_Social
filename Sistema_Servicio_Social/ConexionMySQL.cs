@@ -10,7 +10,7 @@ namespace Sistema_Servicio_Social
 {
      class ConexionMySQL
      {
-          String servidor;
+          String servidor="";
           String usuario;
           String contrasenia;
           String baseDeDatos;
