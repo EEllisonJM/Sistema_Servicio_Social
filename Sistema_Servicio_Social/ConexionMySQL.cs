@@ -6,67 +6,6 @@ namespace Sistema_Servicio_Social
 {
     class ConexionMySQL
     {
-        /*
-        String servidor = "localhost";
-        String usuario = "root";
-        String contrasenia = "";
-        String baseDeDatos = "Servicio_Social";
-
-        string parametrosServidor()
-        {
-            return "server =" + servidor + ";" +
-                   "user id =" + usuario + ";" +
-                   "password = " + contrasenia + ";" +
-                   "database = " + baseDeDatos;
-        }
-        void consultaInsert(String sql)
-        {
-            String conexionMySQL = parametrosServidor();
-            MySqlConnection conn = new MySqlConnection(conexionMySQL);
-            MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = sql;
-            try
-            {
-                conn.Open();
-                cmd.ExecuteNonQuery();
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                conn.Close();//Cerrar la conexion con el servidor
-            }
-        }
-        //----
-        void consultaSelect(String servidor, String idUser, String password, String dataBase, String sql)
-        {
-            String conexionMySQL = parametrosServidor();
-            MySqlConnection conn = new MySqlConnection(conexionMySQL);
-            MySqlCommand cmd = conn.CreateCommand();
-            cmd.CommandText = sql;
-            try
-            {
-                conn.Open();
-                MySqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
-                {
-                    Console.WriteLine(reader["numControl"].ToString());
-                    Console.WriteLine(reader["nombre"].ToString());
-                    Console.WriteLine(reader["sexo"].ToString());
-                    Console.WriteLine(reader["e_mail"].ToString());
-                }
-            }
-            catch (MySqlException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                conn.Close();//Cerrar la conexion con el servidor
-            }
-        }*/
         public void leerCSV(string ruta, int expedienteI)
         {
             int numExp = expedienteI;
