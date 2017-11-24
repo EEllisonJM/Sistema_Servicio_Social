@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System.Windows;
-
 namespace Sistema_Servicio_Social
 {
     class DBConnect
@@ -49,7 +48,6 @@ namespace Sistema_Servicio_Social
                     case 0:
                         MessageBox.Show("Cannot connect to server.  Contact administrator");
                         break;
-
                     case 1045:
                         MessageBox.Show("Invalid username/password, please try again");
                         break;
@@ -72,31 +70,31 @@ namespace Sistema_Servicio_Social
             }
         }
         //Insert statement
-        public void InsertUsuario(string user,string password)
-        {
-            string query = "INSERT INTO usuario (nombre,password) VALUES('"+user+"', '+"+password+"');";
-
+        public void Insert(string tabla,string atributos,string valores)
+        {//"INSERT INTO usuario (nombre,password) VALUES('juan', '12345');";
+            //tabla => nombre de la tabla
+            //atributos => Separado por coma => (nombre,password)
+            //valores => los valores a insertar en la tabla => ('jaime',121)            
+            string query = "INSERT INTO " + tabla + " " + atributos + " " +
+                " VALUES " + valores + " ;";
             //open connection
             if (this.OpenConnection() == true)
             {
                 //create command and assign the query and connection from the constructor
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-
                 //Execute command
                 cmd.ExecuteNonQuery();
-
                 //close connection
                 this.CloseConnection();
             }
         }
         //Update statement
-        public void UpdateUsuario(string atributo,string originalValue,string newValue)
-        {
-            //"UPDATE Usuario SET nombre='Joe'WHERE name='John'";
+        public void Update(string tabla,string atributosValores,string atributo,string valor)
+        {//"UPDATE Usuario SET nombre='Joe'WHERE name='John'";
+            // => nombre='Juan' , password='123'
             string query =
-                "UPDATE Usuario SET " + atributo + " = '" + newValue + "'" +
-                "WHERE " + atributo + "='" + originalValue + "'";
-
+                "UPDATE " + tabla + " SET " + atributosValores +
+                " WHERE " + atributo + " = " + valor+ " ;";
             //Open connection
             if (this.OpenConnection() == true)
             {
@@ -106,39 +104,18 @@ namespace Sistema_Servicio_Social
                 cmd.CommandText = query;
                 //Assign the connection using Connection
                 cmd.Connection = connection;
-
                 //Execute query
                 cmd.ExecuteNonQuery();
-
                 //close connection
                 this.CloseConnection();
             }
         }
-        public void UpdateUsuarioWhere()
-        {
-            string query = "UPDATE tableinfo SET name='Joe', age='22' WHERE name='John Smith'";
+        public void Delete(string table,string atributo,string value)
+        {//"DELETE FROM tableinfo WHERE name='John Smith'";
+            string query =
+                "DELETE FROM " + table +
+                " WHERE " + atributo + " = " + value + " ;";
 
-            //Open connection
-            if (this.OpenConnection() == true)
-            {
-                //create mysql command
-                MySqlCommand cmd = new MySqlCommand();
-                //Assign the query using CommandText
-                cmd.CommandText = query;
-                //Assign the connection using Connection
-                cmd.Connection = connection;
-
-                //Execute query
-                cmd.ExecuteNonQuery();
-
-                //close connection
-                this.CloseConnection();
-            }
-        }
-        //Delete statement
-        public void Delete()
-        {
-            string query = "DELETE FROM tableinfo WHERE name='John Smith'";
 
             if (this.OpenConnection() == true)
             {
@@ -148,14 +125,14 @@ namespace Sistema_Servicio_Social
             }
         }
         //Count statement
-        public int Count(string user,string pass)
-        //public int Count()
-        {
-            //string query = "SELECT Count(*) FROM usuario;";
-            string query = "SELECT Count(*) FROM usuario where nombre='"+user+"' and password='"+pass+"';";
+        public int Count(string table,string atributo1,string value1, string atributo2,string value2)
+        {//string query = "SELECT Count(*) FROM usuario;";
+            string query =
+                "SELECT Count(*) FROM " + table +
+                " WHERE " + atributo1 + " = " + value1 +
+                " and " + atributo2 + " = "+ value2 + " ;";
             //SELECT Count(*) FROM usuario where nombre='John Smith' and password='33';
             int Count = -1;
-
             //Open Connection
             if (this.OpenConnection() == true)
             {
@@ -165,7 +142,31 @@ namespace Sistema_Servicio_Social
                 Count = int.Parse(cmd.ExecuteScalar() + "");
                 //close Connection
                 this.CloseConnection();
-
+                //Return value => -1 (Not exist) => 1 (Exist)
+                return Count;
+            }
+            else
+            {
+                return Count;
+            }
+        }
+        public int CountOne(string table, string atributo1, string value1)
+        {//string query = "SELECT Count(*) FROM usuario;";
+            string query =
+                "SELECT Count(*) FROM " + table +
+                " WHERE " + atributo1 + " = " + value1+" ;";
+            //SELECT Count(*) FROM usuario where nombre='John Smith' and password='33';
+            int Count = -1;
+            //Open Connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Mysql Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //ExecuteScalar will return one value                
+                Count = int.Parse(cmd.ExecuteScalar() + "");
+                //close Connection
+                this.CloseConnection();
+                //Return value => -1 (Not exist) => 1 (Exist)
                 return Count;
             }
             else

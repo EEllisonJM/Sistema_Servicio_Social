@@ -35,8 +35,11 @@ namespace Sistema_Servicio_Social
             else {
                 numIntentos += 1;
                 DBConnect db = new DBConnect();
-                if (db.Count(this.txtUser.Text, this.txtPassword.Password) == 1){
-                    //MessageBox.Show("Encontrado");
+                if (db.Count(
+                    "usuario", "nombre", "'" + this.txtUser.Text + "'", "password", "'" + this.txtPassword.Password + "'") == 1)
+                {
+                    //if (db.Count(this.txtUser.Text, this.txtPassword.Password) == 1){
+                    MessageBox.Show("Encontrado");
                     Interfaz i = new Interfaz();
                     i.Show();
                     this.Close();
