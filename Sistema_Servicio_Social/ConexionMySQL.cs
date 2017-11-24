@@ -6,6 +6,7 @@ namespace Sistema_Servicio_Social
 {
     class ConexionMySQL
     {
+        /*
         String servidor = "localhost";
         String usuario = "root";
         String contrasenia = "";
@@ -65,7 +66,7 @@ namespace Sistema_Servicio_Social
             {
                 conn.Close();//Cerrar la conexion con el servidor
             }
-        }
+        }*/
         public void leerCSV(string ruta, int expedienteI)
         {
             int numExp = expedienteI;
