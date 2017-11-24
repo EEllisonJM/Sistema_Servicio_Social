@@ -1,9 +1,4 @@
-﻿/*using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;*/
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System.Windows;
 
 namespace Sistema_Servicio_Social
@@ -15,7 +10,6 @@ namespace Sistema_Servicio_Social
         private string database;
         private string uid;
         private string password;
-
         //Constructor
         public DBConnect()
         {
@@ -34,7 +28,6 @@ namespace Sistema_Servicio_Social
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
             connection = new MySqlConnection(connectionString);
-            //OpenConnection();
         }
         //open connection to database
         private bool OpenConnection()
@@ -64,7 +57,6 @@ namespace Sistema_Servicio_Social
                 return false;
             }
         }
-
         //Close connection
         private bool CloseConnection()
         {
@@ -79,11 +71,10 @@ namespace Sistema_Servicio_Social
                 return false;
             }
         }
-
         //Insert statement
-        public void Insert()
+        public void InsertUsuario(string user,string password)
         {
-            string query = "INSERT INTO usuario (nombre,password) VALUES('John Smith', '33');";
+            string query = "INSERT INTO usuario (nombre,password) VALUES('"+user+"', '+"+password+"');";
 
             //open connection
             if (this.OpenConnection() == true)
@@ -99,7 +90,31 @@ namespace Sistema_Servicio_Social
             }
         }
         //Update statement
-        public void Update()
+        public void UpdateUsuario(string atributo,string originalValue,string newValue)
+        {
+            //"UPDATE Usuario SET nombre='Joe'WHERE name='John'";
+            string query =
+                "UPDATE Usuario SET " + atributo + " = '" + newValue + "'" +
+                "WHERE " + atributo + "='" + originalValue + "'";
+
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //create mysql command
+                MySqlCommand cmd = new MySqlCommand();
+                //Assign the query using CommandText
+                cmd.CommandText = query;
+                //Assign the connection using Connection
+                cmd.Connection = connection;
+
+                //Execute query
+                cmd.ExecuteNonQuery();
+
+                //close connection
+                this.CloseConnection();
+            }
+        }
+        public void UpdateUsuarioWhere()
         {
             string query = "UPDATE tableinfo SET name='Joe', age='22' WHERE name='John Smith'";
 

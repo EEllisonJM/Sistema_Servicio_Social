@@ -1,29 +1,27 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-
 namespace Sistema_Servicio_Social
 {
      class ConexionMySQL
      {
-          String servidor="";
-          String usuario;
-          String contrasenia;
-          String baseDeDatos;
+        String servidor = "localhost";
+        String usuario = "root";
+        String contrasenia = "";
+        String baseDeDatos = "Servicio_Social";
 
-          void consultaInsert(String servidor, String idUser, String password, String dataBase, String sql)
+        string parametrosServidor()
+        {
+            return "server =" + servidor + ";" +
+                   "user id =" + usuario + ";" +
+                   "password = " + contrasenia + ";" +
+                   "database = " + baseDeDatos;
+        }
+          void consultaInsert(String sql)
           {
-               String conexionMySQL = //server = localhost; user id = root; password =; database = Servicio_Social
-                   "server =" + servidor + ";" +
-                   "user id =" + idUser + ";" +
-                   "password = " + password + ";" +
-                   "database = " + dataBase;
-
-               MySqlConnection conn = new MySqlConnection(conexionMySQL);
+            String conexionMySQL = parametrosServidor();
+            MySqlConnection conn = new MySqlConnection(conexionMySQL);
                MySqlCommand cmd = conn.CreateCommand();
                cmd.CommandText = sql;
                try
@@ -44,11 +42,7 @@ namespace Sistema_Servicio_Social
           //----
           void consultaSelect(String servidor, String idUser, String password, String dataBase, String sql)
           {
-               String conexionMySQL = //server = localhost; user id = root; password =; database = Servicio_Social
-                   "server =" + servidor + ";" +
-                   "user id =" + idUser + ";" +
-                   "password = " + password + ";" +
-                   "database = " + dataBase;
+            String conexionMySQL = parametrosServidor();
                MySqlConnection conn = new MySqlConnection(conexionMySQL);
                MySqlCommand cmd = conn.CreateCommand();
                cmd.CommandText = sql;
@@ -62,9 +56,7 @@ namespace Sistema_Servicio_Social
                          Console.WriteLine(reader["nombre"].ToString());
                          Console.WriteLine(reader["sexo"].ToString());
                          Console.WriteLine(reader["e_mail"].ToString());
-
-                    }
-                    //cmd.ExecuteNonQuery();//No neesario, por que ya esta esto : MySqlDataReader reader = cmd.ExecuteReader();
+                    }                    
                }
                catch (MySqlException ex)
                {
@@ -75,7 +67,6 @@ namespace Sistema_Servicio_Social
                     conn.Close();//Cerrar la conexion con el servidor
                }
           }
-          //----
           public void leerCSV(string ruta, int expedienteI)
           {
                int numExp = expedienteI;
@@ -102,11 +93,7 @@ namespace Sistema_Servicio_Social
                               values[6] = "F";
                          }
                          /*Ir guardando en la base de datos*/
-                         consultaInsert(//server = localhost; user id = root; password =; database = Servicio_Social
-                             "localhost",
-                             "root",
-                             "",
-                             "Servicio_Social",
+                         consultaInsert(
                              "INSERT INTO Alumno (numControl,nombre,carrera,sexo,e_mail,porcentajeAvance,semestre) value " +
                              "(" +
                              values[2] + ",'" +//numControl
@@ -118,11 +105,7 @@ namespace Sistema_Servicio_Social
                              values[9] + "')"//semestre
                          );
                          //---------
-                         consultaInsert(//server = localhost; user id = root; password =; database = Servicio_Social
-                             "localhost",
-                             "root",
-                             "",
-                             "Servicio_Social",
+                         consultaInsert(
                              "INSERT INTO Carta_Presentacion (numExpediente,numControl,nombreDependencia,direccionDependencia,programa,jefeDireccion,puestoJefeDireccion,leyenda) value " +
                              "(" +
                              numExp + "," +//numExpediente
