@@ -58,13 +58,13 @@ namespace Sistema_Servicio_Social
         }
 
         void guardarDocumento() {            
-            DBConnect dbConnect = new DBConnect();            
-            List<string>[] list = new List<string>[11];
-            list = dbConnect.Select();
+            DBConnect dbConnect = new DBConnect();
+            List<string>[] list = dbConnect.Select();
             WordTemplate wt = new WordTemplate(txtPlantilla.Text);
-            
-            wt.reemplazarCampo("NumeroControl", list[0].ToString()+"");
-            wt.reemplazarCampo("Carrera", list[1]+"");
+            //string aux = list[0][0];
+            //wt.reemplazarCampo("Leyenda", aux);
+            wt.reemplazarCampo("NumeroControl", list[0][0]);
+            //wt.reemplazarCampo("Carrera", list[1]+"");
             //wt.reemplazarCampo("Carrera", list[1] + "");
             /*list[0] = new List<string>();//NumeroControl
             list[1] = new List<string>();//NombreAlumno
