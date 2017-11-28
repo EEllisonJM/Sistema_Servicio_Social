@@ -32,7 +32,7 @@
                <Label x:Name="label_Leyenda" Content="Leyenda:" HorizontalAlignment="Left" Margin="0,360,0,0" Grid.Row="1" VerticalAlignment="Top"/>
 
                <DatePicker x:Name="Fecha" HorizontalAlignment="Right" Margin="0,4,0,0" VerticalAlignment="Top"/>
-               
+
                <TextBox x:Name="textAlumnoNombre" HorizontalAlignment="Right" Height="23" Margin="0,64,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
                <TextBox x:Name="textAlumnoCarrera" HorizontalAlignment="Right" Height="23" Margin="0,94,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
                <ComboBox x:Name="comboBoxAlumnoSexo" HorizontalAlignment="Right" Margin="0,124,0,0" VerticalAlignment="Top" Width="120"/>
@@ -43,11 +43,11 @@
 
                <TextBox x:Name="textJNombre" HorizontalAlignment="Right" Height="23" Margin="0,304,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
                <TextBox x:Name="textJPuesto" HorizontalAlignment="Right" Height="23" Margin="0,334,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-               
+
                <TextBox x:Name="textLeyenda" HorizontalAlignment="Right" Height="23" Margin="0,364,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
           </Grid>
-          <Grid HorizontalAlignment="Left" Height="70" Margin="0,0,0,-70" Grid.Row="1" VerticalAlignment="Bottom" Width="800">
+          <Grid HorizontalAlignment="Left" Height="70" Margin="0,0,-198,-70" Grid.Row="1" VerticalAlignment="Bottom" Width="990">
                <Button x:Name="button_enviar" Content="Enviar" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" Width="75"/>
                <Button x:Name="button_actualizar" Content="Actualizar Documento" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="130"/>
                <Button x:Name="button_siguiente" Content="Siguiente" HorizontalAlignment="Right" Margin="0,0,30,0" VerticalAlignment="Center" Width="75"/>
