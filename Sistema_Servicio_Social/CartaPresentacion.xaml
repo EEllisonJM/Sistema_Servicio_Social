@@ -5,16 +5,52 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema_Servicio_Social"
         mc:Ignorable="d"
-        Title="CartaPresentacion" Height="720" Width="640">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
-        <Label Name="lable1" Margin="3,6,0,0" Content="Word Document :" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <TextBox  Name="txbSelectedWordFile" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="110,10,300,0" HorizontalContentAlignment="Left" />
-        <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Content="Select Word File" Name="btnSelectWord" Margin="0,10,130,0" Click="btnSelectWord_Click" />
-        <Button HorizontalAlignment="Left" Margin="3,40,0,0" VerticalAlignment="Top" Content="View Word Doc" Width="100" Name="btnViewDoc" Click="btnViewDoc_Click" />
-        <DocumentViewer Grid.Row="1" Name="documentviewWord" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-    </Grid>
+        Title="CartaPresentacion" Height="720" Width="1000">
+     <Grid Margin="0,0,200,70">
+          <Grid.RowDefinitions>
+               <RowDefinition Height="70"></RowDefinition>
+               <RowDefinition></RowDefinition>
+          </Grid.RowDefinitions>
+          <Label Name="lable1" Margin="3,6,0,0" Content="Word Document :" VerticalAlignment="Top" HorizontalAlignment="Left" />
+          <TextBox  Name="txbSelectedWordFile" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="110,10,300,0" HorizontalContentAlignment="Left" />
+          <Button HorizontalAlignment="Right" VerticalAlignment="Top" Width="150" Content="Select Word File" Name="btnSelectWord" Margin="0,10,130,0" Click="btnSelectWord_Click" />
+          <Button HorizontalAlignment="Left" Margin="3,40,0,0" VerticalAlignment="Top" Content="View Word Doc" Width="100" Name="btnViewDoc" Click="btnViewDoc_Click" />
+          <DocumentViewer Grid.Row="1" Name="documentviewWord" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+          <Grid HorizontalAlignment="Right" Height="500" Margin="0,0,-198,0" Grid.Row="1" VerticalAlignment="Top" Width="200">
+               <Label x:Name="label_Fecha" Content="Fecha:" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+               <Label x:Name="label_Alumno" Content="Alumno" HorizontalAlignment="Left" Margin="0,30,0,0" VerticalAlignment="Top"/>
+               <Label x:Name="label_Nombre" Content="Nombre:" HorizontalAlignment="Left" Margin="10,60,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+               <Label x:Name="label_Carrera" Content="Carrera:" HorizontalAlignment="Left" Margin="10,90,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+               <Label x:Name="label_Sexo" Content="Sexo:" HorizontalAlignment="Left" Margin="10,120,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+               <Label x:Name="label_Dependencia" Content="Dependencia" HorizontalAlignment="Left" Margin="0,150,0,0" VerticalAlignment="Top"/>
+               <Label x:Name="label_DepNombre" Content="Nombre:" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top"/>
+               <Label x:Name="label_DepDireccion" Content="Dirección:" HorizontalAlignment="Left" Margin="10,210,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+               <Label x:Name="label_Programa" Content="Programa:" HorizontalAlignment="Left" Margin="10,240,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+               <Label x:Name="label_Jefe" Content="Jefe Directo" HorizontalAlignment="Left" Margin="0,270,0,0" VerticalAlignment="Top"/>
+               <Label x:Name="label_JNombre" Content="Nombre:" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top"/>
+               <Label x:Name="label_Puesto" Content="Puesto:" HorizontalAlignment="Left" Margin="10,330,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+               <Label x:Name="label_Leyenda" Content="Leyenda:" HorizontalAlignment="Left" Margin="0,360,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+
+               <DatePicker x:Name="Fecha" HorizontalAlignment="Right" Margin="0,4,0,0" VerticalAlignment="Top"/>
+               
+               <TextBox x:Name="textAlumnoNombre" HorizontalAlignment="Right" Height="23" Margin="0,64,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+               <TextBox x:Name="textAlumnoCarrera" HorizontalAlignment="Right" Height="23" Margin="0,94,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+               <ComboBox x:Name="comboBoxAlumnoSexo" HorizontalAlignment="Right" Margin="0,124,0,0" VerticalAlignment="Top" Width="120"/>
+
+               <TextBox x:Name="textDepNombre" HorizontalAlignment="Right" Height="23" Margin="0,184,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+               <TextBox x:Name="textDepDireccion" HorizontalAlignment="Right" Height="23" Margin="0,214,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+               <TextBox x:Name="textDepPrograma" HorizontalAlignment="Right" Height="23" Margin="0,244,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+               <TextBox x:Name="textJNombre" HorizontalAlignment="Right" Height="23" Margin="0,304,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+               <TextBox x:Name="textJPuesto" HorizontalAlignment="Right" Height="23" Margin="0,334,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+               
+               <TextBox x:Name="textLeyenda" HorizontalAlignment="Right" Height="23" Margin="0,364,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+
+          </Grid>
+          <Grid HorizontalAlignment="Left" Height="70" Margin="0,0,0,-70" Grid.Row="1" VerticalAlignment="Bottom" Width="800">
+               <Button x:Name="button_enviar" Content="Enviar" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" Width="75"/>
+               <Button x:Name="button_actualizar" Content="Actualizar Documento" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="130"/>
+               <Button x:Name="button_siguiente" Content="Siguiente" HorizontalAlignment="Right" Margin="0,0,30,0" VerticalAlignment="Center" Width="75"/>
+          </Grid>
+     </Grid>
 </Window>
