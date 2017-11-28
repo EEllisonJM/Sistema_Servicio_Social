@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using System.Collections.Generic;
 using System.Windows;
 namespace Sistema_Servicio_Social
 {
@@ -79,8 +80,7 @@ namespace Sistema_Servicio_Social
                 " VALUES " + valores + " ;";
             //open connection
             if (this.OpenConnection() == true)
-            {
-                //create command and assign the query and connection from the constructor
+            {//create command and assign the query and connection from the constructor
                 MySqlCommand cmd = new MySqlCommand(query, connection);
                 //Execute command
                 cmd.ExecuteNonQuery();
@@ -115,8 +115,6 @@ namespace Sistema_Servicio_Social
             string query =
                 "DELETE FROM " + table +
                 " WHERE " + atributo + " = " + value + " ;";
-
-
             if (this.OpenConnection() == true)
             {
                 MySqlCommand cmd = new MySqlCommand(query, connection);
@@ -174,14 +172,63 @@ namespace Sistema_Servicio_Social
                 return Count;
             }
         }
-        /*
+
         //Select statement
         public List<string>[] Select()
         {
-        }
-        
+            string query = "SELECT " +
+                "A.numControl, A.nombre, A.carrera, A.sexo, A.e_mail,"+
+                "CP.leyenda, CP.programa, CP.numExpediente, CP.jefeDireccion, CP.puestoJefeDireccion, CP.direccionDependencia FROM Alumno as A INNER JOIN Carta_Presentacion as CP ON A.numControl= CP.numControl;";
+            //Create a list to store the result
+            List<string>[] list = new List<string>[11];
+            list[0] = new List<string>();//NumeroControl
+            list[1] = new List<string>();//NombreAlumno
+            list[2] = new List<string>();//Carrera
+            list[3] = new List<string>();//Sexo
+            list[4] = new List<string>();//E_mail
+            list[5] = new List<string>();//leyenda
+            list[6] = new List<string>();//Programa
+            list[7] = new List<string>();//numExpediente
+            list[8] = new List<string>();//Jefe direccion
+            list[9] = new List<string>();//Puesto
+            list[10] = new List<string>();//DireccionDependencia
+            //fecha
+            //Open connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //Create a data reader and Execute the command
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                //Read the data and store them in the list
+                while (dataReader.Read())
+                {
+                    list[0].Add(dataReader["numControl"] + "");
+                    list[1].Add(dataReader["nombre"] + "");
+                    list[2].Add(dataReader["carrera"] + "");
+                    list[3].Add(dataReader["sexo"] + "");
+                    list[4].Add(dataReader["e_mail"] + "");
 
-        //Backup
+                    list[5].Add(dataReader["leyenda"] + "");
+                    list[6].Add(dataReader["programa"] + "");
+                    list[7].Add(dataReader["numExpediente"] + "");
+                    list[8].Add(dataReader["jefeDireccion"] + "");
+                    list[9].Add(dataReader["puestoJefeDireccion"] + "");
+                    list[10].Add(dataReader["direccionDependencia"] + "");
+                }
+                //close Data Reader
+                dataReader.Close();
+                //close Connection
+                this.CloseConnection();
+                //return list to be displayed
+                return list;
+            }
+            else
+            {
+                return list;
+            }
+        }
+        /*//Backup
         public void Backup()
         {
         }

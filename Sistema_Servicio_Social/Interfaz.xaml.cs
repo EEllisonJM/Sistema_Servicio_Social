@@ -8,9 +8,6 @@ using Word = Microsoft.Office.Interop.Word;
 
 namespace Sistema_Servicio_Social
 {
-    /// <summary>
-    /// Lógica de interacción para Interfaz.xaml
-    /// </summary>
     public partial class Interfaz : System.Windows.Window
     {
         public Interfaz()
@@ -47,12 +44,16 @@ namespace Sistema_Servicio_Social
                 "Favor de ingresar el número de expediente inicial",
                 "Número de expediente",
                 "1000");
-            
-                string ruta = txtBox.Text;
+            string leyenda = Microsoft.VisualBasic.Interaction.InputBox(
+                "Favor de ingresar la leyenda",
+                "Leyenda",
+                "...");
+
+            string ruta = txtBox.Text;
                bool mostrarExitoso = true;
                try {
                     ConexionMySQL conexionMySQL = new ConexionMySQL();
-                    conexionMySQL.leerCSV(ruta, Int32.Parse(numExpI));
+                    conexionMySQL.leerCSV(ruta, Int32.Parse(numExpI),leyenda);
                } catch(Exception ex) {
                     mostrarExitoso = false;
                     MessageBox.Show("Error: "+ex.Message);

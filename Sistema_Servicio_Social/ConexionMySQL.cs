@@ -6,7 +6,7 @@ namespace Sistema_Servicio_Social
 {
     class ConexionMySQL
     {
-        public void leerCSV(string ruta, int expedienteI)
+        public void leerCSV(string ruta, int expedienteI,String leyenda)
         {
             int numExp = expedienteI;
             foreach (string line in File.ReadLines(@"" + ruta))
@@ -67,8 +67,7 @@ namespace Sistema_Servicio_Social
                             "programa = '" + values[11] + "'," +
                             "nombreDependencia = '" + values[10] + "'," +
                             "jefeDireccion= '" + values[13] + " " + values[14] + " " + values[15] + " " + values[16] + "'," +
-                            "leyenda = 'Soy leyenda' ",
-
+                            "leyenda = '"+leyenda+"'",//"leyenda = 'Soy leyenda' ",
                             "numControl", "" + values[2] + ""//Donde => numExpediente=numExp
                             );
                     }
