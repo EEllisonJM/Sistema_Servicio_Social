@@ -59,25 +59,23 @@ namespace Sistema_Servicio_Social
 
         void guardarDocumento() {            
             DBConnect dbConnect = new DBConnect();
-            List<string>[] list = dbConnect.Select();
+            List<string> list = dbConnect.Select();
             WordTemplate wt = new WordTemplate(txtPlantilla.Text);
             //string aux = list[0][0];
             //wt.reemplazarCampo("Leyenda", aux);
-            wt.reemplazarCampo("NumeroControl", list[0][0]);
-            //wt.reemplazarCampo("Carrera", list[1]+"");
-            //wt.reemplazarCampo("Carrera", list[1] + "");
-            /*list[0] = new List<string>();//NumeroControl
-            list[1] = new List<string>();//NombreAlumno
-            list[2] = new List<string>();//Carrera
-            list[3] = new List<string>();//Sexo
-            list[4] = new List<string>();//E_mail
-            list[5] = new List<string>();//leyenda
-            list[6] = new List<string>();//Programa
-            list[7] = new List<string>();//numExpediente
-            list[8] = new List<string>();//Jefe direccion
-            list[9] = new List<string>();//Puesto
-            list[10] = new List<string>();//DireccionDependencia*/
-            //----
+            
+            wt.reemplazarCampo("Leyenda", list[5]);
+            wt.reemplazarCampo("Fecha", "Fecha actual");//Agregar la fecha actual
+            wt.reemplazarCampo("NumeroExpediente", list[7]);
+            wt.reemplazarCampo("JefeDireccion", list[8]);
+            wt.reemplazarCampo("Puesto", list[9]);
+            wt.reemplazarCampo("Sexo", list[3]);
+            wt.reemplazarCampo("NombreAlumno", list[1]);
+            wt.reemplazarCampo("NumeroControl", list[0]);//
+            wt.reemplazarCampo("Carrera", list[2]);
+            wt.reemplazarCampo("Dependencia", list[10]);
+            wt.reemplazarCampo("Programa", list[6]);            
+            /*list[4] = new List<string>();//E_mail*/
             wt.guardarDocumento("Hola12345");
         }
         private void btnViewDoc_Click(object sender, RoutedEventArgs e)

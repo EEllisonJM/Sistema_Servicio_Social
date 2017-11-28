@@ -174,14 +174,14 @@ namespace Sistema_Servicio_Social
         }
 
         //Select statement
-        public List<string>[] Select()
+        public List<string> Select()
         {
             string query = "SELECT " +
                 "A.numControl, A.nombre, A.carrera, A.sexo, A.e_mail,"+
                 "CP.leyenda, CP.programa, CP.numExpediente, CP.jefeDireccion, CP.puestoJefeDireccion, CP.direccionDependencia FROM Alumno as A INNER JOIN Carta_Presentacion as CP ON A.numControl= CP.numControl;";
             //Create a list to store the result
-            List<string>[] list = new List<string>[11];
-            list[0] = new List<string>();//NumeroControl
+            List<string> list = new List<string>();
+            /*list[0] = new List<string>();//NumeroControl
             list[1] = new List<string>();//NombreAlumno
             list[2] = new List<string>();//Carrera
             list[3] = new List<string>();//Sexo
@@ -191,7 +191,7 @@ namespace Sistema_Servicio_Social
             list[7] = new List<string>();//numExpediente
             list[8] = new List<string>();//Jefe direccion
             list[9] = new List<string>();//Puesto
-            list[10] = new List<string>();//DireccionDependencia
+            list[10] = new List<string>();//DireccionDependencia*/
             //fecha
             //Open connection
             if (this.OpenConnection() == true)
@@ -203,18 +203,18 @@ namespace Sistema_Servicio_Social
                 //Read the data and store them in the list
                 while (dataReader.Read())
                 {
-                    list[0].Add(dataReader["numControl"] + "");
-                    list[1].Add(dataReader["nombre"] + "");
-                    list[2].Add(dataReader["carrera"] + "");
-                    list[3].Add(dataReader["sexo"] + "");
-                    list[4].Add(dataReader["e_mail"] + "");
+                    list.Add(dataReader["numControl"] + "");//0
+                    list.Add(dataReader["nombre"] + "");//1
+                    list.Add(dataReader["carrera"] + "");//2
+                    list.Add(dataReader["sexo"] + "");//3
+                    list.Add(dataReader["e_mail"] + "");//4
 
-                    list[5].Add(dataReader["leyenda"] + "");
-                    list[6].Add(dataReader["programa"] + "");
-                    list[7].Add(dataReader["numExpediente"] + "");
-                    list[8].Add(dataReader["jefeDireccion"] + "");
-                    list[9].Add(dataReader["puestoJefeDireccion"] + "");
-                    list[10].Add(dataReader["direccionDependencia"] + "");
+                    list.Add(dataReader["leyenda"] + "");
+                    list.Add(dataReader["programa"] + "");
+                    list.Add(dataReader["numExpediente"] + "");
+                    list.Add(dataReader["jefeDireccion"] + "");
+                    list.Add(dataReader["puestoJefeDireccion"] + "");
+                    list.Add(dataReader["direccionDependencia"] + "");
                 }
                 //close Data Reader
                 dataReader.Close();
