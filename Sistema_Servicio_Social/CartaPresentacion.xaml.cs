@@ -58,11 +58,26 @@ namespace Sistema_Servicio_Social
         }
 
         void guardarDocumento() {            
-            DBConnect dbConnect = new DBConnect();
-            List<string>[] list = dbConnect.Select();
+            DBConnect dbConnect = new DBConnect();            
+            List<string>[] list = new List<string>[11];
+            list = dbConnect.Select();
             WordTemplate wt = new WordTemplate(txtPlantilla.Text);
-            wt.reemplazarCampo("NombreAlumno", "Nombre modificado");
+            
+            wt.reemplazarCampo("NumeroControl", list[0].ToString()+"");
             wt.reemplazarCampo("Carrera", list[1]+"");
+            //wt.reemplazarCampo("Carrera", list[1] + "");
+            /*list[0] = new List<string>();//NumeroControl
+            list[1] = new List<string>();//NombreAlumno
+            list[2] = new List<string>();//Carrera
+            list[3] = new List<string>();//Sexo
+            list[4] = new List<string>();//E_mail
+            list[5] = new List<string>();//leyenda
+            list[6] = new List<string>();//Programa
+            list[7] = new List<string>();//numExpediente
+            list[8] = new List<string>();//Jefe direccion
+            list[9] = new List<string>();//Puesto
+            list[10] = new List<string>();//DireccionDependencia*/
+            //----
             wt.guardarDocumento("Hola12345");
         }
         private void btnViewDoc_Click(object sender, RoutedEventArgs e)
