@@ -69,15 +69,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Correo.xaml.cs">
-      <DependentUpon>Correo.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="Correo.cs" />
     <Compile Include="WordTemplate.cs" />
     <Page Include="CartaPresentacion.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Correo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
