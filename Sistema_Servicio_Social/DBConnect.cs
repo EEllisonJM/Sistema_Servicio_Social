@@ -174,25 +174,16 @@ namespace Sistema_Servicio_Social
         }
 
         //Select statement
-        public List<string> Select()
+        public List<string> Select(string numExpediente)
         {
             string query = "SELECT " +
                 "A.numControl, A.nombre, A.carrera, A.sexo, A.e_mail,"+
-                "CP.leyenda, CP.programa, CP.numExpediente, CP.jefeDireccion, CP.puestoJefeDireccion, CP.direccionDependencia FROM Alumno as A INNER JOIN Carta_Presentacion as CP ON A.numControl= CP.numControl;";
+                "CP.leyenda, CP.programa, CP.numExpediente, CP.jefeDireccion, CP.puestoJefeDireccion, CP.direccionDependencia, CP.nombreDependencia"+
+                " FROM Alumno as A INNER JOIN Carta_Presentacion as CP "+
+                "ON A.numControl= CP.numControl "+
+                "WHERE CP.numExpediente ="+numExpediente+";";
             //Create a list to store the result
             List<string> list = new List<string>();
-            /*list[0] = new List<string>();//NumeroControl
-            list[1] = new List<string>();//NombreAlumno
-            list[2] = new List<string>();//Carrera
-            list[3] = new List<string>();//Sexo
-            list[4] = new List<string>();//E_mail
-            list[5] = new List<string>();//leyenda
-            list[6] = new List<string>();//Programa
-            list[7] = new List<string>();//numExpediente
-            list[8] = new List<string>();//Jefe direccion
-            list[9] = new List<string>();//Puesto
-            list[10] = new List<string>();//DireccionDependencia*/
-            //fecha
             //Open connection
             if (this.OpenConnection() == true)
             {
@@ -209,12 +200,13 @@ namespace Sistema_Servicio_Social
                     list.Add(dataReader["sexo"] + "");//3
                     list.Add(dataReader["e_mail"] + "");//4
 
-                    list.Add(dataReader["leyenda"] + "");
-                    list.Add(dataReader["programa"] + "");
-                    list.Add(dataReader["numExpediente"] + "");
-                    list.Add(dataReader["jefeDireccion"] + "");
-                    list.Add(dataReader["puestoJefeDireccion"] + "");
-                    list.Add(dataReader["direccionDependencia"] + "");
+                    list.Add(dataReader["leyenda"] + "");//5
+                    list.Add(dataReader["programa"] + "");//6
+                    list.Add(dataReader["numExpediente"] + "");//7
+                    list.Add(dataReader["jefeDireccion"] + "");//8
+                    list.Add(dataReader["puestoJefeDireccion"] + "");//9
+                    list.Add(dataReader["direccionDependencia"] + "");//10 
+                    list.Add(dataReader["nombreDependencia"] + "");//11
                 }
                 //close Data Reader
                 dataReader.Close();
