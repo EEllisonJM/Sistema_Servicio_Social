@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Outlook = Microsoft.Office.Interop.Outlook;
 
 namespace Sistema_Servicio_Social
 {
     class Correo
     {
-        public void EnviarCorreo(string ruta, string nombre, string asunto, string mensaje)
+        public void EnviarCorreo(string ruta, string nombre, string asunto, string mensaje,string e_mail)
         {
             try
             {
@@ -21,7 +22,7 @@ namespace Sistema_Servicio_Social
 
                 //Add a recipient.
                 // TODO: Change the following recipient where appropriate.
-                Outlook.Recipient oRecip = (Outlook.Recipient)oMsg.Recipients.Add("gike@tinoza.org");
+                Outlook.Recipient oRecip = (Outlook.Recipient)oMsg.Recipients.Add(e_mail);
                 oRecip.Resolve();
 
                 //Set the basic properties.
@@ -53,9 +54,9 @@ namespace Sistema_Servicio_Social
             // Simple error handler.
             catch (Exception e)
             {
-                Console.WriteLine("{0} Exception caught: ", e);
+                //Console.WriteLine("{0} Exception caught: ", e);
+                MessageBox.Show("{0} Exception caught: ");
             }
-
             //Default return value.
             //return 0;
         }

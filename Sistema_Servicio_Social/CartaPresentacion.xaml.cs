@@ -11,6 +11,7 @@ namespace Sistema_Servicio_Social
 {
     public partial class CartaPresentacion : System.Windows.Window
     {
+        string e_mailEnviar = "";
         public CartaPresentacion()
         {
             InitializeComponent();
@@ -77,11 +78,11 @@ namespace Sistema_Servicio_Social
 
             wt.reemplazarCampo("Dependencia", getDependencia(list[11]));//
 
-            wt.reemplazarCampo("Programa", list[6]);
-            /*list[4] = new List<string>();//E_mail*/
+            wt.reemplazarCampo("Programa", list[6]);            
             wt.guardarDocumento("Hola12345");            
             cargarDatos(list);
-            
+            /*list[4] = new List<string>();//E_mail*/
+            e_mailEnviar = list[4];
         }
         string getSexo(String texto) {
             if (texto=="H") {
@@ -180,7 +181,9 @@ namespace Sistema_Servicio_Social
 
         private void btnEnviar_Click(object sender, RoutedEventArgs e)
         {
-            //Desde la ruta, enviar el documento al 
+            Correo c = new Correo();
+            c.EnviarCorreo("C:\\Users\\Erik\\Documents\\Hola12345.doc","NombreDocumento","Soy asunto","Soy mensaje",e_mailEnviar);
+
         }
     }
 }
