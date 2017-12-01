@@ -12,6 +12,7 @@ namespace Sistema_Servicio_Social
     public partial class CartaPresentacion : System.Windows.Window
     {
         string e_mailEnviar = "";
+        string directorioGuardarDocumento = "";
         public CartaPresentacion()
         {
             InitializeComponent();
@@ -58,18 +59,18 @@ namespace Sistema_Servicio_Social
             }
         }
 
-        void guardarDocumento(String numExpediente) {
+        void guardarDocumento(String numExpediente)
+        {
             DBConnect dbConnect = new DBConnect();
             List<string> list = dbConnect.Select(numExpediente);
             WordTemplate wt = new WordTemplate(txtPlantilla.Text);
             wt.reemplazarCampo("Leyenda", list[5]);
             DateTime dateTime = DateTime.UtcNow.Date;
             wt.reemplazarCampo("Fecha", dateTime.ToString("dd/MM/yyyy"));//Agregar la fecha actual
+            wt.reemplazarCampo("Anio", dateTime.ToString("yy"));
             wt.reemplazarCampo("NumeroExpediente", list[7]);
             wt.reemplazarCampo("JefeDireccion", list[8]);
             wt.reemplazarCampo("Puesto", list[9]);
-
-            //wt.reemplazarCampo("Sexo", list[3]);
             wt.reemplazarCampo("Sexo", getSexo(list[3]));
 
             wt.reemplazarCampo("NombreAlumno", list[1]);
@@ -78,14 +79,16 @@ namespace Sistema_Servicio_Social
 
             wt.reemplazarCampo("Dependencia", getDependencia(list[11]));//
 
-            wt.reemplazarCampo("Programa", list[6]);            
-            wt.guardarDocumento("Hola12345");            
+            wt.reemplazarCampo("Programa", list[6]);
+
+            wt.guardarDocumento("Hola12345");//nombreDocumento
             cargarDatos(list);
-            /*list[4] = new List<string>();//E_mail*/
-            e_mailEnviar = list[4];
+            e_mailEnviar = list[4];//e_mail
         }
-        string getSexo(String texto) {
-            if (texto=="H") {
+        string getSexo(String texto)
+        {
+            if (texto == "H")
+            {
                 return "al";
             }
             if (texto == "M")
@@ -94,10 +97,12 @@ namespace Sistema_Servicio_Social
             }
             return "";
         }
-        string getDependencia(string texto) {
+        string getDependencia(string texto)
+        {
             var WordsArray = texto.Split();
             string aux = WordsArray[0];
-            switch (aux) {
+            switch (aux)
+            {
                 case "Departamento":
                     return "ese departamento";
                 case "Oficina":
@@ -157,14 +162,14 @@ namespace Sistema_Servicio_Social
                 }
                 documentviewWord.Document = xpsDocument.GetFixedDocumentSequence();
             }
-        }   
+        }
 
         private void btnSiguiente_Click(object sender, RoutedEventArgs e)
         {
             if (txbSelectedWordFile.Text != "")
             {//C:\Users\Erik\Documents\Full_CartaPresentacion.dotx
                 int numE = Int32.Parse(txbSelectedWordFile.Text);
-                guardarDocumento((numE+1)+ "");
+                guardarDocumento((numE + 1) + "");
                 //cargarDatosCartaPresentacion();
                 //string wordDocument = txbSelectedWordFile.Text;
                 //El documento que se guarda en el metodo "guardarDocumento" se guarda en los documentos del usuariostring wordDocument = "C:\\Users\\xxxx\\Documents\\Hola12345.doc";
@@ -182,8 +187,7 @@ namespace Sistema_Servicio_Social
         private void btnEnviar_Click(object sender, RoutedEventArgs e)
         {
             Correo c = new Correo();
-            c.EnviarCorreo("C:\\Users\\Erik\\Documents\\Hola12345.doc","NombreDocumento","Soy asunto","Soy mensaje",e_mailEnviar);
-
+            c.EnviarCorreo("C:\\Users\\Erik\\Documents\\Hola12345.doc", "NombreDocumento", "Soy asunto", "Soy mensaje", e_mailEnviar);
         }
     }
 }
