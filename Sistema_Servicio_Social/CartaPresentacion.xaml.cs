@@ -162,14 +162,14 @@ namespace Sistema_Servicio_Social
                 //cBoxSexo.Text = ist[3];
                 //----------------------------
                 guardarDocumento(txbSelectedWordFile.Text + "");
-<<<<<<< HEAD
-                string wordDocument = "C:\\Users\\Erik\\Documents\\Hola12345.doc";
-=======
+
+                //string wordDocument = "C:\\Users\\Erik\\Documents\\Hola12345.doc";
+
                 //cargarDatosCartaPresentacion();
                 //string wordDocument = txbSelectedWordFile.Text;
                 //El documento que se guarda en el metodo "guardarDocumento" se guarda en los documentos del usuariostring wordDocument = "C:\\Users\\xxxx\\Documents\\Hola12345.doc";
                 string wordDocument = directorioGuardarDocumento + "\\Hola12345.doc";
->>>>>>> master
+
                 mostrarDocumento(wordDocument);
             }
         }
