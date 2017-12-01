@@ -55,7 +55,7 @@ namespace Sistema_Servicio_Social
             catch (Exception e)
             {
                 //Console.WriteLine("{0} Exception caught: ", e);
-                MessageBox.Show("{0} Exception caught: ");
+                MessageBox.Show(e.ToString(), "Error");
             }
             //Default return value.
             //return 0;
