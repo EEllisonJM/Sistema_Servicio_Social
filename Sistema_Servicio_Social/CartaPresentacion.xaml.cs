@@ -11,8 +11,12 @@ namespace Sistema_Servicio_Social
 {
     public partial class CartaPresentacion : System.Windows.Window
     {
+        DateTime dateTime;// = DateTime.UtcNow.Date;
         string e_mailEnviar = "";
         string directorioGuardarDocumento = "";
+        string fechaActual = "";
+        string anioActual = "";
+        string numControl = "";
         public CartaPresentacion()
         {
             InitializeComponent();
@@ -65,9 +69,13 @@ namespace Sistema_Servicio_Social
             List<string> list = dbConnect.Select(numExpediente);
             WordTemplate wt = new WordTemplate(txtPlantilla.Text);
             wt.reemplazarCampo("Leyenda", list[5]);
-            DateTime dateTime = DateTime.UtcNow.Date;
-            wt.reemplazarCampo("Fecha", dateTime.ToString("dd/MM/yyyy"));//Agregar la fecha actual
-            wt.reemplazarCampo("Anio", dateTime.ToString("yy"));
+            //----==================================================
+            //DateTime dateTime = DateTime.UtcNow.Date;
+            
+            //--------------------------------------------
+            wt.reemplazarCampo("Fecha", fechaActual);//Agregar la fecha actual
+            wt.reemplazarCampo("Anio", anioActual);
+            //----
             wt.reemplazarCampo("NumeroExpediente", list[7]);
             wt.reemplazarCampo("JefeDireccion", list[8]);
             wt.reemplazarCampo("Puesto", list[9]);
@@ -75,6 +83,7 @@ namespace Sistema_Servicio_Social
 
             wt.reemplazarCampo("NombreAlumno", list[1]);
             wt.reemplazarCampo("NumeroControl", list[0]);//
+            numControl = list[0];
             wt.reemplazarCampo("Carrera", list[2]);
 
             wt.reemplazarCampo("Dependencia", getDependencia(list[11]));//
@@ -132,16 +141,26 @@ namespace Sistema_Servicio_Social
             txtPuesto.Text = list[9];
             //txtNombreDependencia.Text = list[11].Split()[0];
             txtNombreDependencia.Text = list[11];
+            //-------------------------------------
+            cBoxSexo.Text = list[3];
+            //FECHA
+            //SEXO
+
         }
 
         private void btnViewDoc_Click(object sender, RoutedEventArgs e)
         {//Mostrar Documento
             if (txbSelectedWordFile.Text != "")
-            {//C:\Users\Erik\Documents\Full_CartaPresentacion.dotx
+            {
+                //----------------------------
+                dateTime = DateTime.UtcNow.Date;
+                fechaActual = dateTime.ToString("dd/MM/yyyy");
+                anioActual = dateTime.ToString("yy");
+                Fecha.SelectedDate = DateTime.Today;
+                //
+                //cBoxSexo.Text = ist[3];
+                //----------------------------
                 guardarDocumento(txbSelectedWordFile.Text + "");
-                //cargarDatosCartaPresentacion();
-                //string wordDocument = txbSelectedWordFile.Text;
-                //El documento que se guarda en el metodo "guardarDocumento" se guarda en los documentos del usuariostring wordDocument = "C:\\Users\\xxxx\\Documents\\Hola12345.doc";
                 string wordDocument = "C:\\Users\\Erik\\Documents\\Hola12345.doc";
                 mostrarDocumento(wordDocument);
             }
@@ -180,8 +199,24 @@ namespace Sistema_Servicio_Social
 
         private void btnActualizar_Click(object sender, RoutedEventArgs e)
         {
-            //actualizar la base de datos con los datos modificados
-            //cargar al documento
+            dateTime = DateTime.UtcNow.Date;
+            //fechaActual = dateTime.ToString("dd/MM/yyyy");
+            anioActual = dateTime.ToString("yy");
+            //Fecha.SelectedDate = DateTime.Today;
+            fechaActual = Fecha.SelectedDate.ToString().Substring(0, 10);
+            //hacer insert a alumno y a carta presentacion
+            DBConnect db = new DBConnect();
+            db.Update(
+                "Alumno",
+                "nombre = '"+ txtNombreAlumno.Text + "',"+
+                "carrera = '"+ txtCarrera.Text+"',"+
+                "sexo = '"+cBoxSexo.Text+"'",
+                "numControl","'"+numControl+"'"
+                );
+
+            guardarDocumento(txbSelectedWordFile.Text + "");
+            string wordDocument = "C:\\Users\\Erik\\Documents\\Hola12345.doc";
+            mostrarDocumento(wordDocument);
         }
 
         private void btnEnviar_Click(object sender, RoutedEventArgs e)
