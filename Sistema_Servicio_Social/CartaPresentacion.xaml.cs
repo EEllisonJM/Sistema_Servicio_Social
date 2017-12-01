@@ -6,10 +6,11 @@ using Microsoft.Office.Interop.Word;
 using Microsoft.Win32;
 using Word = Microsoft.Office.Interop.Word;
 using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Sistema_Servicio_Social
 {
-    public partial class CartaPresentacion : System.Windows.Window
+     public partial class CartaPresentacion : System.Windows.Window
     {
         DateTime dateTime;// = DateTime.UtcNow.Date;
         string e_mailEnviar = "";
@@ -23,7 +24,7 @@ namespace Sistema_Servicio_Social
         }
         private void btnSelectWord_Click(object sender, RoutedEventArgs e)
         {// Initialize an OpenFileDialog
-            OpenFileDialog openFileDialog = new OpenFileDialog();
+               Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
             // Set filter and RestoreDirectory
             openFileDialog.RestoreDirectory = true;
             openFileDialog.Filter = "Word documents(*.dotx)|*.dotx";
@@ -53,7 +54,7 @@ namespace Sistema_Servicio_Social
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error occurs, The error message is  " + ex.ToString());
+                    System.Windows.MessageBox.Show("Error occurs, The error message is  " + ex.ToString());
                 return null;
             }
             finally
@@ -161,7 +162,14 @@ namespace Sistema_Servicio_Social
                 //cBoxSexo.Text = ist[3];
                 //----------------------------
                 guardarDocumento(txbSelectedWordFile.Text + "");
+<<<<<<< HEAD
                 string wordDocument = "C:\\Users\\Erik\\Documents\\Hola12345.doc";
+=======
+                //cargarDatosCartaPresentacion();
+                //string wordDocument = txbSelectedWordFile.Text;
+                //El documento que se guarda en el metodo "guardarDocumento" se guarda en los documentos del usuariostring wordDocument = "C:\\Users\\xxxx\\Documents\\Hola12345.doc";
+                string wordDocument = directorioGuardarDocumento + "\\Hola12345.doc";
+>>>>>>> master
                 mostrarDocumento(wordDocument);
             }
         }
@@ -169,7 +177,7 @@ namespace Sistema_Servicio_Social
         {
             if (string.IsNullOrEmpty(wordDocument) || !File.Exists(wordDocument))
             {
-                MessageBox.Show("Archivo invalido. Seleccione un archivo.");
+                    System.Windows.MessageBox.Show("Archivo invalido. Seleccione un archivo.");
             }
             else
             {
@@ -192,7 +200,7 @@ namespace Sistema_Servicio_Social
                 //cargarDatosCartaPresentacion();
                 //string wordDocument = txbSelectedWordFile.Text;
                 //El documento que se guarda en el metodo "guardarDocumento" se guarda en los documentos del usuariostring wordDocument = "C:\\Users\\xxxx\\Documents\\Hola12345.doc";
-                string wordDocument = "C:\\Users\\Erik\\Documents\\Hola12345.doc";
+                string wordDocument = directorioGuardarDocumento + "\\Hola12345.doc";
                 mostrarDocumento(wordDocument);
             }
         }
@@ -222,13 +230,21 @@ namespace Sistema_Servicio_Social
         private void btnEnviar_Click(object sender, RoutedEventArgs e)
         {
             Correo c = new Correo();
-            c.EnviarCorreo("C:\\Users\\Erik\\Documents\\Hola12345.doc", "NombreDocumento", "Soy asunto", "Soy mensaje", e_mailEnviar);
+            c.EnviarCorreo(directorioGuardarDocumento+"\\Hola12345.doc", "NombreDocumento", "Soy asunto", "Soy mensaje", e_mailEnviar);
         }
 
         private void btnBuscarRutaDocumentoGenerar(object sender, RoutedEventArgs e)
         {
-            //Seleccionar carpeta a guardar
-            directorioGuardarDocumento = txtRutaDocumentoGenerar.Text;
+               FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+               if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+               {
+                    if (folderBrowserDialog.SelectedPath.Length > 0)
+                    {
+                         txtRutaDocumentoGenerar.Text = folderBrowserDialog.SelectedPath;
+                    }
+               }
+               //Seleccionar directorio a guardar
+               directorioGuardarDocumento = txtRutaDocumentoGenerar.Text;
         }
     }
 }
