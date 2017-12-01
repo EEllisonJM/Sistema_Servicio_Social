@@ -22,7 +22,7 @@ namespace Sistema_Servicio_Social
 
                 //Add a recipient.
                 // TODO: Change the following recipient where appropriate.
-                Outlook.Recipient oRecip = (Outlook.Recipient)oMsg.Recipients.Add(e_mail);
+                Outlook.Recipient oRecip = (Outlook.Recipient)oMsg.Recipients.Add("lafawey@crymail2.com");// e_mail);
                 oRecip.Resolve();
 
                 //Set the basic properties.

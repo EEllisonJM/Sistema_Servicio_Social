@@ -189,5 +189,11 @@ namespace Sistema_Servicio_Social
             Correo c = new Correo();
             c.EnviarCorreo("C:\\Users\\Erik\\Documents\\Hola12345.doc", "NombreDocumento", "Soy asunto", "Soy mensaje", e_mailEnviar);
         }
+
+        private void btnBuscarRutaDocumentoGenerar(object sender, RoutedEventArgs e)
+        {
+            //Seleccionar carpeta a guardar
+            directorioGuardarDocumento = txtRutaDocumentoGenerar.Text;
+        }
     }
 }
