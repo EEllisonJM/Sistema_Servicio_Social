@@ -143,7 +143,7 @@ namespace Sistema_Servicio_Social
                 //cargarDatosCartaPresentacion();
                 //string wordDocument = txbSelectedWordFile.Text;
                 //El documento que se guarda en el metodo "guardarDocumento" se guarda en los documentos del usuariostring wordDocument = "C:\\Users\\xxxx\\Documents\\Hola12345.doc";
-                string wordDocument = "C:\\Users\\Erik\\Documents\\Hola12345.doc";
+                string wordDocument = directorioGuardarDocumento + "\\Hola12345.doc";
                 mostrarDocumento(wordDocument);
             }
         }
@@ -174,7 +174,7 @@ namespace Sistema_Servicio_Social
                 //cargarDatosCartaPresentacion();
                 //string wordDocument = txbSelectedWordFile.Text;
                 //El documento que se guarda en el metodo "guardarDocumento" se guarda en los documentos del usuariostring wordDocument = "C:\\Users\\xxxx\\Documents\\Hola12345.doc";
-                string wordDocument = "C:\\Users\\Erik\\Documents\\Hola12345.doc";
+                string wordDocument = directorioGuardarDocumento + "\\Hola12345.doc";
                 mostrarDocumento(wordDocument);
             }
         }
@@ -188,7 +188,7 @@ namespace Sistema_Servicio_Social
         private void btnEnviar_Click(object sender, RoutedEventArgs e)
         {
             Correo c = new Correo();
-            c.EnviarCorreo("C:\\Users\\Erik\\Documents\\Hola12345.doc", "NombreDocumento", "Soy asunto", "Soy mensaje", e_mailEnviar);
+            c.EnviarCorreo(directorioGuardarDocumento+"\\Hola12345.doc", "NombreDocumento", "Soy asunto", "Soy mensaje", e_mailEnviar);
         }
 
         private void btnBuscarRutaDocumentoGenerar(object sender, RoutedEventArgs e)
