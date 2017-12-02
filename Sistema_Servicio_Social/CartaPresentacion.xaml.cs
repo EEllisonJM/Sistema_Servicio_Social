@@ -3,31 +3,31 @@ using System.IO;
 using System.Windows;
 using System.Windows.Xps.Packaging;
 using Microsoft.Office.Interop.Word;
-using Microsoft.Win32;
-using Word = Microsoft.Office.Interop.Word;
 using System.Collections.Generic;
 using System.Windows.Forms;
+
+using Word = Microsoft.Office.Interop.Word;
 
 namespace Sistema_Servicio_Social
 {
      public partial class CartaPresentacion : System.Windows.Window
     {
-        DateTime dateTime;// = DateTime.UtcNow.Date;
-        string e_mailEnviar = "";
-        string directorioGuardarDocumento = "";
-        string fechaActual = "";
-        string anioActual = "";
-        string numControl = "";
+        DateTime dateTime;
+        string e_mailEnviar;
+        string directorioGuardarDocumento;
+        string fechaActual;
+        string anioActual;
+        string numControl;
         public CartaPresentacion()
         {
             InitializeComponent();
         }
-        private void btnSelectWord_Click(object sender, RoutedEventArgs e)
-        {// Initialize an OpenFileDialog
-               Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+        private void btnSeleccionarPlantilla(object sender, RoutedEventArgs e)
+        {
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
             // Set filter and RestoreDirectory
             openFileDialog.RestoreDirectory = true;
-            openFileDialog.Filter = "Word documents(*.dotx)|*.dotx";
+            openFileDialog.Filter = "Plantilla de Word(*.dotx)|*.dotx";
             bool? result = openFileDialog.ShowDialog();
             if (result == true)
             {
@@ -63,34 +63,24 @@ namespace Sistema_Servicio_Social
                 ((_Application)wordApp).Quit(WdSaveOptions.wdDoNotSaveChanges);
             }
         }
-
         void guardarDocumento(String numExpediente)
         {
             DBConnect dbConnect = new DBConnect();
             List<string> list = dbConnect.Select(numExpediente);
             WordTemplate wt = new WordTemplate(txtPlantilla.Text);
             wt.reemplazarCampo("Leyenda", list[5]);
-            //----==================================================
-            //DateTime dateTime = DateTime.UtcNow.Date;
-            
-            //--------------------------------------------
             wt.reemplazarCampo("Fecha", fechaActual);//Agregar la fecha actual
             wt.reemplazarCampo("Anio", anioActual);
-            //----
             wt.reemplazarCampo("NumeroExpediente", list[7]);
             wt.reemplazarCampo("JefeDireccion", list[8]);
             wt.reemplazarCampo("Puesto", list[9]);
             wt.reemplazarCampo("Sexo", getSexo(list[3]));
-
             wt.reemplazarCampo("NombreAlumno", list[1]);
             wt.reemplazarCampo("NumeroControl", list[0]);//
             numControl = list[0];
             wt.reemplazarCampo("Carrera", list[2]);
-
             wt.reemplazarCampo("Dependencia", getDependencia(list[11]));//
-
             wt.reemplazarCampo("Programa", list[6]);
-
             wt.guardarDocumento("Hola12345");//nombreDocumento
             cargarDatos(list);
             e_mailEnviar = list[4];//e_mail
@@ -225,12 +215,6 @@ namespace Sistema_Servicio_Social
             guardarDocumento(txbSelectedWordFile.Text + "");
             string wordDocument = "C:\\Users\\Erik\\Documents\\Hola12345.doc";
             mostrarDocumento(wordDocument);
-        }
-
-        private void btnEnviar_Click(object sender, RoutedEventArgs e)
-        {
-            Correo c = new Correo();
-            c.EnviarCorreo(directorioGuardarDocumento+"\\Hola12345.doc", "NombreDocumento", "Soy asunto", "Soy mensaje", e_mailEnviar);
         }
 
         private void btnBuscarRutaDocumentoGenerar(object sender, RoutedEventArgs e)

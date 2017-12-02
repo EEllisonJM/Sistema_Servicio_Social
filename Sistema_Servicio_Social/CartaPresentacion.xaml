@@ -52,15 +52,13 @@
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="70" Margin="0,0,0,-70" Grid.Row="1" VerticalAlignment="Bottom" Width="800">
-
-            <Button x:Name="btnEnviar" Content="Enviar" HorizontalAlignment="Left" Margin="30,0,0,0" VerticalAlignment="Center" Width="75" Click="btnEnviar_Click"/>
             <Button x:Name="btnActualizar" Content="Actualizar Documento" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="130" Click="btnActualizar_Click"/>
             <Button x:Name="btnSiguiente" Content="Siguiente" HorizontalAlignment="Right" Margin="0,0,30,0" VerticalAlignment="Center" Width="75" Click="btnSiguiente_Click"/>
 
         </Grid>
         <Label x:Name="labelPlantilla" Margin="10,41,0,0" Content="Plantilla" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <TextBox  x:Name="txtPlantilla" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="66,43,495,0" HorizontalContentAlignment="Left"  />
-        <Button HorizontalAlignment="Left" Margin="302,45,0,0" VerticalAlignment="Top" Content="Seleccionar" Width="83" x:Name="btnCargarPlantilla" Click="btnSelectWord_Click" />
+        <TextBox  x:Name="txtPlantilla" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="66,43,495,0" HorizontalContentAlignment="Left" />
+        <Button HorizontalAlignment="Left" Margin="302,45,0,0" VerticalAlignment="Top" Content="Seleccionar" Width="83" x:Name="btnCargarPlantilla" Click="btnSeleccionarPlantilla" />
         <Label x:Name="labelLeyenda" Margin="421,43,0,0" Content="Leyenda:" VerticalAlignment="Top" HorizontalAlignment="Left" />
         <TextBox  x:Name="txtLeyenda" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="478,43,-198,0" HorizontalContentAlignment="Left"/>
         <Label x:Name="lable1_Copy" Margin="9,6,0,0" Content="Ruta de documentos a generar:" VerticalAlignment="Top" HorizontalAlignment="Left" />

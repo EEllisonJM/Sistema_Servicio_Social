@@ -6,7 +6,8 @@ namespace Sistema_Servicio_Social
 {
     class ConexionMySQL
     {
-        public void leerCSV(string ruta, int expedienteI,String leyenda)
+        /*Agregar en la base de datos*/
+        public void leerCSV(string ruta, int expedienteI, String leyenda)
         {
             int numExp = expedienteI;
             foreach (string line in File.ReadLines(@"" + ruta))
@@ -19,7 +20,6 @@ namespace Sistema_Servicio_Social
                     {
                         values[i] = values[i].ToString().Replace('"', ' ').Trim();
                     }
-                    /*Agregar en la base de datos*/
                     //Si en el formulario dice Hombre cambiar por H y si dice Mujer cambiar por M
                     if (values[6] == "Hombre")
                     {
@@ -27,26 +27,29 @@ namespace Sistema_Servicio_Social
                     }
                     else
                     {
-                        values[6] = "F";
+                        values[6] = "M";
                     }
-                    /*Ir guardando en la base de datos*/
                     DBConnect db = new DBConnect();
-                    if (db.CountOne("Alumno", "numControl", values[2]) == 1)
-                    {//existe
-                        //db.Delete("Alumno", "numControl", values[2]);
-                        db.Update("Alumno",
-                            "nombre = '" + values[5] + " " + values[4] + " " + values[3] + "'," +//nombre                           
+                    if (db.CountOne(//Existe?
+                        "Alumno",//Table
+                        "numControl", values[2]) == 1)//numControl=values[2]?
+                    {
+                        db.Update(//Actualiza
+                            "Alumno",//Tabla
+                            "nombre = '" + values[5] + " " + values[4] + " " + values[3] + "'," +//nombre
                             "carrera = '" + values[7] + "'," +//carrera
                             "sexo = '" + values[6] + "'," +//sexo
                             "e_mail = '" + values[1] + "'," +//e-mail
                             "porcentajeAvance = " + values[8] + "," +//porcentaje de avance
                             "semestre = " + values[9],//Semestre
-                            "numControl", values[2]);
+                            "numControl", values[2]);//Numero de control
                     }
                     else
                     {
-                        db.Insert("Alumno",
-                        "(numControl,nombre,carrera,sexo,e_mail,porcentajeAvance,semestre)", "(" +
+                        db.Insert(//Insertar
+                            "Alumno",//Tabla
+                        "(numControl,nombre,carrera,sexo,e_mail,porcentajeAvance,semestre)",//Atributos
+                        "(" +//Valores...
                         values[2] + "," +//numControl
                         " '" + values[5] + " " + values[4] + " " + values[3] + "'," +//nombre
                         " '" + values[7] + "'," +//carrera
@@ -56,26 +59,27 @@ namespace Sistema_Servicio_Social
                         values[9] + ")"//Semestre
                         );
                     }
-                    if (db.CountOne("Carta_Presentacion", "numControl", values[2]) == 1)
-                    {//existe
-                        numExp--;
-                        //Update(tabla,atributosValores,atributo,string valor)
-                        db.Update(
-                            "Carta_Presentacion",//Actualiza la Tabla
+                    if (db.CountOne(//Existe?
+                        "Carta_Presentacion",//Tabla
+                        "numControl", values[2]) == 1)//numControl=values[2]?
+                    {
+                        db.Update(//Actualiza
+                            "Carta_Presentacion",//Tabla
                             "nombreDependencia = '" + values[10] + "'," +
                             "direccionDependencia = '" + values[12] + "'," +
                             "programa = '" + values[11] + "'," +
                             "nombreDependencia = '" + values[10] + "'," +
                             "jefeDireccion= '" + values[13] + " " + values[14] + " " + values[15] + " " + values[16] + "'," +
-                            "leyenda = '"+leyenda+"'",//"leyenda = 'Soy leyenda' ",
+                            "leyenda = '" + leyenda + "'",//"leyenda = 'Soy leyenda' ",
                             "numControl", "" + values[2] + ""//Donde => numExpediente=numExp
                             );
                     }
                     else
                     {
-                        db.Insert(
-                            "Carta_Presentacion",
-                            "(numExpediente,numControl,nombreDependencia,direccionDependencia,programa,jefeDireccion,puestoJefeDireccion,leyenda)", "(" +
+                        db.Insert(//Insertar
+                            "Carta_Presentacion",//Tabla
+                            "(numExpediente,numControl,nombreDependencia,direccionDependencia,programa,jefeDireccion,puestoJefeDireccion,leyenda)",//Atributos
+                            "(" +//Valores...
                             numExp + "," +//numExpediente
                             values[2] + ",'" +//numControl
                             values[10] + "','" +//nombreDependencia
@@ -83,14 +87,11 @@ namespace Sistema_Servicio_Social
                             values[11] + "','" +//programa
                             values[13] + ' ' + values[14] + ' ' + values[15] + ' ' + values[16] + "','" +//jefeDireccion
                             values[17] + "','Esta es mi leyenda...')"//puesto y leyenda
-
-
                             );
                         numExp++;
                     }
                 }
             }
-            //Console.ReadKey(true); //Deja quieta la consola por si queremos revisar los mensajes de error (espera a que se presione una tecla)
         }
     }
 }

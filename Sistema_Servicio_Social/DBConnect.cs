@@ -14,10 +14,8 @@ namespace Sistema_Servicio_Social
         public DBConnect()
         {
             Initialize();
-        }
-
-        //Initialize values
-        private void Initialize()
+        }        
+        private void Initialize()//Inicializar valores
         {
             server = "localhost";
             database = "servicio_social";

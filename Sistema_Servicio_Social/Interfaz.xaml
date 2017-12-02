@@ -1,4 +1,5 @@
 ﻿<Window x:Class="Sistema_Servicio_Social.Interfaz"
+        WindowStartupLocation="CenterScreen"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -10,13 +11,11 @@
         <GroupBox VerticalAlignment="Top">
             <StackPanel>
                 <Button Name="btn_Regresar" Click="btnRegresar" Content="Regresar" Background="#545d6a" Foreground="White" FontSize="20" Height="60" Margin="3 4"/>
-                <TextBox Name="txtBox" Text=""/>
-                <Button Name="btn_Abrir" Click="btnAbrir" Content="Abrir csv" Background="#545d6a" Foreground="White" FontSize="20" Height="60" Margin="3 0"/>
-                <Button Name="btn_Cargar" Click="btnCargar" Content="Cargar Datos" Background="#545d6a" Foreground="White" FontSize="20" Height="60" Margin="3 4"/>
-                <Button Name="btn_CartaPresentacion" Click="btnCartaPresentacion" Content="Visualizar Carta presentación" Background="#545d6a" Foreground="White" FontSize="20" Height="60" Margin="3 4"/>
+                <TextBox Name="txtRutaArchivo" Text="" IsReadOnly = "True"/>
+                <Button Name="btn_Abrir" Click="btnAbrir" Content="Abrir archivo CSV" Background="#545d6a" Foreground="White" FontSize="20" Height="60" Margin="3 0"/>
+                <Button Name="btn_Cargar" Click="btnCargarDatos" Content="Cargar datos a servidor" Background="#545d6a" Foreground="White" FontSize="20" Height="60" Margin="3 4"/>
+                <Button Name="btn_CartaPresentacion" Click="btnCartaPresentacion" Content="Visualizar carta presentación" Background="#545d6a" Foreground="White" FontSize="20" Height="60" Margin="3 4"/>
             </StackPanel>
-
         </GroupBox>
     </Border>
-
 </Window>

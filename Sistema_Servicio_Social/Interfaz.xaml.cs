@@ -1,20 +1,16 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Windows;
-using System.IO;
-using System.Windows.Xps.Packaging;
-using Microsoft.Office.Interop.Word;
-using Word = Microsoft.Office.Interop.Word;
 
 namespace Sistema_Servicio_Social
 {
     public partial class Interfaz : System.Windows.Window
     {
+        string rutaPlantilla;
         public Interfaz()
         {
             InitializeComponent();
         }
-        //btnRegresar
         private void btnRegresar(object sender, RoutedEventArgs e)
         {
             Login l = new Login();
@@ -29,39 +25,53 @@ namespace Sistema_Servicio_Social
         }
         private void btnAbrir(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog ofd = new OpenFileDialog();
-            ofd.DefaultExt = ".csv";
-            //ofd.Filter = "Text Document (.csv)/*.csv";
-            if (ofd.ShowDialog() == true)
+            Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
+            // Set filter and RestoreDirectory
+            openFileDialog.RestoreDirectory = true;
+            openFileDialog.Filter = "Archivo de texto(*.csv)|*.csv";
+            bool? result = openFileDialog.ShowDialog();
+            if (result == true)
             {
-                string filename = ofd.FileName;
-                txtBox.Text = filename;
+                if (openFileDialog.FileName.Length > 0)
+                {
+                    txtRutaArchivo.Text = openFileDialog.FileName;
+                }
             }
         }
-        private void btnCargar(object sender, RoutedEventArgs e)
+        private void btnCargarDatos(object sender, RoutedEventArgs e)
         {
-            string numExpI = Microsoft.VisualBasic.Interaction.InputBox(
+            if (txtRutaArchivo.Text != "")
+            {
+                string numExpI = Microsoft.VisualBasic.Interaction.InputBox(
                 "Favor de ingresar el número de expediente inicial",
                 "Número de expediente",
                 "1000");
-            string leyenda = Microsoft.VisualBasic.Interaction.InputBox(
-                "Favor de ingresar la leyenda",
-                "Leyenda",
-                "...");
+                string leyenda = Microsoft.VisualBasic.Interaction.InputBox(
+                    "Favor de ingresar la leyenda",
+                    "Leyenda",
+                    "Año del bicentenario");
 
-            string ruta = txtBox.Text;
-               bool mostrarExitoso = true;
-               try {
+                rutaPlantilla = txtRutaArchivo.Text;
+                bool mostrarExitoso = true;
+                try
+                {
                     ConexionMySQL conexionMySQL = new ConexionMySQL();
-                    conexionMySQL.leerCSV(ruta, Int32.Parse(numExpI),leyenda);
-               } catch(Exception ex) {
+                    conexionMySQL.leerCSV(rutaPlantilla, Int32.Parse(numExpI), leyenda);
+                }
+                catch (Exception ex)
+                {
                     mostrarExitoso = false;
-                    MessageBox.Show("Error: "+ex.Message);
-               }
-               if (mostrarExitoso){
+                    MessageBox.Show("Error: " + ex.Message);
+                }
+                if (mostrarExitoso)
+                {
                     MessageBox.Show("Datos Cargados Exitosamente");
-               }
-            
+                }
+            }
+            else
+            {
+                MessageBox.Show("Seleccione el archivo CSV a cargar");
+            }
         }
     }
 }

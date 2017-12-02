@@ -70,7 +70,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Correo.cs" />
     <Compile Include="WordTemplate.cs" />
     <Page Include="CartaPresentacion.xaml">
       <SubType>Designer</SubType>
@@ -133,7 +132,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\csv.png" />
