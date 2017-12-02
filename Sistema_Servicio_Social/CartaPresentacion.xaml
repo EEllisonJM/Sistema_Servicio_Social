@@ -11,10 +11,10 @@
             <RowDefinition Height="70"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Label Name="lable1" Margin="492,6,0,0" Content="Número de expediente:" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <TextBox  Name="txbSelectedWordFile" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="634,10,11,0" HorizontalContentAlignment="Left" />
+        <Label Name="lable1" Margin="468,6,0,0" Content="Número de expediente:" VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <TextBox  Name="txtNumExpediente" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="608,10,13,0" HorizontalContentAlignment="Left" TextChanged="txtNumExpediente_TextChanged" />
 
-        <Button HorizontalAlignment="Left" Margin="784,10,-114,0" VerticalAlignment="Top" Content="Mostrar Documento" Width="122" Name="btnViewDoc" Click="btnViewDoc_Click" />
+        <Button HorizontalAlignment="Left" Margin="784,10,-114,0" VerticalAlignment="Top" Content="Cargar Documento" Width="122" Name="btnViewDoc" Click="btnMostrarDocumento" />
         <DocumentViewer Name="documentviewWord" VerticalAlignment="Top" HorizontalAlignment="Left" Height="550" Grid.Row="1" Margin="1,0,-1,0"/>
 
         <Grid HorizontalAlignment="Right" Height="500" Margin="0,0,-198,0" Grid.Row="1" VerticalAlignment="Top" Width="200">
@@ -56,14 +56,14 @@
             <Button x:Name="btnSiguiente" Content="Siguiente" HorizontalAlignment="Right" Margin="0,0,30,0" VerticalAlignment="Center" Width="75" Click="btnSiguiente_Click"/>
 
         </Grid>
-        <Label x:Name="labelPlantilla" Margin="10,41,0,0" Content="Plantilla" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <TextBox  x:Name="txtPlantilla" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="66,43,495,0" HorizontalContentAlignment="Left" />
-        <Button HorizontalAlignment="Left" Margin="302,45,0,0" VerticalAlignment="Top" Content="Seleccionar" Width="83" x:Name="btnCargarPlantilla" Click="btnSeleccionarPlantilla" />
-        <Label x:Name="labelLeyenda" Margin="421,43,0,0" Content="Leyenda:" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <TextBox  x:Name="txtLeyenda" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="478,43,-198,0" HorizontalContentAlignment="Left"/>
-        <Label x:Name="lable1_Copy" Margin="9,6,0,0" Content="Ruta de documentos a generar:" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <TextBox  x:Name="txtRutaDocumentoGenerar" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="184,10,417,0" HorizontalContentAlignment="Left"/>
-        <Button HorizontalAlignment="Left" Margin="380,10,0,0" VerticalAlignment="Top" Content="Buscar" Width="84" x:Name="btnViewDoc_Copy" Click="btnBuscarRutaDocumentoGenerar" />
+        <Label x:Name="labelPlantilla" Margin="10,41,0,0" Content="Plantilla a utilizar: " VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <TextBox  x:Name="txtPlantilla" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="134,43,427,0" HorizontalContentAlignment="Left"  />
+        <Button HorizontalAlignment="Left" Margin="370,43,0,0" VerticalAlignment="Top" Content="Seleccionar" Width="83" x:Name="btnCargarPlantilla" Click="btnSeleccionarPlantilla" />
+        <Label x:Name="labelLeyenda" Margin="468,41,0,0" Content="Leyenda:" VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <TextBox  x:Name="txtLeyenda" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="530,43,-198,0" HorizontalContentAlignment="Left"/>
+        <Label x:Name="lable1_Copy" Margin="10,6,0,0" Content="Guardar documentos en:" VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <TextBox  x:Name="txtRutaDocumentoGenerar" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="155,10,427,0" HorizontalContentAlignment="Left"/>
+        <Button HorizontalAlignment="Left" Margin="370,10,0,0" VerticalAlignment="Top" Content="Seleccionar" Width="84" x:Name="btnViewDoc_Copy" Click="btnBuscarRutaDocumentoGenerar" />
 
     </Grid>
 </Window>

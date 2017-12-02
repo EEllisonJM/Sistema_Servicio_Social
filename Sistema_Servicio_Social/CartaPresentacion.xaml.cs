@@ -10,11 +10,10 @@ using Word = Microsoft.Office.Interop.Word;
 
 namespace Sistema_Servicio_Social
 {
-     public partial class CartaPresentacion : System.Windows.Window
+    public partial class CartaPresentacion : System.Windows.Window
     {
         DateTime dateTime;
-        string e_mailEnviar;
-        string directorioGuardarDocumento;
+        string wordDocument;
         string fechaActual;
         string anioActual;
         string numControl;
@@ -54,7 +53,7 @@ namespace Sistema_Servicio_Social
             }
             catch (Exception ex)
             {
-                    System.Windows.MessageBox.Show("Error occurs, The error message is  " + ex.ToString());
+                System.Windows.MessageBox.Show("Error occurs, The error message is  " + ex.ToString());
                 return null;
             }
             finally
@@ -63,29 +62,38 @@ namespace Sistema_Servicio_Social
                 ((_Application)wordApp).Quit(WdSaveOptions.wdDoNotSaveChanges);
             }
         }
+        /*
+         * Guardar un documento que tiene como nombre el [número de control]
+         * Cuya extensión ´será: [*.doc].
+         * Extrae datos de la base de datos de un [número de expediente]
+         */
         void guardarDocumento(String numExpediente)
         {
             DBConnect dbConnect = new DBConnect();
-            List<string> list = dbConnect.Select(numExpediente);
+            List<string> list = dbConnect.Select(numExpediente);//getValues of [numExpediente]
             WordTemplate wt = new WordTemplate(txtPlantilla.Text);
             wt.reemplazarCampo("Leyenda", list[5]);
-            wt.reemplazarCampo("Fecha", fechaActual);//Agregar la fecha actual
+            wt.reemplazarCampo("Fecha", fechaActual);//Add current date
             wt.reemplazarCampo("Anio", anioActual);
             wt.reemplazarCampo("NumeroExpediente", list[7]);
             wt.reemplazarCampo("JefeDireccion", list[8]);
             wt.reemplazarCampo("Puesto", list[9]);
-            wt.reemplazarCampo("Sexo", getSexo(list[3]));
+            wt.reemplazarCampo("Sexo", setSexo(list[3]));
             wt.reemplazarCampo("NombreAlumno", list[1]);
-            wt.reemplazarCampo("NumeroControl", list[0]);//
-            numControl = list[0];
+            wt.reemplazarCampo("NumeroControl", list[0]);
             wt.reemplazarCampo("Carrera", list[2]);
-            wt.reemplazarCampo("Dependencia", getDependencia(list[11]));//
+            wt.reemplazarCampo("Dependencia", getDependencia(list[11]));
             wt.reemplazarCampo("Programa", list[6]);
-            wt.guardarDocumento("Hola12345");//nombreDocumento
+
+            numControl = list[0];
+            wt.guardarDocumento(numControl);//[numControl.doc]
             cargarDatos(list);
-            e_mailEnviar = list[4];//e_mail
         }
-        string getSexo(String texto)
+        /*
+         * Retorna el texto [al] si texto es [H]
+         * Retorna el texto [a la] si texto es [M].
+         */
+        string setSexo(String texto)
         {
             if (texto == "H")
             {
@@ -97,6 +105,7 @@ namespace Sistema_Servicio_Social
             }
             return "";
         }
+
         string getDependencia(string texto)
         {
             var WordsArray = texto.Split();
@@ -111,63 +120,60 @@ namespace Sistema_Servicio_Social
                     return "esa división";
                 case "División":
                     return "esa división";
-
             }
             return aux;
         }
-
+        /*
+         * Cargar datos obtenidos de una lista a la ventana principal.
+         */
         private void cargarDatos(List<string> list)
         {
-            txbSelectedWordFile.Text = list[7];
+            txtNumExpediente.Text = list[7];
             txtLeyenda.Text = list[5];
-            //DateTime dateTime = DateTime.UtcNow.Date;
-            //txtFecha.Text = dateTime.ToString("dd/MM/yyyy"));//Agregar la fecha actual
             txtNombreAlumno.Text = list[1];
             txtCarrera.Text = list[2];
-            //txtSexo.Text = list[3];
-            //txtNombreDependencia.Text=
             txtDireccion.Text = list[10];
             txtPrograma.Text = list[6];
             txtNombreJefeDirecto.Text = list[8];
             txtPuesto.Text = list[9];
-            //txtNombreDependencia.Text = list[11].Split()[0];
             txtNombreDependencia.Text = list[11];
-            //-------------------------------------
             cBoxSexo.Text = list[3];
-            //FECHA
-            //SEXO
-
         }
-
-        private void btnViewDoc_Click(object sender, RoutedEventArgs e)
-        {//Mostrar Documento
-            if (txbSelectedWordFile.Text != "")
+        /*
+         * Mostrar los datos en el documento al darle click al boton
+         * [Mostrar documento]
+         */
+        private void btnMostrarDocumento(object sender, RoutedEventArgs e)
+        {
+            if (txtNumExpediente.Text != "")//No vacio
             {
-                //----------------------------
-                dateTime = DateTime.UtcNow.Date;
-                fechaActual = dateTime.ToString("dd/MM/yyyy");
-                anioActual = dateTime.ToString("yy");
-                Fecha.SelectedDate = DateTime.Today;
-                //
-                //cBoxSexo.Text = ist[3];
-                //----------------------------
-                guardarDocumento(txbSelectedWordFile.Text + "");
+                DBConnect db = new DBConnect();
+                if (db.CountOne(//Existe?
+                            "Carta_Presentacion",//Table
+                            "numExpediente", txtNumExpediente.Text) == 1)//numControl=values[2]?
+                {
+                    dateTime = DateTime.UtcNow.Date;
+                    fechaActual = dateTime.ToString("dd/MM/yyyy");
+                    anioActual = dateTime.ToString("yy");
+                    Fecha.SelectedDate = DateTime.Today;
 
-                //string wordDocument = "C:\\Users\\Erik\\Documents\\Hola12345.doc";
-
-                //cargarDatosCartaPresentacion();
-                //string wordDocument = txbSelectedWordFile.Text;
-                //El documento que se guarda en el metodo "guardarDocumento" se guarda en los documentos del usuariostring wordDocument = "C:\\Users\\xxxx\\Documents\\Hola12345.doc";
-                string wordDocument = directorioGuardarDocumento + "\\Hola12345.doc";
-
-                mostrarDocumento(wordDocument);
+                    guardarDocumento(txtNumExpediente.Text + "");
+                    wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
+                    mostrarDocumento(wordDocument);
+                }
             }
+            else
+            {
+                System.Windows.MessageBox.Show("Número de expediente no encontrado.");
+            }
+
         }
+
         void mostrarDocumento(String wordDocument)
         {
             if (string.IsNullOrEmpty(wordDocument) || !File.Exists(wordDocument))
             {
-                    System.Windows.MessageBox.Show("Archivo invalido. Seleccione un archivo.");
+                System.Windows.MessageBox.Show("Archivo invalido. Seleccione un archivo.");
             }
             else
             {
@@ -180,55 +186,88 @@ namespace Sistema_Servicio_Social
                 documentviewWord.Document = xpsDocument.GetFixedDocumentSequence();
             }
         }
-
+        /*
+         * Cargar el siguiente número de expediente.
+         */
         private void btnSiguiente_Click(object sender, RoutedEventArgs e)
         {
-            if (txbSelectedWordFile.Text != "")
-            {//C:\Users\Erik\Documents\Full_CartaPresentacion.dotx
-                int numE = Int32.Parse(txbSelectedWordFile.Text);
-                guardarDocumento((numE + 1) + "");
-                //cargarDatosCartaPresentacion();
-                //string wordDocument = txbSelectedWordFile.Text;
-                //El documento que se guarda en el metodo "guardarDocumento" se guarda en los documentos del usuariostring wordDocument = "C:\\Users\\xxxx\\Documents\\Hola12345.doc";
-                string wordDocument = directorioGuardarDocumento + "\\Hola12345.doc";
-                mostrarDocumento(wordDocument);
+            if (txtNumExpediente.Text != "")//No vacio
+            {
+                int numE = Int32.Parse(txtNumExpediente.Text);
+                numE += 1;
+                DBConnect db = new DBConnect();
+                if (db.CountOne(//Existe?
+                            "Carta_Presentacion",//Table
+                            "numExpediente", (numE) + "") == 1)//numControl=values[2]?
+                {
+                    dateTime = DateTime.UtcNow.Date;
+                    fechaActual = dateTime.ToString("dd/MM/yyyy");
+                    anioActual = dateTime.ToString("yy");
+                    Fecha.SelectedDate = DateTime.Today;
+                    guardarDocumento((numE) + ""); wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
+                    mostrarDocumento(wordDocument);
+                }
+            }
+            else
+            {
+                System.Windows.MessageBox.Show("Número de expediente no encontrado");
             }
         }
-
+        /*
+         * Actualizar los campos editados en la pantalla principal
+         */
         private void btnActualizar_Click(object sender, RoutedEventArgs e)
         {
             dateTime = DateTime.UtcNow.Date;
-            //fechaActual = dateTime.ToString("dd/MM/yyyy");
+            //anioActual = Fecha.SelectedDate.ToString().Substring(8, 10);
             anioActual = dateTime.ToString("yy");
             //Fecha.SelectedDate = DateTime.Today;
             fechaActual = Fecha.SelectedDate.ToString().Substring(0, 10);
             //hacer insert a alumno y a carta presentacion
             DBConnect db = new DBConnect();
-            db.Update(
-                "Alumno",
-                "nombre = '"+ txtNombreAlumno.Text + "',"+
-                "carrera = '"+ txtCarrera.Text+"',"+
-                "sexo = '"+cBoxSexo.Text+"'",
-                "numControl","'"+numControl+"'"
+            db.Update(//Actualizar
+                "Alumno",//Tabla
+                "nombre = '" + txtNombreAlumno.Text + "'," +
+                "carrera = '" + txtCarrera.Text + "'," +
+                "sexo = '" + cBoxSexo.Text + "'",
+                "numControl", "'" + numControl + "'"
                 );
 
-            guardarDocumento(txbSelectedWordFile.Text + "");
-            string wordDocument = "C:\\Users\\Erik\\Documents\\Hola12345.doc";
+            db.Update(//Actualizar
+                "Carta_Presentacion",//Tabla
+                "leyenda = '" + txtLeyenda.Text + "'," +
+                "nombreDependencia = '" + txtNombreDependencia.Text + "'," +
+                "direccionDependencia = '" + txtDireccion.Text + "'," +
+                "programa = '" + txtPrograma.Text + "'," +
+                "jefeDireccion = '" + txtNombreJefeDirecto.Text + "'," +
+                "puestoJefeDireccion = '" + txtPuesto.Text + "'",
+                "numControl", "'" + numControl + "'"
+                );
+            guardarDocumento(txtNumExpediente.Text + "");
+            wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
             mostrarDocumento(wordDocument);
         }
-
         private void btnBuscarRutaDocumentoGenerar(object sender, RoutedEventArgs e)
         {
-               FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-               if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-               {
-                    if (folderBrowserDialog.SelectedPath.Length > 0)
-                    {
-                         txtRutaDocumentoGenerar.Text = folderBrowserDialog.SelectedPath;
-                    }
-               }
-               //Seleccionar directorio a guardar
-               directorioGuardarDocumento = txtRutaDocumentoGenerar.Text;
+            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                if (folderBrowserDialog.SelectedPath.Length > 0)
+                {
+                    txtRutaDocumentoGenerar.Text = folderBrowserDialog.SelectedPath;
+                }
+            }
+        }
+        /*
+         * Validacion [Solo aceptar números].
+         */
+        private void txtNumExpediente_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtNumExpediente.Text, "[^0-9]"))
+            {
+                System.Windows.MessageBox.Show("Solo es posible ingresar números");
+                txtNumExpediente.Text = txtNumExpediente.Text.Remove(txtNumExpediente.Text.Length - 1);
+            }
         }
     }
 }
