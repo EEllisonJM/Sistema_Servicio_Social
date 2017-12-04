@@ -86,7 +86,7 @@ namespace Sistema_Servicio_Social
                             values[12] + "','" +//direccionDependencia
                             values[11] + "','" +//programa
                             values[13] + ' ' + values[14] + ' ' + values[15] + ' ' + values[16] + "','" +//jefeDireccion
-                            values[17] + "','Esta es mi leyenda...')"//puesto y leyenda
+                            values[17] + "','"+leyenda+"')"//puesto y leyenda
                             );
                         numExp++;
                     }
