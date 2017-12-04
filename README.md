@@ -1,0 +1,6 @@
+- En el nombre los apellidos estan volteados, "apMaterno" esta antes(Problema al llenar en la DB)
+- "Cargar Documento" si "rutaGuardarDocumento" y "plantillaUtliza" no estan vacios
+- Valdar boton "Actualizar"
+- Desabilitar escritura en "rutaGuardarDocumento" y "plantillaUtliza"(Solo editable al seleccionar ruta...)
+- Reemplazar "Cargar Documento" por "Generar Documento"
+- Agregar Botón "Guardar Documento" => Crea el documento en la ruta establecida
