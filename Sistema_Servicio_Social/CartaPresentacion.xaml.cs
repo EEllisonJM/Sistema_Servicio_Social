@@ -219,8 +219,7 @@ namespace Sistema_Servicio_Social
         private void btnActualizar_Click(object sender, RoutedEventArgs e)
         {
             dateTime = DateTime.UtcNow.Date;
-            //anioActual = Fecha.SelectedDate.ToString().Substring(8, 10);
-            anioActual = dateTime.ToString("yy");
+            anioActual = Fecha.SelectedDate.ToString().Substring(8, 2);
             //Fecha.SelectedDate = DateTime.Today;
             fechaActual = Fecha.SelectedDate.ToString().Substring(0, 10);
             //hacer insert a alumno y a carta presentacion
