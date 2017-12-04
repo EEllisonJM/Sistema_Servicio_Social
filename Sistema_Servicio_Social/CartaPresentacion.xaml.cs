@@ -218,33 +218,41 @@ namespace Sistema_Servicio_Social
          */
         private void btnActualizar_Click(object sender, RoutedEventArgs e)
         {
-            dateTime = DateTime.UtcNow.Date;
-            anioActual = Fecha.SelectedDate.ToString().Substring(8, 2);
-            //Fecha.SelectedDate = DateTime.Today;
-            fechaActual = Fecha.SelectedDate.ToString().Substring(0, 10);
-            //hacer insert a alumno y a carta presentacion
-            DBConnect db = new DBConnect();
-            db.Update(//Actualizar
-                "Alumno",//Tabla
-                "nombre = '" + txtNombreAlumno.Text + "'," +
-                "carrera = '" + txtCarrera.Text + "'," +
-                "sexo = '" + cBoxSexo.Text + "'",
-                "numControl", "'" + numControl + "'"
-                );
+            if (txtPlantilla.Text != "" && 
+                txtRutaDocumentoGenerar.Text != "" &&
+                txtNumExpediente.Text!="") {
+                dateTime = DateTime.UtcNow.Date;
+                anioActual = Fecha.SelectedDate.ToString().Substring(8, 2);
+                //Fecha.SelectedDate = DateTime.Today;
+                fechaActual = Fecha.SelectedDate.ToString().Substring(0, 10);
+                //hacer insert a alumno y a carta presentacion
+                DBConnect db = new DBConnect();
+                db.Update(//Actualizar
+                    "Alumno",//Tabla
+                    "nombre = '" + txtNombreAlumno.Text + "'," +
+                    "carrera = '" + txtCarrera.Text + "'," +
+                    "sexo = '" + cBoxSexo.Text + "'",
+                    "numControl", "'" + numControl + "'"
+                    );
 
-            db.Update(//Actualizar
-                "Carta_Presentacion",//Tabla
-                "leyenda = '" + txtLeyenda.Text + "'," +
-                "nombreDependencia = '" + txtNombreDependencia.Text + "'," +
-                "direccionDependencia = '" + txtDireccion.Text + "'," +
-                "programa = '" + txtPrograma.Text + "'," +
-                "jefeDireccion = '" + txtNombreJefeDirecto.Text + "'," +
-                "puestoJefeDireccion = '" + txtPuesto.Text + "'",
-                "numControl", "'" + numControl + "'"
-                );
-            guardarDocumento(txtNumExpediente.Text + "");
-            wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
-            mostrarDocumento(wordDocument);
+                db.Update(//Actualizar
+                    "Carta_Presentacion",//Tabla
+                    "leyenda = '" + txtLeyenda.Text + "'," +
+                    "nombreDependencia = '" + txtNombreDependencia.Text + "'," +
+                    "direccionDependencia = '" + txtDireccion.Text + "'," +
+                    "programa = '" + txtPrograma.Text + "'," +
+                    "jefeDireccion = '" + txtNombreJefeDirecto.Text + "'," +
+                    "puestoJefeDireccion = '" + txtPuesto.Text + "'",
+                    "numControl", "'" + numControl + "'"
+                    );
+                guardarDocumento(txtNumExpediente.Text + "");
+                wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
+                mostrarDocumento(wordDocument);
+            }else
+            {
+                System.Windows.MessageBox.Show("Uno o más parámetro no se han seleccionado");
+            }
+            
         }
         private void btnBuscarRutaDocumentoGenerar(object sender, RoutedEventArgs e)
         {

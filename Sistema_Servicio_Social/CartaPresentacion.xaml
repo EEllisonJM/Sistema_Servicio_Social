@@ -57,12 +57,12 @@
 
         </Grid>
         <Label x:Name="labelPlantilla" Margin="10,41,0,0" Content="Plantilla a utilizar: " VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <TextBox  x:Name="txtPlantilla" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="134,43,427,0" HorizontalContentAlignment="Left"  />
+        <TextBox  x:Name="txtPlantilla" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="134,43,427,0" HorizontalContentAlignment="Left" IsReadOnly = "True"/>
         <Button HorizontalAlignment="Left" Margin="370,43,0,0" VerticalAlignment="Top" Content="Seleccionar" Width="83" x:Name="btnCargarPlantilla" Click="btnSeleccionarPlantilla" />
         <Label x:Name="labelLeyenda" Margin="468,41,0,0" Content="Leyenda:" VerticalAlignment="Top" HorizontalAlignment="Left" />
         <TextBox  x:Name="txtLeyenda" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="530,43,-198,0" HorizontalContentAlignment="Left"/>
         <Label x:Name="lable1_Copy" Margin="10,6,0,0" Content="Guardar documentos en:" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <TextBox  x:Name="txtRutaDocumentoGenerar" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="155,10,427,0" HorizontalContentAlignment="Left"/>
+        <TextBox  x:Name="txtRutaDocumentoGenerar" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="155,10,427,0" HorizontalContentAlignment="Left" IsReadOnly = "True"/>
         <Button HorizontalAlignment="Left" Margin="370,10,0,0" VerticalAlignment="Top" Content="Seleccionar" Width="84" x:Name="btnViewDoc_Copy" Click="btnBuscarRutaDocumentoGenerar" />
 
     </Grid>

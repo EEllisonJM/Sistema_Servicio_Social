@@ -7,8 +7,6 @@ Ricardo
 - "Cargar Documento" si "rutaGuardarDocumento" y "plantillaUtliza" no estan vacios
 
 Erik
-- Valdar boton "Actualizar"
-- Desabilitar escritura en "rutaGuardarDocumento" y "plantillaUtliza"(Solo editable al seleccionar ruta...)
 - Reemplazar "Cargar Documento" por "Generar Documento"
 - Agregar Botón "Guardar Documento" => Crea el documento en la ruta establecida
 - Visualizar carta presentación necesita un botón para regresar al menú anterior
