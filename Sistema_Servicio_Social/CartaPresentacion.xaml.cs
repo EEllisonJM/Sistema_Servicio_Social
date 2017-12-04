@@ -86,7 +86,7 @@ namespace Sistema_Servicio_Social
             wt.reemplazarCampo("Programa", list[6]);
 
             numControl = list[0];
-            wt.guardarDocumento(numControl);//[numControl.doc]
+            wt.guardarDocumento(txtRutaDocumentoGenerar.Text, numControl);//[numControl.doc]
             cargarDatos(list);
         }
         /*
@@ -254,7 +254,7 @@ namespace Sistema_Servicio_Social
             {
                 if (folderBrowserDialog.SelectedPath.Length > 0)
                 {
-                    txtRutaDocumentoGenerar.Text = folderBrowserDialog.SelectedPath;
+                    txtRutaDocumentoGenerar.Text = @""+folderBrowserDialog.SelectedPath;
                 }
             }
         }

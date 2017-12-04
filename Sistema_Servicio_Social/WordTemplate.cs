@@ -43,9 +43,9 @@ namespace Sistema_Servicio_Social
                 }
             }
         }
-        public void guardarDocumento(String nombre)
+        public void guardarDocumento(String ruta, String nombre)
         {
-            wordDoc.SaveAs(nombre + ".doc");//Documento con formato incluido
+            wordDoc.SaveAs(ruta + "\\" + nombre + ".doc");//Documento con formato incluido
             //wordApp.Documents.Open(nombre+".doc");
             wordApp.Application.Quit();
         }
