@@ -36,7 +36,7 @@ namespace Sistema_Servicio_Social
                     {
                         db.Update(//Actualiza
                             "Alumno",//Tabla
-                            "nombre = '" + values[5] + " " + values[4] + " " + values[3] + "'," +//nombre
+                            "nombre = '" + values[5] + " " + values[3] + " " + values[4] + "'," +//nombre
                             "carrera = '" + values[7] + "'," +//carrera
                             "sexo = '" + values[6] + "'," +//sexo
                             "e_mail = '" + values[1] + "'," +//e-mail
@@ -51,7 +51,7 @@ namespace Sistema_Servicio_Social
                         "(numControl,nombre,carrera,sexo,e_mail,porcentajeAvance,semestre)",//Atributos
                         "(" +//Valores...
                         values[2] + "," +//numControl
-                        " '" + values[5] + " " + values[4] + " " + values[3] + "'," +//nombre
+                        " '" + values[5] + " " + values[3] + " " + values[4] + "'," +//nombre
                         " '" + values[7] + "'," +//carrera
                         " '" + values[6] + "'," +//sexo
                         " '" + values[1] + "'," +//e-mail
@@ -86,7 +86,7 @@ namespace Sistema_Servicio_Social
                             values[12] + "','" +//direccionDependencia
                             values[11] + "','" +//programa
                             values[13] + ' ' + values[14] + ' ' + values[15] + ' ' + values[16] + "','" +//jefeDireccion
-                            values[17] + "','Esta es mi leyenda...')"//puesto y leyenda
+                            values[17] + "','"+leyenda+"')"//puesto y leyenda
                             );
                         numExp++;
                     }
