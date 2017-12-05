@@ -15,13 +15,13 @@ namespace Sistema_Servicio_Social
                 String[] values = line.Split(',');
                 if (values[0] != "\"Marca temporal\"")
                 {
-                    //Eliminar las " de los campos
+                    //Eliminar las " de los campos y cambiar los datos a Mayúsculas
                     for (int i = 0; i <= 17; i++)
                     {
-                        values[i] = values[i].ToString().Replace('"', ' ').Trim();
+                        values[i] = values[i].ToString().Replace('"', ' ').Trim().ToUpper();
                     }
                     //Si en el formulario dice Hombre cambiar por H y si dice Mujer cambiar por M
-                    if (values[6] == "Hombre")
+                    if (values[6] == "HOMBRE")
                     {
                         values[6] = "H";
                     }
