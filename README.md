@@ -1,6 +1,5 @@
 Crear Una Rama y Eliminar las ramas que ya estan bien, excepto "conCorreo"
 Ricardo
-- "Cargar Documento" si "rutaGuardarDocumento" y "plantillaUtliza" no estan vacios
 
 Erik
 - Reemplazar "Cargar Documento" por "Mostrar Documento"

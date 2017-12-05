@@ -145,32 +145,45 @@ namespace Sistema_Servicio_Social
          */
         private void btnMostrarDocumento(object sender, RoutedEventArgs e)
         {
-            if (txtNumExpediente.Text != "")//No vacio
+            if (txtRutaDocumentoGenerar.Text != "")
             {
-                DBConnect db = new DBConnect();
-                if (db.CountOne(//Existe?
-                            "Carta_Presentacion",//Table
-                            "numExpediente", txtNumExpediente.Text) == 1)//numControl=values[2]?
+                if (txtPlantilla.Text != "")
                 {
-                    dateTime = DateTime.UtcNow.Date;
-                    fechaActual = dateTime.ToString("dd/MM/yyyy");
-                    anioActual = dateTime.ToString("yy");
-                    Fecha.SelectedDate = DateTime.Today;
+                    if (txtNumExpediente.Text != "")//No vacio
+                    {
+                        DBConnect db = new DBConnect();
+                        if (db.CountOne(//Existe?
+                                    "Carta_Presentacion",//Table
+                                    "numExpediente", txtNumExpediente.Text) == 1)//numControl=values[2]?
+                        {
+                            dateTime = DateTime.UtcNow.Date;
+                            fechaActual = dateTime.ToString("dd/MM/yyyy");
+                            anioActual = dateTime.ToString("yy");
+                            Fecha.SelectedDate = DateTime.Today;
 
-                    guardarDocumento(txtNumExpediente.Text + "");
-                    wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
-                    mostrarDocumento(wordDocument);
+                            guardarDocumento(txtNumExpediente.Text + "");
+                            wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
+                            mostrarDocumento(wordDocument);
+                        }
+                        else
+                        {
+                            System.Windows.MessageBox.Show("Número de expediente no encontrado.");
+                        }
+                    }
+                    else
+                    {
+                        System.Windows.MessageBox.Show("Favor de introducir el número de expediente.");
+                    }
                 }
                 else
                 {
-                    System.Windows.MessageBox.Show("Número de expediente no encontrado.");
+                    System.Windows.MessageBox.Show("Favor de seleccionar la plantilla correspondiente.");
                 }
             }
             else
             {
-                System.Windows.MessageBox.Show("Favor de introducir el número de expediente.");
+                System.Windows.MessageBox.Show("Favor de seleccionar la ruta donde se guardarán las cartas de presentación.");
             }
-
         }
 
         void mostrarDocumento(String wordDocument)
