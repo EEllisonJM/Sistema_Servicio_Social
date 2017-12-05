@@ -37,19 +37,19 @@
             <Label x:Name="label_Puesto" Content="Puesto:" HorizontalAlignment="Left" Margin="10,330,0,0" Grid.Row="1" VerticalAlignment="Top"/>
             <!-- INICIO CAMPOS EDITABLES-->
             <DatePicker x:Name="Fecha" HorizontalAlignment="Right" Margin="0,4,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtNombreAlumno" HorizontalAlignment="Right" Height="23" Margin="0,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="txtCarrera" HorizontalAlignment="Right" Height="23" Margin="0,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtNombreAlumno" HorizontalAlignment="Right" Height="23" Margin="0,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
+            <TextBox x:Name="txtCarrera" HorizontalAlignment="Right" Height="23" Margin="0,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
             <ComboBox x:Name="cBoxSexo" HorizontalAlignment="Right" Margin="0,124,0,0" VerticalAlignment="Top" Width="120">
                 <ComboBoxItem Content="H"></ComboBoxItem>
                 <ComboBoxItem Content="M"></ComboBoxItem>
             </ComboBox>
 
-            <TextBox x:Name="txtNombreDependencia" HorizontalAlignment="Right" Height="23" Margin="0,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="txtDireccion" HorizontalAlignment="Right" Height="23" Margin="0,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="txtPrograma" HorizontalAlignment="Right" Height="23" Margin="0,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtNombreDependencia" HorizontalAlignment="Right" Height="23" Margin="0,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
+            <TextBox x:Name="txtDireccion" HorizontalAlignment="Right" Height="23" Margin="0,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
+            <TextBox x:Name="txtPrograma" HorizontalAlignment="Right" Height="23" Margin="0,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
 
-            <TextBox x:Name="txtNombreJefeDirecto" HorizontalAlignment="Right" Height="23" Margin="0,304,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-            <TextBox x:Name="txtPuesto" HorizontalAlignment="Right" Height="23" Margin="0,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <TextBox x:Name="txtNombreJefeDirecto" HorizontalAlignment="Right" Height="23" Margin="0,304,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
+            <TextBox x:Name="txtPuesto" HorizontalAlignment="Right" Height="23" Margin="0,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="70" Margin="0,0,0,-70" Grid.Row="1" VerticalAlignment="Bottom" Width="800">
