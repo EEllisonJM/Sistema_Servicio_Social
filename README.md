@@ -1,6 +1,5 @@
 Crear Una Rama y Eliminar las ramas que ya estan bien, excepto "conCorreo"
 Ricardo
-- Al "Cargar Documento" si no se encuentra - Mostrar en pantalla mensaje de "Expediente no encontrado"
 - "Cargar Documento" si "rutaGuardarDocumento" y "plantillaUtliza" no estan vacios
 
 Erik

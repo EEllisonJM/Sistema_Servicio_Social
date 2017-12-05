@@ -161,10 +161,14 @@ namespace Sistema_Servicio_Social
                     wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
                     mostrarDocumento(wordDocument);
                 }
+                else
+                {
+                    System.Windows.MessageBox.Show("Número de expediente no encontrado.");
+                }
             }
             else
             {
-                System.Windows.MessageBox.Show("Número de expediente no encontrado.");
+                System.Windows.MessageBox.Show("Favor de introducir el número de expediente.");
             }
 
         }
