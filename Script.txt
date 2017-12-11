@@ -16,12 +16,14 @@ CREATE TABLE Alumno (
             PRIMARY KEY(numControl)    
 );
 CREATE TABLE Carta_Presentacion (
-            numExpediente int primary key,
+            numExpediente int not null,
+            anio int not null,
             numControl int not null references Alumno(numControl),
             nombreDependencia varchar(60) not null,
             direccionDependencia text not null,
             programa text not null,
             jefeDireccion varchar(60) not null,
             puestoJefeDireccion varchar(60) not null,
-            leyenda text not null
+            leyenda text not null,
+            PRIMARY KEY(numExpediente, anio)
 );
