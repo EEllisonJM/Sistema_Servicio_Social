@@ -74,8 +74,7 @@ namespace Sistema_Servicio_Social
             WordTemplate wt = new WordTemplate(txtPlantilla.Text);
             wt.reemplazarCampo("Leyenda", list[5]);
             wt.reemplazarCampo("Fecha", fechaActual);//Add current date
-            //wt.reemplazarCampo("Anio", anioActual);
-            wt.reemplazarCampo("Anio", list[12]);
+            wt.reemplazarCampo("Anio", list[12].Substring(list[12].Length - 2, 2));
             wt.reemplazarCampo("NumeroExpediente", list[7]);
             wt.reemplazarCampo("JefeDireccion", list[8]);
             wt.reemplazarCampo("Puesto", list[9]);
