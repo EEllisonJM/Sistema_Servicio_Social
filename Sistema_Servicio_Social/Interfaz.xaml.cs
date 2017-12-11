@@ -42,15 +42,20 @@ namespace Sistema_Servicio_Social
         {
             if (txtRutaArchivo.Text != "")
             {
+                DateTime dateTime = DateTime.UtcNow.Date;
+
                 string numExpI = Microsoft.VisualBasic.Interaction.InputBox(
                 "Favor de ingresar el número de expediente inicial",
                 "Número de expediente",
                 "1000");
+                string anio = Microsoft.VisualBasic.Interaction.InputBox(
+                    "Favor de ingresar el año",
+                    "Año",
+                    dateTime.ToString("yyyy"));
                 string leyenda = Microsoft.VisualBasic.Interaction.InputBox(
                     "Favor de ingresar la leyenda",
                     "Leyenda",
                     "Año del bicentenario");
-
                 rutaPlantilla = txtRutaArchivo.Text;
                 bool mostrarExitoso = true;
                 try
