@@ -1,0 +1,27 @@
+CREATE DATABASE Servicio_Social;
+CREATE TABLE Usuario (
+            idUsuario int not null AUTO_INCREMENT,
+            nombre varchar(60) not null,    
+            password varchar (60) not null,
+            PRIMARY KEY(idUsuario)    
+);
+CREATE TABLE Alumno (
+            numControl int not null,    
+            nombre varchar(60) not null,    
+            carrera varchar (60) not null,
+            sexo varchar(1) not null,
+            e_mail varchar(60) not null,
+            porcentajeAvance int not null,
+            semestre int not null,
+            PRIMARY KEY(numControl)    
+);
+CREATE TABLE Carta_Presentacion (
+            numExpediente int primary key,
+            numControl int not null references Alumno(numControl),
+            nombreDependencia varchar(60) not null,
+            direccionDependencia text not null,
+            programa text not null,
+            jefeDireccion varchar(60) not null,
+            puestoJefeDireccion varchar(60) not null,
+            leyenda text not null
+);
