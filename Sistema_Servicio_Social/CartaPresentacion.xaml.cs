@@ -67,14 +67,15 @@ namespace Sistema_Servicio_Social
          * Cuya extensión ´será: [*.doc].
          * Extrae datos de la base de datos de un [número de expediente]
          */
-        void guardarDocumento(String numExpediente)
+        void guardarDocumento(String numExpediente, String anio)
         {
             DBConnect dbConnect = new DBConnect();
-            List<string> list = dbConnect.Select(numExpediente);//getValues of [numExpediente]
+            List<string> list = dbConnect.Select(numExpediente, anio);//getValues of [numExpediente]
             WordTemplate wt = new WordTemplate(txtPlantilla.Text);
             wt.reemplazarCampo("Leyenda", list[5]);
             wt.reemplazarCampo("Fecha", fechaActual);//Add current date
-            wt.reemplazarCampo("Anio", anioActual);
+            //wt.reemplazarCampo("Anio", anioActual);
+            wt.reemplazarCampo("Anio", list[12]);
             wt.reemplazarCampo("NumeroExpediente", list[7]);
             wt.reemplazarCampo("JefeDireccion", list[8]);
             wt.reemplazarCampo("Puesto", list[9]);
@@ -129,6 +130,7 @@ namespace Sistema_Servicio_Social
         private void cargarDatos(List<string> list)
         {
             txtNumExpediente.Text = list[7];
+            txtAnio.Text = list[12];
             txtLeyenda.Text = list[5];
             txtNombreAlumno.Text = list[1];
             txtCarrera.Text = list[2];
@@ -154,14 +156,15 @@ namespace Sistema_Servicio_Social
                         DBConnect db = new DBConnect();
                         if (db.CountOne(//Existe?
                                     "Carta_Presentacion",//Table
-                                    "numExpediente", txtNumExpediente.Text) == 1)//numControl=values[2]?
+                                    "numExpediente", txtNumExpediente.Text,
+                                    "anio", txtAnio.Text) == 1)//numControl=values[2]?
                         {
                             dateTime = DateTime.UtcNow.Date;
                             fechaActual = dateTime.ToString("dd/MM/yyyy");
                             anioActual = dateTime.ToString("yy");
                             Fecha.SelectedDate = DateTime.Today;
 
-                            guardarDocumento(txtNumExpediente.Text + "");
+                            guardarDocumento(txtNumExpediente.Text + "", txtAnio.Text + "");
                             wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
                             mostrarDocumento(wordDocument);
                         }
@@ -211,6 +214,7 @@ namespace Sistema_Servicio_Social
             if (txtNumExpediente.Text != "")//No vacio
             {
                 int numE = Int32.Parse(txtNumExpediente.Text);
+                int ani = Int32.Parse(txtAnio.Text);
                 numE += 1;
                 DBConnect db = new DBConnect();
                 if (db.CountOne(//Existe?
@@ -221,7 +225,7 @@ namespace Sistema_Servicio_Social
                     fechaActual = dateTime.ToString("dd/MM/yyyy");
                     anioActual = dateTime.ToString("yy");
                     Fecha.SelectedDate = DateTime.Today;
-                    guardarDocumento((numE) + ""); wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
+                    guardarDocumento((numE) + "", (ani) + ""); wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
                     mostrarDocumento(wordDocument);
                 }
             }
@@ -262,7 +266,7 @@ namespace Sistema_Servicio_Social
                     "puestoJefeDireccion = '" + txtPuesto.Text + "'",
                     "numControl", "'" + numControl + "'"
                     );
-                guardarDocumento(txtNumExpediente.Text + "");
+                guardarDocumento(txtNumExpediente.Text + "", txtAnio.Text + "");
                 wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
                 mostrarDocumento(wordDocument);
             }else

@@ -170,16 +170,41 @@ namespace Sistema_Servicio_Social
                 return Count;
             }
         }
-
+        public int CountOne(string table, string atributo1, string value1, string atributo2, string value2)
+        {//string query = "SELECT Count(*) FROM usuario;";
+            string query =
+                "SELECT Count(*) FROM " + table +
+                " WHERE " + atributo1 + " = " + value1 +
+                " AND " + atributo2 + " = " + value2 + " ;";
+            //SELECT Count(*) FROM usuario where nombre='John Smith' and password='33';
+            int Count = -1;
+            //Open Connection
+            if (this.OpenConnection() == true)
+            {
+                //Create Mysql Command
+                MySqlCommand cmd = new MySqlCommand(query, connection);
+                //ExecuteScalar will return one value                
+                Count = int.Parse(cmd.ExecuteScalar() + "");
+                //close Connection
+                this.CloseConnection();
+                //Return value => -1 (Not exist) => 1 (Exist)
+                return Count;
+            }
+            else
+            {
+                return Count;
+            }
+        }
         //Select statement
-        public List<string> Select(string numExpediente)
+        public List<string> Select(string numExpediente, string anio)
         {
             string query = "SELECT " +
                 "A.numControl, A.nombre, A.carrera, A.sexo, A.e_mail,"+
-                "CP.leyenda, CP.programa, CP.numExpediente, CP.jefeDireccion, CP.puestoJefeDireccion, CP.direccionDependencia, CP.nombreDependencia"+
-                " FROM Alumno as A INNER JOIN Carta_Presentacion as CP "+
+                "CP.leyenda, CP.programa, CP.numExpediente, CP.jefeDireccion, CP.puestoJefeDireccion, CP.direccionDependencia, CP.nombreDependencia, CP.anio "+
+                "FROM Alumno as A INNER JOIN Carta_Presentacion as CP "+
                 "ON A.numControl= CP.numControl "+
-                "WHERE CP.numExpediente ="+numExpediente+";";
+                "WHERE CP.numExpediente ="+numExpediente+
+                " AND CP.anio ="+anio+";";
             //Create a list to store the result
             List<string> list = new List<string>();
             //Open connection
@@ -205,6 +230,8 @@ namespace Sistema_Servicio_Social
                     list.Add(dataReader["puestoJefeDireccion"] + "");//9
                     list.Add(dataReader["direccionDependencia"] + "");//10 
                     list.Add(dataReader["nombreDependencia"] + "");//11
+
+                    list.Add(dataReader["anio"] + "");//12
                 }
                 //close Data Reader
                 dataReader.Close();
