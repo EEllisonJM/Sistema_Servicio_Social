@@ -15,7 +15,7 @@
         <Label Name="lable1" Margin="468,6,0,0" Content="Expediente:" VerticalAlignment="Top" HorizontalAlignment="Left" />
         <TextBox  Name="txtNumExpediente" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="544,10,172,0" HorizontalContentAlignment="Left" TextChanged="txtNumExpediente_TextChanged" />
         <Label Name="lable2" Margin="630,6,0,0" Content="Año:" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <TextBox  Name="txtAnio" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="669,10,13,0" HorizontalContentAlignment="Left" TextChanged="txtNumExpediente_TextChanged" />
+        <TextBox  Name="txtAnio" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="669,10,13,0" HorizontalContentAlignment="Left" TextChanged="txtAnio_TextChanged" />
 
           <Button HorizontalAlignment="Left" Margin="784,10,-114,0" VerticalAlignment="Top" Content="Mostrar Documento" Width="122" Name="btnViewDoc" Click="btnMostrarDocumento" />
         <DocumentViewer Name="documentviewWord" VerticalAlignment="Top" HorizontalAlignment="Left" Height="550" Grid.Row="1" Margin="1,0,-1,0"/>

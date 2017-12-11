@@ -149,7 +149,7 @@ namespace Sistema_Servicio_Social
             {
                 if (txtPlantilla.Text != "")
                 {
-                    if (txtNumExpediente.Text != "")//No vacio
+                    if (txtNumExpediente.Text != "" && txtAnio.Text != "")//No vacio
                     {
                         DBConnect db = new DBConnect();
                         if (db.CountOne(//Existe?
@@ -172,7 +172,7 @@ namespace Sistema_Servicio_Social
                     }
                     else
                     {
-                        System.Windows.MessageBox.Show("Favor de introducir el número de expediente.");
+                        System.Windows.MessageBox.Show("Favor de introducir el número de expediente y el año.");
                     }
                 }
                 else
@@ -291,6 +291,15 @@ namespace Sistema_Servicio_Social
             {
                 System.Windows.MessageBox.Show("Solo es posible ingresar números");
                 txtNumExpediente.Text = txtNumExpediente.Text.Remove(txtNumExpediente.Text.Length - 1);
+            }
+        }
+
+        private void txtAnio_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            if (System.Text.RegularExpressions.Regex.IsMatch(txtAnio.Text, "[^0-9]"))
+            {
+                System.Windows.MessageBox.Show("Solo es posible ingresar números");
+                txtAnio.Text = txtAnio.Text.Remove(txtAnio.Text.Length - 1);
             }
         }
     }
