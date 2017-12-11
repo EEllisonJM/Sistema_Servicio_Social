@@ -10,6 +10,7 @@ namespace Sistema_Servicio_Social
         private string database;
         private string uid;
         private string password;
+        private string port;
         //Constructor
         public DBConnect()
         {
@@ -18,11 +19,12 @@ namespace Sistema_Servicio_Social
         private void Initialize()//Inicializar valores
         {
             server = "localhost";
-            database = "servicio_social";
+            database = "Servicio_Social";
             uid = "root";
             password = "";
+            port = "3306";
             string connectionString;
-            connectionString = "SERVER=" + server + ";" + "DATABASE=" +
+            connectionString = "PORT=" + port + ";" + "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
             connection = new MySqlConnection(connectionString);
