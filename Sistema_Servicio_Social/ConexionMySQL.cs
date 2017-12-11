@@ -7,7 +7,7 @@ namespace Sistema_Servicio_Social
     class ConexionMySQL
     {
         /*Agregar en la base de datos*/
-        public void leerCSV(string ruta, int expedienteI, String leyenda)
+        public void leerCSV(string ruta, int expedienteI, int anio, String leyenda)
         {
             int numExp = expedienteI;
             foreach (string line in File.ReadLines(@"" + ruta))
@@ -70,7 +70,8 @@ namespace Sistema_Servicio_Social
                             "programa = '" + values[11] + "'," +
                             "nombreDependencia = '" + values[10] + "'," +
                             "jefeDireccion= '" + values[13] + " " + values[14] + " " + values[15] + " " + values[16] + "'," +
-                            "leyenda = '" + leyenda + "'",//"leyenda = 'Soy leyenda' ",
+                            "leyenda = '" + leyenda + "'" +//"leyenda = 'Soy leyenda' ",
+                            "anio = " + anio + "",//Año
                             "numControl", "" + values[2] + ""//Donde => numExpediente=numExp
                             );
                     }
@@ -78,9 +79,10 @@ namespace Sistema_Servicio_Social
                     {
                         db.Insert(//Insertar
                             "Carta_Presentacion",//Tabla
-                            "(numExpediente,numControl,nombreDependencia,direccionDependencia,programa,jefeDireccion,puestoJefeDireccion,leyenda)",//Atributos
+                            "(numExpediente,anio,numControl,nombreDependencia,direccionDependencia,programa,jefeDireccion,puestoJefeDireccion,leyenda)",//Atributos
                             "(" +//Valores...
                             numExp + "," +//numExpediente
+                            anio + "," +//Año
                             values[2] + ",'" +//numControl
                             values[10] + "','" +//nombreDependencia
                             values[12] + "','" +//direccionDependencia

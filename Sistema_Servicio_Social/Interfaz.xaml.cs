@@ -61,7 +61,7 @@ namespace Sistema_Servicio_Social
                 try
                 {
                     ConexionMySQL conexionMySQL = new ConexionMySQL();
-                    conexionMySQL.leerCSV(rutaPlantilla, Int32.Parse(numExpI), leyenda);
+                    conexionMySQL.leerCSV(rutaPlantilla, Int32.Parse(numExpI), Int32.Parse(anio), leyenda);
                 }
                 catch (Exception ex)
                 {
