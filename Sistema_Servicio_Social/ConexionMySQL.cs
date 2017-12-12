@@ -43,6 +43,21 @@ namespace Sistema_Servicio_Social
                             "porcentajeAvance = " + values[8] + "," +//porcentaje de avance
                             "semestre = " + values[9],//Semestre
                             "numControl", values[2]);//Numero de control
+                        //
+                        db.Insert(//Insertar
+                            "Carta_Presentacion",//Tabla
+                            "(numExpediente,anio,numControl,nombreDependencia,direccionDependencia,programa,jefeDireccion,puestoJefeDireccion,leyenda)",//Atributos
+                            "(" +//Valores...
+                            numExp + "," +//numExpediente
+                            anio + "," +//Año
+                            values[2] + ",'" +//numControl
+                            values[10] + "','" +//nombreDependencia
+                            values[12] + "','" +//direccionDependencia
+                            values[11] + "','" +//programa
+                            values[13] + ' ' + values[14] + ' ' + values[15] + ' ' + values[16] + "','" +//jefeDireccion
+                            values[17] + "','" + leyenda + "')"//puesto y leyenda
+                            );
+                        numExp++;
                     }
                     else
                     {

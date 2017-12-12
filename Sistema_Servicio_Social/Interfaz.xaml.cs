@@ -55,7 +55,7 @@ namespace Sistema_Servicio_Social
                 string leyenda = Microsoft.VisualBasic.Interaction.InputBox(
                     "Favor de ingresar la leyenda",
                     "Leyenda",
-                    "Año del bicentenario");
+                    "Año del Centenario de la Promulgación de la Constitución Política de los Estados Unidos Mexicanos");
                 rutaPlantilla = txtRutaArchivo.Text;
                 bool mostrarExitoso = true;
                 try
