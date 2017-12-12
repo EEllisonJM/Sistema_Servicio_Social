@@ -112,16 +112,36 @@ namespace Sistema_Servicio_Social
             string aux = WordsArray[0];
             switch (aux)
             {
-                case "Departamento":
+                case "DEPARTAMENTO":
                     return "ese departamento";
-                case "Oficina":
+                case "OFICINA":
                     return "esa oficina";
-                case "Division":
+                case "DIVISION":
                     return "esa división";
-                case "División":
+                case "DIVISIÓN":
                     return "esa división";
+                case "INSTITUCION":
+                    return "ese instituto";
+                case "INSTITUCIÓN":
+                    return "ese instituto";                
+                case "ESCUELA":
+                    return "ese instituto";
+                case "COMISION":
+                    return "esa dependencia";
+                case "COMISIÓN":
+                    return "esa dependencia";
+                case "UNIDAD":
+                    return "esa dependencia";
+                case "AGENCIA":
+                    return "esa agencia";
+                case "MUNICIPIO":
+                    return "esa agencia";
+                case "CENTRO":
+                    return "ese centro";
+                default:
+                    return "esa dependencia";
             }
-            return aux;
+            //return aux;
         }
         /*
          * Cargar datos obtenidos de una lista a la ventana principal.
@@ -165,6 +185,7 @@ namespace Sistema_Servicio_Social
 
                             guardarDocumento(txtNumExpediente.Text + "", txtAnio.Text + "");
                             wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
+
                             mostrarDocumento(wordDocument);
                         }
                         else
