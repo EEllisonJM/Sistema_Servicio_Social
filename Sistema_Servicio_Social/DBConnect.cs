@@ -17,10 +17,11 @@ namespace Sistema_Servicio_Social
         }        
         private void Initialize()//Inicializar valores
         {
+            //port=>3306
             server = "localhost";
             database = "servicio_social";
             uid = "root";
-            password = "";
+            password = "1234";
             string connectionString;
             connectionString = "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
