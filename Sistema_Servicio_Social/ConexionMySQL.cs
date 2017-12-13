@@ -15,7 +15,7 @@ namespace Sistema_Servicio_Social
             foreach (string line in File.ReadLines(@"" + ruta))
             {
                 String[] values = line.Split(',');
-                if (values[0] != "Marca temporal")
+                if (values[0] != "\"Marca temporal\"")
                 {
                     //Eliminar las " de los campos y cambiar los datos a Mayúsculas
                     for (int i = 0; i <= 17; i++)
