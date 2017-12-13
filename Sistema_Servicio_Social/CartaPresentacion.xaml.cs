@@ -162,7 +162,7 @@ namespace Sistema_Servicio_Social
             txtNombreJefeDirecto.Text = list[8];
             txtPuesto.Text = list[9];
             txtNombreDependencia.Text = list[11];
-            cBoxSexo.Text = list[3];
+            cBoxSexo.Text = ((list[3] == "H") ? "Hombre" : "Mujer");
         }
         /*
          * Mostrar los datos en el documento al darle click al boton
@@ -276,7 +276,7 @@ namespace Sistema_Servicio_Social
                     "Alumno",//Tabla
                     "nombre = '" + txtNombreAlumno.Text + "'," +
                     "carrera = '" + txtCarrera.Text + "'," +
-                    "sexo = '" + cBoxSexo.Text + "'",
+                    "sexo = '" + ((cBoxSexo.Text == "Hombre") ? "H" : "M")+"'",
                     "numControl", "'" + numControl + "'"
                     );
 
