@@ -44,7 +44,7 @@ namespace Sistema_Servicio_Social
                             "semestre = " + values[9],//Semestre
                             "numControl", values[2]);//Numero de control
                         //
-                        db.Insert(//Insertar
+                        /*db.Insert(//Insertar
                             "Carta_Presentacion",//Tabla
                             "(numExpediente,anio,numControl,nombreDependencia,direccionDependencia,programa,jefeDireccion,puestoJefeDireccion,leyenda)",//Atributos
                             "(" +//Valores...
@@ -56,8 +56,8 @@ namespace Sistema_Servicio_Social
                             values[11] + "','" +//programa
                             values[13] + ' ' + values[14] + ' ' + values[15] + ' ' + values[16] + "','" +//jefeDireccion
                             values[17] + "','" + leyenda + "')"//puesto y leyenda
-                            );
-                        numExp++;
+                            );*/
+                        //numExp++;
                     }
                     else
                     {
@@ -74,7 +74,7 @@ namespace Sistema_Servicio_Social
                         values[9] + ")"//Semestre
                         );
                     }
-                    if (db.CountOne(//Existe?
+                    /*if (db.CountOne(//Existe?
                         "Carta_Presentacion",//Tabla
                         "numControl", values[2]) == 1)//numControl=values[2]?
                     {
@@ -91,7 +91,7 @@ namespace Sistema_Servicio_Social
                             );
                     }
                     else
-                    {
+                    {*/
                         db.Insert(//Insertar
                             "Carta_Presentacion",//Tabla
                             "(numExpediente,anio,numControl,nombreDependencia,direccionDependencia,programa,jefeDireccion,puestoJefeDireccion,leyenda)",//Atributos
@@ -106,7 +106,7 @@ namespace Sistema_Servicio_Social
                             values[17] + "','"+leyenda+"')"//puesto y leyenda
                             );
                         numExp++;
-                    }
+                    //}
                 }
             }
         }
