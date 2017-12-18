@@ -18,7 +18,6 @@ namespace Sistema_Servicio_Social
         }        
         private void Initialize()//Inicializar valores
         {
-            //port=>3306
             server = "localhost";
             database = "Servicio_Social";
             uid = "root";
