@@ -48,10 +48,13 @@ namespace Sistema_Servicio_Social
                 "Favor de ingresar el número de expediente inicial",
                 "Número de expediente",
                 "1000");
-                string anio = Microsoft.VisualBasic.Interaction.InputBox(
-                    "Favor de ingresar el año",
+                string anio = "0";
+                while (anio.Length != 4) {
+                    anio = Microsoft.VisualBasic.Interaction.InputBox(
+                    "Favor de ingresar el año (debe ser un número de 4 dígitos)",
                     "Año",
                     dateTime.ToString("yyyy"));
+                }
                 string leyenda = Microsoft.VisualBasic.Interaction.InputBox(
                     "Favor de ingresar la leyenda",
                     "Leyenda",
