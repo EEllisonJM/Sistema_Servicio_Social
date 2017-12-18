@@ -15,8 +15,6 @@ namespace Sistema_Servicio_Social
     {
         DateTime dateTime;
         string wordDocument;
-        string fechaActual;
-        string anioActual;
         string numControl;
         string dia,mes,anio,fecha;
         public CartaPresentacion()
@@ -164,7 +162,7 @@ namespace Sistema_Servicio_Social
             txtNombreJefeDirecto.Text = list[8];
             txtPuesto.Text = list[9];
             txtNombreDependencia.Text = list[11];
-            cBoxSexo.Text = list[3];
+            cBoxSexo.Text = ((list[3] == "H") ? "Hombre" : "Mujer");
         }
         /*
          * Mostrar los datos en el documento al darle click al boton
@@ -185,15 +183,12 @@ namespace Sistema_Servicio_Social
                                     "anio", txtAnio.Text) == 1)//numControl=values[2]?
                         {
                             dateTime = DateTime.UtcNow.Date;
-                            //-----
-                            //fechaActual = dateTime.ToString("dd/MM/yyyy");
-                            //anioActual = dateTime.ToString("yy");
 
                             dia = dateTime.ToString("dd");
                             mes = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day).ToString("MMMM", CultureInfo.CreateSpecificCulture("es"));
                             anio = dateTime.ToString("yyyy");
                             fecha = dia + "-" + mes + "-" + anio;
-                            //---
+
                             Fecha.SelectedDate = DateTime.Today;
 
                             guardarDocumento(txtNumExpediente.Text + "", txtAnio.Text + "");
@@ -299,7 +294,7 @@ namespace Sistema_Servicio_Social
                     "Alumno",//Tabla
                     "nombre = '" + txtNombreAlumno.Text + "'," +
                     "carrera = '" + txtCarrera.Text + "'," +
-                    "sexo = '" + cBoxSexo.Text + "'",
+                    "sexo = '" + ((cBoxSexo.Text == "H") ? "Hombre" : "Mujer") + "'",
                     "numControl", "'" + numControl + "'"
                     );
 

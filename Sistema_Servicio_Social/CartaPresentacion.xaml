@@ -42,8 +42,8 @@
             <TextBox x:Name="txtNombreAlumno" HorizontalAlignment="Right" Height="23" Margin="0,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
             <TextBox x:Name="txtCarrera" HorizontalAlignment="Right" Height="23" Margin="0,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
             <ComboBox x:Name="cBoxSexo" HorizontalAlignment="Right" Margin="0,124,0,0" VerticalAlignment="Top" Width="120">
-                <ComboBoxItem Content="H"></ComboBoxItem>
-                <ComboBoxItem Content="M"></ComboBoxItem>
+                <ComboBoxItem Content="Hombre"></ComboBoxItem>
+                <ComboBoxItem Content="Mujer"></ComboBoxItem>
             </ComboBox>
 
             <TextBox x:Name="txtNombreDependencia" HorizontalAlignment="Right" Height="23" Margin="0,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
