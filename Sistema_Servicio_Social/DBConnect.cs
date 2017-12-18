@@ -19,10 +19,11 @@ namespace Sistema_Servicio_Social
         private void Initialize()//Inicializar valores
         {
             server = "localhost";
-            database = "Servicio_Social";
+            database = "servicio_social";
             uid = "root";
             port = "3306";
             password = "1234";
+            //password = "";
             string connectionString;
             connectionString = "PORT=" + port + ";" + "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
@@ -203,7 +204,7 @@ namespace Sistema_Servicio_Social
             string query = "SELECT " +
                 "A.numControl, A.nombre, A.carrera, A.sexo, A.e_mail,"+
                 "CP.leyenda, CP.programa, CP.numExpediente, CP.jefeDireccion, CP.puestoJefeDireccion, CP.direccionDependencia, CP.nombreDependencia, CP.anio "+
-                "FROM Alumno as A INNER JOIN Carta_Presentacion as CP "+
+                "FROM alumno as A INNER JOIN carta_presentacion as CP "+
                 "ON A.numControl= CP.numControl "+
                 "WHERE CP.numExpediente ="+numExpediente+
                 " AND CP.anio ="+anio+";";

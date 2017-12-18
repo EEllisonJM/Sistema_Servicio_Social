@@ -17,7 +17,7 @@
         <Label Name="lable2" Margin="630,6,0,0" Content="Año:" VerticalAlignment="Top" HorizontalAlignment="Left" />
         <TextBox  Name="txtAnio" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="669,10,13,0" HorizontalContentAlignment="Left" TextChanged="txtAnio_TextChanged" />
 
-          <Button HorizontalAlignment="Left" Margin="784,10,-114,0" VerticalAlignment="Top" Content="Mostrar Documento" Width="122" Name="btnViewDoc" Click="btnMostrarDocumento" />
+        <Button Margin="784,10,-104,0" VerticalAlignment="Top" Content="Mostrar Documento" Name="btnViewDoc" Click="btnMostrarDocumento" />
         <DocumentViewer Name="documentviewWord" VerticalAlignment="Top" HorizontalAlignment="Left" Height="550" Grid.Row="1" Margin="1,0,-1,0"/>
 
         <Grid HorizontalAlignment="Right" Height="500" Margin="0,0,-198,0" Grid.Row="1" VerticalAlignment="Top" Width="200">
@@ -42,8 +42,8 @@
             <TextBox x:Name="txtNombreAlumno" HorizontalAlignment="Right" Height="23" Margin="0,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
             <TextBox x:Name="txtCarrera" HorizontalAlignment="Right" Height="23" Margin="0,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
             <ComboBox x:Name="cBoxSexo" HorizontalAlignment="Right" Margin="0,124,0,0" VerticalAlignment="Top" Width="120">
-                <ComboBoxItem Content="Hombre"></ComboBoxItem>
-                <ComboBoxItem Content="Mujer"></ComboBoxItem>
+                <ComboBoxItem Content="H"></ComboBoxItem>
+                <ComboBoxItem Content="M"></ComboBoxItem>
             </ComboBox>
 
             <TextBox x:Name="txtNombreDependencia" HorizontalAlignment="Right" Height="23" Margin="0,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>

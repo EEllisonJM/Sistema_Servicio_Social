@@ -40,4 +40,5 @@ CREATE TABLE Carta_Presentacion (
 )ENGINE=INNODB;
 #Insertar usuarios
 INSERT INTO usuario (nombre,password) VALUES('juan', '12345');
+INSERT INTO usuario (nombre,password) VALUES('servicio', '12345');
 INSERT INTO usuario (nombre,password) VALUES('admin', '12345&/()=');

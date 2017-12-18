@@ -177,7 +177,7 @@ namespace Sistema_Servicio_Social
             txtNombreJefeDirecto.Text = list[8];
             txtPuesto.Text = list[9];
             txtNombreDependencia.Text = list[11];
-            cBoxSexo.Text = ((list[3] == "H") ? "Hombre" : "Mujer");
+            cBoxSexo.Text = list[3];
         }
         /*
          * Mostrar los datos en el documento al darle click al boton
@@ -194,7 +194,7 @@ namespace Sistema_Servicio_Social
                     {
                         DBConnect db = new DBConnect();
                         if (db.CountOne(//Existe?
-                                    "Carta_Presentacion",//Table
+                                    "carta_presentacion",//Table
                                     "numExpediente", txtNumExpediente.Text,
                                     "anio", txtAnio.Text) == 1)//numControl=values[2]?
                         {
@@ -262,7 +262,7 @@ namespace Sistema_Servicio_Social
                 numE += 1;
                 DBConnect db = new DBConnect();
                 if (db.CountOne(//Existe?
-                            "Carta_Presentacion",//Table
+                            "carta_presentacion",//Table
                             "numExpediente", (numE) + "") == 1)//numControl=values[2]?
                 {
                     dateTime = DateTime.UtcNow.Date;
@@ -310,15 +310,15 @@ namespace Sistema_Servicio_Social
                     //hacer insert a alumno y a carta presentacion
                     DBConnect db = new DBConnect();
                     db.Update(//Actualizar
-                        "Alumno",//Tabla
+                        "alumno",//Tabla
                         "nombre = '" + txtNombreAlumno.Text + "'," +
                         "carrera = '" + txtCarrera.Text + "'," +
-                        "sexo = '" + ((cBoxSexo.Text == "H") ? "Hombre" : "Mujer") + "'",
+                        "sexo = '" + cBoxSexo.Text+"'",
                         "numControl", "'" + numControl + "'"
                         );
 
                     db.Update(//Actualizar
-                        "Carta_Presentacion",//Tabla
+                        "carta_presentacion",//Tabla
                         "leyenda = '" + txtLeyenda.Text + "'," +
                         "nombreDependencia = '" + txtNombreDependencia.Text + "'," +
                         "direccionDependencia = '" + txtDireccion.Text + "'," +

@@ -32,11 +32,11 @@ namespace Sistema_Servicio_Social
                     DBConnect db = new DBConnect();
                     /*ALUMNO EXISTE, ACTUALIZAR DATOS*/
                     if (db.CountOne(//Existe?
-                        "Alumno",//Table
+                        "alumno",//Table
                         "numControl", values[2]) == 1)//numControl=values[2]?
                     {
                         db.Update(//Actualiza
-                            "Alumno",//Tabla
+                            "alumno",//Tabla
                             "nombre = '" + values[5] + " " + values[3] + " " + values[4] + "'," +//nombre
                             "carrera = '" + values[7] + "'," +//carrera
                             "sexo = '" + values[6] + "'," +//sexo
@@ -48,7 +48,7 @@ namespace Sistema_Servicio_Social
                     else
                     {/*ALUMNO NO EXISTE, INSERTAR DATOS*/
                         db.Insert(//Insertar
-                            "Alumno",//Tabla
+                            "alumno",//Tabla
                         "(numControl,nombre,carrera,sexo,e_mail,porcentajeAvance,semestre)",//Atributos
                         "(" +//Valores...
                         values[2] + "," +//numControl
@@ -63,7 +63,7 @@ namespace Sistema_Servicio_Social
                     /*CREA LA BASE DE DATOS*/
                     //Count(table,atributo1,value1,atributo2,value2)
                     if (db.Count(//Existe?
-                        "Carta_Presentacion",//Tabla
+                        "carta_presentacion",//Tabla
                         "numControl", values[2],
                         "anio", anio + "") == 1)//numControl=values[2]?
                     {
@@ -71,7 +71,7 @@ namespace Sistema_Servicio_Social
                     else
                     {
                         db.Insert(//Insertar
-                            "Carta_Presentacion",//Tabla
+                            "carta_presentacion",//Tabla
                             "(numExpediente,anio,numControl,nombreDependencia,direccionDependencia,programa,jefeDireccion,puestoJefeDireccion,leyenda)",//Atributos
                             "(" +//Valores...
                             numExp + "," +//numExpediente
