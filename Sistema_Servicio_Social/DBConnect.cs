@@ -22,8 +22,12 @@ namespace Sistema_Servicio_Social
             server = "localhost";
             database = "Servicio_Social";
             uid = "root";
+<<<<<<< HEAD
+            password = "";
             port = "3306";
+=======
             password = "1234";
+>>>>>>> SolucionNumeroExpedienteFecha
             string connectionString;
             connectionString = "PORT=" + port + ";" + "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
