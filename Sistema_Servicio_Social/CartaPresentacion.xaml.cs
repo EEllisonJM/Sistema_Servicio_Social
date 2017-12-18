@@ -143,6 +143,20 @@ namespace Sistema_Servicio_Social
                     return "esa agencia";
                 case "CENTRO":
                     return "ese centro";
+                case "TERMINAL":
+                    return "esa terminal";
+                case "FIDEICOMISO":
+                    return "ese fideicomiso";
+                case "AYUNTAMIENTO":
+                    return "ese ayuntamiento";
+                case "REGIDURIA":
+                    return "esa regiduría";
+                case "REGIDURÍA":
+                    return "esa regiduría";
+                case "SECRETARÍA":
+                    return "esa secretaría";
+                case "SECRETARIA":
+                    return "esa secretaría";
                 default:
                     return "esa dependencia";
             }
