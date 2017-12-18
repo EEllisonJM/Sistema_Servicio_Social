@@ -48,17 +48,29 @@ namespace Sistema_Servicio_Social
                 "Favor de ingresar el número de expediente inicial",
                 "Número de expediente",
                 "1000");
+                if (numExpI.CompareTo("")==0) //si numExpI está vacío (botón cancelar)
+                {
+                    return;
+                }
                 string anio = "0";
                 while (anio.Length != 4) {
                     anio = Microsoft.VisualBasic.Interaction.InputBox(
                     "Favor de ingresar el año (debe ser un número de 4 dígitos)",
                     "Año",
                     dateTime.ToString("yyyy"));
+                    if (anio.CompareTo("") == 0) //si anio está vacío (botón cancelar)
+                    {
+                        return;
+                    }
                 }
                 string leyenda = Microsoft.VisualBasic.Interaction.InputBox(
                     "Favor de ingresar la leyenda",
                     "Leyenda",
                     "Año del Centenario de la Promulgación de la Constitución Política de los Estados Unidos Mexicanos");
+                if (leyenda.CompareTo("") == 0) //si leyenda está vacío (botón cancelar)
+                {
+                    return;
+                }
                 rutaPlantilla = txtRutaArchivo.Text;
                 bool mostrarExitoso = true;
                 try
