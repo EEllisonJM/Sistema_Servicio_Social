@@ -22,7 +22,7 @@ namespace Sistema_Servicio_Social
             database = "Servicio_Social";
             uid = "root";
             port = "3306";
-            password = "";
+            password = "1234";
             string connectionString;
             connectionString = "PORT=" + port + ";" + "SERVER=" + server + ";" + "DATABASE=" +
             database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
