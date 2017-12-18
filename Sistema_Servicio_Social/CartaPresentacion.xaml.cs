@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 
 using Word = Microsoft.Office.Interop.Word;
+using System.Globalization;
 
 namespace Sistema_Servicio_Social
 {
@@ -17,6 +18,7 @@ namespace Sistema_Servicio_Social
         string fechaActual;
         string anioActual;
         string numControl;
+        string dia,mes,anio,fecha;
         public CartaPresentacion()
         {
             InitializeComponent();
@@ -73,7 +75,7 @@ namespace Sistema_Servicio_Social
             List<string> list = dbConnect.Select(numExpediente, anio);//getValues of [numExpediente]
             WordTemplate wt = new WordTemplate(txtPlantilla.Text);
             wt.reemplazarCampo("Leyenda", list[5]);
-            wt.reemplazarCampo("Fecha", fechaActual);//Add current date
+            wt.reemplazarCampo("Fecha", fecha);//Add current date
             wt.reemplazarCampo("Anio", list[12].Substring(list[12].Length - 2, 2));
             wt.reemplazarCampo("NumeroExpediente", list[7]);
             wt.reemplazarCampo("JefeDireccion", list[8]);
@@ -183,8 +185,15 @@ namespace Sistema_Servicio_Social
                                     "anio", txtAnio.Text) == 1)//numControl=values[2]?
                         {
                             dateTime = DateTime.UtcNow.Date;
-                            fechaActual = dateTime.ToString("dd/MM/yyyy");
-                            anioActual = dateTime.ToString("yy");
+                            //-----
+                            //fechaActual = dateTime.ToString("dd/MM/yyyy");
+                            //anioActual = dateTime.ToString("yy");
+
+                            dia = dateTime.ToString("dd");
+                            mes = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day).ToString("MMMM", CultureInfo.CreateSpecificCulture("es"));
+                            anio = dateTime.ToString("yyyy");
+                            fecha = dia + "-" + mes + "-" + anio;
+                            //---
                             Fecha.SelectedDate = DateTime.Today;
 
                             guardarDocumento(txtNumExpediente.Text + "", txtAnio.Text + "");
@@ -246,8 +255,14 @@ namespace Sistema_Servicio_Social
                             "numExpediente", (numE) + "") == 1)//numControl=values[2]?
                 {
                     dateTime = DateTime.UtcNow.Date;
-                    fechaActual = dateTime.ToString("dd/MM/yyyy");
-                    anioActual = dateTime.ToString("yy");
+                    //
+                    //fechaActual = dateTime.ToString("dd/MM/yyyy");
+                    //anioActual = dateTime.ToString("yy");
+                    dia = dateTime.ToString("dd");
+                    mes = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day).ToString("MMMM", CultureInfo.CreateSpecificCulture("es"));
+                    anio = dateTime.ToString("yyyy");
+                    fecha = dia + "-" + mes + "-" + anio;
+                    //
                     Fecha.SelectedDate = DateTime.Today;
                     guardarDocumento((numE) + "", (ani) + ""); wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
                     mostrarDocumento(wordDocument);
@@ -267,9 +282,17 @@ namespace Sistema_Servicio_Social
                 txtRutaDocumentoGenerar.Text != "" &&
                 txtNumExpediente.Text!="") {
                 dateTime = DateTime.UtcNow.Date;
-                anioActual = Fecha.SelectedDate.ToString().Substring(8, 2);
+                anio= Fecha.SelectedDate.ToString().Substring(8, 2);
                 //Fecha.SelectedDate = DateTime.Today;
-                fechaActual = Fecha.SelectedDate.ToString().Substring(0, 10);
+                //fechaActual = Fecha.SelectedDate.ToString().Substring(0, 10);
+                dia = Fecha.SelectedDate.ToString().Substring(0, 2);//dateTime.ToString("dd");
+                mes = new DateTime(
+                    DateTime.Today.Year,
+                    Int32.Parse(Fecha.SelectedDate.ToString().Substring(3, 2)), DateTime.Today.Day).ToString("MMMM", CultureInfo.CreateSpecificCulture("es"));                
+                //System.Windows.MessageBox.Show(
+                //    Fecha.SelectedDate.ToString().Substring(3, 2));
+                anio = Fecha.SelectedDate.ToString().Substring(6, 4);
+                fecha = dia + "-" + mes + "-" + anio;
                 //hacer insert a alumno y a carta presentacion
                 DBConnect db = new DBConnect();
                 db.Update(//Actualizar
