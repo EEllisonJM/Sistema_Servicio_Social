@@ -17,6 +17,7 @@ namespace Sistema_Servicio_Social
         string wordDocument;
         string numControl;
         string dia,mes,anio,fecha;
+        bool mostrar = false;
         public CartaPresentacion()
         {
             InitializeComponent();
@@ -170,6 +171,7 @@ namespace Sistema_Servicio_Social
          */
         private void btnMostrarDocumento(object sender, RoutedEventArgs e)
         {
+            mostrar = true;
             if (txtRutaDocumentoGenerar.Text != "")
             {
                 if (txtPlantilla.Text != "")
@@ -273,49 +275,56 @@ namespace Sistema_Servicio_Social
          */
         private void btnActualizar_Click(object sender, RoutedEventArgs e)
         {
-            if (txtPlantilla.Text != "" && 
-                txtRutaDocumentoGenerar.Text != "" &&
-                txtNumExpediente.Text!="") {
-                dateTime = DateTime.UtcNow.Date;
-                anio= Fecha.SelectedDate.ToString().Substring(8, 2);
-                //Fecha.SelectedDate = DateTime.Today;
-                //fechaActual = Fecha.SelectedDate.ToString().Substring(0, 10);
-                dia = Fecha.SelectedDate.ToString().Substring(0, 2);//dateTime.ToString("dd");
-                mes = new DateTime(
-                    DateTime.Today.Year,
-                    Int32.Parse(Fecha.SelectedDate.ToString().Substring(3, 2)), DateTime.Today.Day).ToString("MMMM", CultureInfo.CreateSpecificCulture("es"));                
-                //System.Windows.MessageBox.Show(
-                //    Fecha.SelectedDate.ToString().Substring(3, 2));
-                anio = Fecha.SelectedDate.ToString().Substring(6, 4);
-                fecha = dia + "-" + mes + "-" + anio;
-                //hacer insert a alumno y a carta presentacion
-                DBConnect db = new DBConnect();
-                db.Update(//Actualizar
-                    "Alumno",//Tabla
-                    "nombre = '" + txtNombreAlumno.Text + "'," +
-                    "carrera = '" + txtCarrera.Text + "'," +
-                    "sexo = '" + ((cBoxSexo.Text == "H") ? "Hombre" : "Mujer") + "'",
-                    "numControl", "'" + numControl + "'"
-                    );
-
-                db.Update(//Actualizar
-                    "Carta_Presentacion",//Tabla
-                    "leyenda = '" + txtLeyenda.Text + "'," +
-                    "nombreDependencia = '" + txtNombreDependencia.Text + "'," +
-                    "direccionDependencia = '" + txtDireccion.Text + "'," +
-                    "programa = '" + txtPrograma.Text + "'," +
-                    "jefeDireccion = '" + txtNombreJefeDirecto.Text + "'," +
-                    "puestoJefeDireccion = '" + txtPuesto.Text + "'",
-                    "numControl", "'" + numControl + "'"
-                    );
-                guardarDocumento(txtNumExpediente.Text + "", txtAnio.Text + "");
-                wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
-                mostrarDocumento(wordDocument);
-            }else
+            if (mostrar != false)
             {
-                System.Windows.MessageBox.Show("Uno o más parámetro no se han seleccionado");
+                if (txtPlantilla.Text != "" &&
+                txtRutaDocumentoGenerar.Text != "" &&
+                txtNumExpediente.Text != "")
+                {
+                    dateTime = DateTime.UtcNow.Date;
+                    anio = Fecha.SelectedDate.ToString().Substring(8, 2);
+                    //Fecha.SelectedDate = DateTime.Today;
+                    //fechaActual = Fecha.SelectedDate.ToString().Substring(0, 10);
+                    dia = Fecha.SelectedDate.ToString().Substring(0, 2);//dateTime.ToString("dd");
+                    mes = new DateTime(
+                        DateTime.Today.Year,
+                        Int32.Parse(Fecha.SelectedDate.ToString().Substring(3, 2)), DateTime.Today.Day).ToString("MMMM", CultureInfo.CreateSpecificCulture("es"));
+                    //System.Windows.MessageBox.Show(
+                    //    Fecha.SelectedDate.ToString().Substring(3, 2));
+                    anio = Fecha.SelectedDate.ToString().Substring(6, 4);
+                    fecha = dia + "-" + mes + "-" + anio;
+                    //hacer insert a alumno y a carta presentacion
+                    DBConnect db = new DBConnect();
+                    db.Update(//Actualizar
+                        "Alumno",//Tabla
+                        "nombre = '" + txtNombreAlumno.Text + "'," +
+                        "carrera = '" + txtCarrera.Text + "'," +
+                        "sexo = '" + ((cBoxSexo.Text == "H") ? "Hombre" : "Mujer") + "'",
+                        "numControl", "'" + numControl + "'"
+                        );
+
+                    db.Update(//Actualizar
+                        "Carta_Presentacion",//Tabla
+                        "leyenda = '" + txtLeyenda.Text + "'," +
+                        "nombreDependencia = '" + txtNombreDependencia.Text + "'," +
+                        "direccionDependencia = '" + txtDireccion.Text + "'," +
+                        "programa = '" + txtPrograma.Text + "'," +
+                        "jefeDireccion = '" + txtNombreJefeDirecto.Text + "'," +
+                        "puestoJefeDireccion = '" + txtPuesto.Text + "'",
+                        "numControl", "'" + numControl + "'"
+                        );
+                    guardarDocumento(txtNumExpediente.Text + "", txtAnio.Text + "");
+                    wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
+                    mostrarDocumento(wordDocument);
+                }
+                else
+                {
+                    System.Windows.MessageBox.Show("Uno o más parámetro no se han seleccionado");
+                }
             }
-            
+            else {
+                System.Windows.MessageBox.Show("Para actualizar un documento, es necesario haber cargado un documento.");
+            }
         }
         private void btnBuscarRutaDocumentoGenerar(object sender, RoutedEventArgs e)
         {
