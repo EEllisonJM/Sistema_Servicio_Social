@@ -13,9 +13,9 @@ namespace Sistema_Servicio_Social
             foreach (string line in File.ReadLines(@"" + ruta))
             {
                 String[] values = line.Split(',');
-                if (values[0] != "\"Marca temporal\"")
+                if (values[0] != "\"Marca temporal\"")/*Nombre columna[1] archivo*/
                 {
-                    //Eliminar las " de los campos y cambiar los datos a Mayúsculas
+                    //Eliminar las comillas["] de los campos y cambiar los datos a Mayúsculas
                     for (int i = 0; i <= 17; i++)
                     {
                         values[i] = values[i].ToString().Replace('"', ' ').Trim().ToUpper();
@@ -29,6 +29,7 @@ namespace Sistema_Servicio_Social
                     {
                         values[6] = "M";
                     }
+
                     DBConnect db = new DBConnect();
                     /*ALUMNO EXISTE, ACTUALIZAR DATOS*/
                     if (db.CountOne(//Existe?
@@ -60,8 +61,6 @@ namespace Sistema_Servicio_Social
                         values[9] + ")"//Semestre
                         );
                     }
-                    /*CREA LA BASE DE DATOS*/
-                    //Count(table,atributo1,value1,atributo2,value2)
                     if (db.Count(//Existe?
                         "carta_presentacion",//Tabla
                         "numControl", values[2],

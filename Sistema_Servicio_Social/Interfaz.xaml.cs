@@ -11,7 +11,7 @@ namespace Sistema_Servicio_Social
         {
             InitializeComponent();
         }
-        private void btnRegresar(object sender, RoutedEventArgs e)
+        private void btnRegresarLogin(object sender, RoutedEventArgs e)
         {
             Login l = new Login();
             l.Show();
@@ -23,7 +23,7 @@ namespace Sistema_Servicio_Social
             i.Show();
             this.Close();
         }
-        private void btnAbrir(object sender, RoutedEventArgs e)
+        private void btnAbrirArchivoCSV(object sender, RoutedEventArgs e)
         {
             Microsoft.Win32.OpenFileDialog openFileDialog = new Microsoft.Win32.OpenFileDialog();
             // Set filter and RestoreDirectory
@@ -48,12 +48,13 @@ namespace Sistema_Servicio_Social
                 "Favor de ingresar el número de expediente inicial",
                 "Número de expediente",
                 "1000");
-                if (numExpI.CompareTo("")==0) //si numExpI está vacío (botón cancelar)
+                if (numExpI.CompareTo("") == 0) //si numExpI está vacío (botón cancelar)
                 {
                     return;
                 }
                 string anio = "0";
-                while (anio.Length != 4) {
+                while (anio.Length != 4)
+                {
                     anio = Microsoft.VisualBasic.Interaction.InputBox(
                     "Favor de ingresar el año (debe ser un número de 4 dígitos)",
                     "Año",
