@@ -45,6 +45,15 @@ namespace Sistema_Servicio_Social
                             "porcentajeAvance = " + values[8] + "," +//porcentaje de avance
                             "semestre = " + values[9],//Semestre
                             "numControl", values[2]);//Numero de control
+
+                        if (db.Count(//Existe?
+                        "carta_presentacion",//Tabla
+                        "numControl", values[2],
+                        "anio", anio + "") == 1)//numControl=values[2]?
+                        {
+                            System.Windows.MessageBox.Show(
+                                "El número de control: " + values[2] + ", ya se encentra registrado en el sistema con los campos establecidos previamente.");
+                        }
                     }
                     else
                     {/*ALUMNO NO EXISTE, INSERTAR DATOS*/
@@ -60,15 +69,7 @@ namespace Sistema_Servicio_Social
                         values[8] + "," +//porcentaje de avance
                         values[9] + ")"//Semestre
                         );
-                    }
-                    if (db.Count(//Existe?
-                        "carta_presentacion",//Tabla
-                        "numControl", values[2],
-                        "anio", anio + "") == 1)//numControl=values[2]?
-                    {
-                    }
-                    else
-                    {
+                        /*CREAR CARTA PRESENTACION*/
                         db.Insert(//Insertar
                             "carta_presentacion",//Tabla
                             "(numExpediente,anio,numControl,nombreDependencia,direccionDependencia,programa,jefeDireccion,puestoJefeDireccion,leyenda)",//Atributos
