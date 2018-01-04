@@ -10,11 +10,11 @@
     <Border Background="#FF6600" CornerRadius="20" Margin="15 15">
         <GroupBox VerticalAlignment="Top">
             <StackPanel>
-                <Button Name="btn_Regresar" Click="btnRegresar" Content="Regresar" Background="#545d6a" Foreground="White" FontSize="20" Height="60" Margin="3 4"/>
-                <TextBox Name="txtRutaArchivo" Text="" IsReadOnly = "True"/>
-                <Button Name="btn_Abrir" Click="btnAbrir" Content="Abrir archivo CSV" Background="#545d6a" Foreground="White" FontSize="20" Height="60" Margin="3 0"/>
-                <Button Name="btn_Cargar" Click="btnCargarDatos" Content="Cargar datos a servidor" Background="#545d6a" Foreground="White" FontSize="20" Height="60" Margin="3 4"/>
-                <Button Name="btn_CartaPresentacion" Click="btnCartaPresentacion" Content="Visualizar carta presentación" Background="#545d6a" Foreground="White" FontSize="20" Height="60" Margin="3 4"/>
+                <Button Name="btn_Regresar" Click="btnRegresar" Content="Regresar" Background="#800000" Foreground="White" FontSize="20" Height="60" Margin="3 4" />
+                <TextBox Name="txtRutaArchivo" Text="" IsReadOnly = "True" Margin="5 1" Background="#cc3300" Foreground="White" FontSize="15"/>
+                <Button Name="btn_Abrir" Click="btnAbrir" Content="Abrir archivo CSV" Background="#800000" Foreground="White" FontSize="20" Height="60" Margin="3 0"/>
+                <Button Name="btn_Cargar" Click="btnCargarDatos" Content="Cargar datos a servidor" Background="#800000" Foreground="White" FontSize="20" Height="60" Margin="3 4"/>
+                <Button Name="btn_CartaPresentacion" Click="btnCartaPresentacion" Content="Visualizar carta presentación" Background="#800000" Foreground="White" FontSize="20" Height="60" Margin="3 4"/>
             </StackPanel>
         </GroupBox>
     </Border>
