@@ -16,7 +16,7 @@ namespace Sistema_Servicio_Social
         DateTime dateTime;
         string wordDocument;
         string numControl;
-        string dia,mes,anio,fecha;
+        string dia, mes, anio, fecha;
         bool mostrar = false;
         public CartaPresentacion()
         {
@@ -54,7 +54,7 @@ namespace Sistema_Servicio_Social
             }
             catch (Exception ex)
             {
-                System.Windows.MessageBox.Show("Error occurs, The error message is  " + ex.ToString());
+                System.Windows.MessageBox.Show("Se ha producido un error, " + ex.ToString());
                 return null;
             }
             finally
@@ -65,7 +65,7 @@ namespace Sistema_Servicio_Social
         }
         /*
          * Guardar un documento que tiene como nombre el [número de control]
-         * Cuya extensión ´será: [*.doc].
+         * Cuya extensión será: [*.doc].
          * Extrae datos de la base de datos de un [número de expediente]
          */
         void guardarDocumento(String numExpediente, String anio)
@@ -128,7 +128,7 @@ namespace Sistema_Servicio_Social
                 case "INSTITUCION":
                     return "ese instituto";
                 case "INSTITUCIÓN":
-                    return "ese instituto";                
+                    return "ese instituto";
                 case "ESCUELA":
                     return "ese instituto";
                 case "COMISION":
@@ -160,7 +160,6 @@ namespace Sistema_Servicio_Social
                 default:
                     return "esa dependencia";
             }
-            //return aux;
         }
         /*
          * Cargar datos obtenidos de una lista a la ventana principal.
@@ -250,7 +249,7 @@ namespace Sistema_Servicio_Social
             }
         }
         /*
-         * Cargar el siguiente número de expediente.
+         * Cargar el siguiente número de expediente al dar click en botón [Siguiente].
          */
         private void btnSiguiente_Click(object sender, RoutedEventArgs e)
         {
@@ -278,7 +277,8 @@ namespace Sistema_Servicio_Social
                     System.Windows.MessageBox.Show("Número de expediente no encontrado");
                 }
             }
-            else {
+            else
+            {
                 System.Windows.MessageBox.Show("Favor de cargar un documento.");
             }
         }
@@ -301,8 +301,6 @@ namespace Sistema_Servicio_Social
                     mes = new DateTime(
                         DateTime.Today.Year,
                         Int32.Parse(Fecha.SelectedDate.ToString().Substring(3, 2)), DateTime.Today.Day).ToString("MMMM", CultureInfo.CreateSpecificCulture("es"));
-                    //System.Windows.MessageBox.Show(
-                    //    Fecha.SelectedDate.ToString().Substring(3, 2));
                     anio = Fecha.SelectedDate.ToString().Substring(6, 4);
                     fecha = dia + "-" + mes + "-" + anio;
                     //hacer insert a alumno y a carta presentacion
@@ -311,7 +309,7 @@ namespace Sistema_Servicio_Social
                         "alumno",//Tabla
                         "nombre = '" + txtNombreAlumno.Text + "'," +
                         "carrera = '" + txtCarrera.Text + "'," +
-                        "sexo = '" + cBoxSexo.Text+"'",
+                        "sexo = '" + cBoxSexo.Text + "'",
                         "numControl", "'" + numControl + "'"
                         );
 
@@ -334,7 +332,8 @@ namespace Sistema_Servicio_Social
                     System.Windows.MessageBox.Show("Uno o más parámetro no se han seleccionado");
                 }
             }
-            else {
+            else
+            {
                 System.Windows.MessageBox.Show("Para actualizar un documento, es necesario haber cargado un documento.");
             }
         }
@@ -345,7 +344,7 @@ namespace Sistema_Servicio_Social
             {
                 if (folderBrowserDialog.SelectedPath.Length > 0)
                 {
-                    txtRutaDocumentoGenerar.Text = @""+folderBrowserDialog.SelectedPath;
+                    txtRutaDocumentoGenerar.Text = @"" + folderBrowserDialog.SelectedPath;
                 }
             }
         }
