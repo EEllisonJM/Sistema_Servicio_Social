@@ -19,19 +19,20 @@ namespace Sistema_Servicio_Social
             {
                 numIntentos += 1;
                 DBConnect db = new DBConnect();
-                if (db.Count("usuario",//Tabla
-                    "nombre", "'" + this.txtUser.Text + "'",//Nombre
-                    "password", "'" + this.txtPassword.Password + "'"//Contrasenia
-                    ) == 1)//Existe?
-                {
-                    MessageBox.Show("Bienvenid@ al sistema");
+                if (db.Count(/*Existe?*/
+                    "usuario",
+                    "nombre", "'" + this.txtUser.Text + "'",
+                    "password", "'" + this.txtPassword.Password + "'"
+                    ) == 1)
+                {/*TRUE*/
+                    MessageBox.Show("Bienvenid@ al sistema: " + this.txtUser.Text);
                     Interfaz i = new Interfaz();
                     i.Show();
                     this.Close();
                 }
                 else
-                {
-                    MessageBox.Show("Usuario no encontrado o contraseña incorrecta");
+                {/*FALSE*/
+                    MessageBox.Show("Usuario no encontrado o contraseña incorrecta, verifique.");
                     this.txtUser.Text = "";
                     this.txtPassword.Password = "";
                 }

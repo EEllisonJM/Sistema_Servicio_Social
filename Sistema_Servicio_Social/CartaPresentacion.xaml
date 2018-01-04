@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema_Servicio_Social"
         mc:Ignorable="d"
-        ResizeMode="CanMinimize"
-        Title="CartaPresentacion" Height="720" Width="1008" WindowStartupLocation="CenterScreen">
+        ResizeMode="CanMinimize"        
+        Title="CartaPresentacion" Height="720" Width="1008" WindowStartupLocation="CenterScreen" Background="Orange">
+    
     <Grid Margin="0,0,200,70">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"></RowDefinition>
