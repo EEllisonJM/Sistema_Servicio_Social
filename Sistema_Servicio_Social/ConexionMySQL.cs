@@ -54,9 +54,8 @@ namespace Sistema_Servicio_Social
                             System.Windows.MessageBox.Show(
                                 "El número de expediente: " + values[2] +
                                 " con el año: " + anio +
-                                ", ya se encentra registrado en el sistema."+
+                                ", ya se encentra registrado en el sistema." +
                                 "Los datos del alumno se actualizarán");
-                            //numExp++;
                         }
                     }
                     else

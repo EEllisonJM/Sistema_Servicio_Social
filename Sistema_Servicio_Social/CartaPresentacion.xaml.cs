@@ -170,15 +170,15 @@ namespace Sistema_Servicio_Social
             txtAnio.Text = list[12];
             txtLeyenda.Text = list[5];
             txtNombreAlumno.Text = list[1];
-            txtCarrera.Text = list[2];
+            cBoxCarrera.Text = list[2];
             txtDireccion.Text = list[10];
             txtPrograma.Text = list[6];
             txtNombreJefeDirecto.Text = list[8];
             txtPuesto.Text = list[9];
             txtNombreDependencia.Text = list[11];
-            cBoxSexo.Text = (list[3] == "M") ?  "MASCULINO" : "FEMENINO";
-            //cBoxSexo.Text = list[3];
+            cBoxSexo.Text = (list[3] == "M") ? "MASCULINO" : "FEMENINO";
         }
+
         /*
          * Mostrar los datos en el documento al darle click al boton
          * [Mostrar documento]
@@ -296,8 +296,6 @@ namespace Sistema_Servicio_Social
                 {
                     dateTime = DateTime.UtcNow.Date;
                     anio = Fecha.SelectedDate.ToString().Substring(8, 2);
-                    //Fecha.SelectedDate = DateTime.Today;
-                    //fechaActual = Fecha.SelectedDate.ToString().Substring(0, 10);
                     dia = Fecha.SelectedDate.ToString().Substring(0, 2);//dateTime.ToString("dd");
                     mes = new DateTime(
                         DateTime.Today.Year,
@@ -309,7 +307,7 @@ namespace Sistema_Servicio_Social
                     db.Update(//Actualizar
                         "alumno",//Tabla
                         "nombre = '" + txtNombreAlumno.Text + "'," +
-                        "carrera = '" + txtCarrera.Text + "'," +
+                        "carrera = '" + cBoxCarrera.Text + "'," +
                         "sexo = '" + ((cBoxSexo.Text == "MASCULINO") ? "M" : "F") + "'",
                         "numControl", "'" + numControl + "'"
                         );

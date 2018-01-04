@@ -41,7 +41,6 @@
             <!-- INICIO CAMPOS EDITABLES-->
             <DatePicker x:Name="Fecha" HorizontalAlignment="Right" Margin="0,4,10,0" VerticalAlignment="Top" Width="265"/>
             <TextBox x:Name="txtNombreAlumno" HorizontalAlignment="Right" Height="23" Margin="0,64,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" CharacterCasing="Upper"/>
-            <TextBox x:Name="txtCarrera" HorizontalAlignment="Right" Height="23" Margin="0,93,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" CharacterCasing="Upper"/>
             <ComboBox x:Name="cBoxSexo" HorizontalAlignment="Right" Margin="0,124,10,0" VerticalAlignment="Top" Width="265">
                 <ComboBoxItem Content="MASCULINO"></ComboBoxItem>
                 <ComboBoxItem Content="FEMENINO"></ComboBoxItem>
@@ -53,6 +52,17 @@
 
             <TextBox x:Name="txtNombreJefeDirecto" HorizontalAlignment="Right" Height="23" Margin="0,304,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" CharacterCasing="Upper"/>
             <TextBox x:Name="txtPuesto" HorizontalAlignment="Right" Height="23" Margin="0,334,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" CharacterCasing="Upper"/>
+            <ComboBox x:Name="cBoxCarrera" HorizontalAlignment="Left" Margin="84,94,0,0" VerticalAlignment="Top" Width="265">
+                <ComboBoxItem Content="INGENIERÍA ELECTRÓNICA"></ComboBoxItem>
+                <ComboBoxItem Content="INGENIERÍA ELÉCTRICA"></ComboBoxItem>
+                <ComboBoxItem Content="INGENIERÍA CIVIL"></ComboBoxItem>
+                <ComboBoxItem Content="INGENIERÍA MECÁNICA"></ComboBoxItem>
+                <ComboBoxItem Content="INGENIERÍA INDUSTRIAL"></ComboBoxItem>
+                <ComboBoxItem Content="INGENIERÍA QUÍMICA"></ComboBoxItem>
+                <ComboBoxItem Content="INGENIERÍA EN GESTIÓN EMPRESARIAL"></ComboBoxItem>
+                <ComboBoxItem Content="INGENIERÍA EN SISTEMAS COMPUTACIONALES"></ComboBoxItem>
+                <ComboBoxItem Content="LICENCIATURA EN ADMINISTRACIÓN"></ComboBoxItem>
+            </ComboBox>
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="70" Margin="0,0,0,-70" Grid.Row="1" VerticalAlignment="Bottom" Width="800">
