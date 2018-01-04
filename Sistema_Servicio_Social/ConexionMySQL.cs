@@ -48,11 +48,15 @@ namespace Sistema_Servicio_Social
 
                         if (db.Count(//Existe?
                         "carta_presentacion",//Tabla
-                        "numControl", values[2],
+                        "numExpediente", (numExp++) + "",
                         "anio", anio + "") == 1)//numControl=values[2]?
                         {
                             System.Windows.MessageBox.Show(
-                                "El número de control: " + values[2] + ", ya se encentra registrado en el sistema con los campos establecidos previamente.");
+                                "El número de expediente: " + values[2] +
+                                " con el año: " + anio +
+                                ", ya se encentra registrado en el sistema."+
+                                "Los datos del alumno se actualizarán");
+                            //numExp++;
                         }
                     }
                     else
