@@ -8,7 +8,7 @@
         ResizeMode="CanMinimize"        
         Title="CartaPresentacion" Height="720" Width="1178" WindowStartupLocation="CenterScreen">
 
-    <Grid Margin="0,0,364,70">
+    <Grid Margin="0,0,364,2">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -19,7 +19,7 @@
         <TextBox  Name="txtAnio" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="669,10,53,0" HorizontalContentAlignment="Left" TextChanged="txtAnio_TextChanged" />
 
         <Button Margin="784,10,-104,0" VerticalAlignment="Top" Content="Mostrar Documento" Name="btnViewDoc" Click="btnMostrarDocumento" />
-        <DocumentViewer Name="documentviewWord" VerticalAlignment="Top" HorizontalAlignment="Left" Height="550" Grid.Row="1" Width="798"/>
+        <DocumentViewer Name="documentviewWord" VerticalAlignment="Top" HorizontalAlignment="Left" Height="610" Grid.Row="1" Width="798"/>
 
         <Grid HorizontalAlignment="Right" Height="365" Margin="0,0,-356,0" Grid.Row="1" VerticalAlignment="Top" Width="359">
 
@@ -65,9 +65,9 @@
             </ComboBox>
         </Grid>
 
-        <Grid HorizontalAlignment="Left" Height="70" Margin="0,0,0,-70" Grid.Row="1" VerticalAlignment="Bottom" Width="800">
-            <Button x:Name="btnActualizar" Content="Actualizar Documento" HorizontalAlignment="Center" Margin="0,0,0,0" VerticalAlignment="Center" Width="130" Click="btnActualizar_Click"/>
-            <Button x:Name="btnSiguiente" Content="Siguiente" HorizontalAlignment="Right" Margin="0,0,30,0" VerticalAlignment="Center" Width="75" Click="btnSiguiente_Click"/>
+        <Grid HorizontalAlignment="Left" Height="70" Margin="855,0,-312,110" Grid.Row="1" VerticalAlignment="Bottom" Width="265" RenderTransformOrigin="0.324,0.614">
+            <Button x:Name="btnActualizar" Content="Actualizar Documento" HorizontalAlignment="Center" Margin="20,24,115,24" VerticalAlignment="Center" Width="130" Click="btnActualizar_Click"/>
+            <Button x:Name="btnSiguiente" Content="Siguiente" HorizontalAlignment="Right" Margin="0,24,10,24" VerticalAlignment="Center" Width="75" Click="btnSiguiente_Click"/>
 
         </Grid>
         <Label x:Name="labelPlantilla" Margin="10,41,0,0" Content="Plantilla a utilizar: " VerticalAlignment="Top" HorizontalAlignment="Left" />
