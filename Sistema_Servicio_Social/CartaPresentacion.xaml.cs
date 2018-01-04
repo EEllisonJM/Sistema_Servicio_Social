@@ -209,7 +209,6 @@ namespace Sistema_Servicio_Social
 
                             guardarDocumento(txtNumExpediente.Text + "", txtAnio.Text + "");
                             wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
-
                             mostrarDocumento(wordDocument);
                         }
                         else
@@ -263,25 +262,24 @@ namespace Sistema_Servicio_Social
                 DBConnect db = new DBConnect();
                 if (db.CountOne(//Existe?
                             "carta_presentacion",//Table
-                            "numExpediente", (numE) + "") == 1)//numControl=values[2]?
+                            "numExpediente", (numE) + "",
+                            "anio", (anio) + "") == 1)//numControl=values[2]?
                 {
                     dateTime = DateTime.UtcNow.Date;
-                    //
-                    //fechaActual = dateTime.ToString("dd/MM/yyyy");
-                    //anioActual = dateTime.ToString("yy");
-                    dia = dateTime.ToString("dd");
-                    mes = new DateTime(DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day).ToString("MMMM", CultureInfo.CreateSpecificCulture("es"));
-                    anio = dateTime.ToString("yyyy");
                     fecha = dia + "-" + mes + "-" + anio;
-                    //
+
                     Fecha.SelectedDate = DateTime.Today;
-                    guardarDocumento((numE) + "", (ani) + ""); wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
+                    guardarDocumento((numE) + "", (ani) + "");
+                    wordDocument = txtRutaDocumentoGenerar.Text + "\\" + numControl + ".doc";
                     mostrarDocumento(wordDocument);
                 }
+                else
+                {
+                    System.Windows.MessageBox.Show("Número de expediente no encontrado");
+                }
             }
-            else
-            {
-                System.Windows.MessageBox.Show("Número de expediente no encontrado");
+            else {
+                System.Windows.MessageBox.Show("Favor de cargar un documento.");
             }
         }
         /*
