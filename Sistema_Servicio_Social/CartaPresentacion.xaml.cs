@@ -91,16 +91,16 @@ namespace Sistema_Servicio_Social
             cargarDatos(list);
         }
         /*
-         * Retorna el texto [al] si texto es [H]
-         * Retorna el texto [a la] si texto es [M].
+         * Retorna el texto [al] si texto es [MASCULINO]
+         * Retorna el texto [a la] si texto es [FEMENINO].
          */
         string setSexo(String texto)
         {
-            if (texto == "H")
+            if (texto == "M")/*MASCULINO*/
             {
                 return "al";
             }
-            if (texto == "M")
+            if (texto == "F")/*FEMENINO*/
             {
                 return "a la";
             }
@@ -176,7 +176,8 @@ namespace Sistema_Servicio_Social
             txtNombreJefeDirecto.Text = list[8];
             txtPuesto.Text = list[9];
             txtNombreDependencia.Text = list[11];
-            cBoxSexo.Text = list[3];
+            cBoxSexo.Text = (list[3] == "M") ?  "MASCULINO" : "FEMENINO";
+            //cBoxSexo.Text = list[3];
         }
         /*
          * Mostrar los datos en el documento al darle click al boton
@@ -309,7 +310,7 @@ namespace Sistema_Servicio_Social
                         "alumno",//Tabla
                         "nombre = '" + txtNombreAlumno.Text + "'," +
                         "carrera = '" + txtCarrera.Text + "'," +
-                        "sexo = '" + cBoxSexo.Text + "'",
+                        "sexo = '" + ((cBoxSexo.Text == "MASCULINO") ? "M" : "F") + "'",
                         "numControl", "'" + numControl + "'"
                         );
 

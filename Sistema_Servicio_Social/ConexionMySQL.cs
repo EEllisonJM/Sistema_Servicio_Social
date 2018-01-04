@@ -20,14 +20,14 @@ namespace Sistema_Servicio_Social
                     {
                         values[i] = values[i].ToString().Replace('"', ' ').Trim().ToUpper();
                     }
-                    //Si en el formulario dice Hombre cambiar por H y si dice Mujer cambiar por M
-                    if (values[6] == "HOMBRE")
+                    //Si en el formulario dice MASCULINO cambiar por M y si dice FEMENINO cambiar por F
+                    if (values[6] == "MASCULINO")
                     {
-                        values[6] = "H";
+                        values[6] = "M";
                     }
                     else
                     {
-                        values[6] = "M";
+                        values[6] = "F";
                     }
 
                     DBConnect db = new DBConnect();
