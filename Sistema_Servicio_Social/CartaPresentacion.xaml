@@ -6,22 +6,22 @@
         xmlns:local="clr-namespace:Sistema_Servicio_Social"
         mc:Ignorable="d"
         ResizeMode="CanMinimize"        
-        Title="CartaPresentacion" Height="720" Width="1008" WindowStartupLocation="CenterScreen">
-    
-    <Grid Margin="0,0,200,70">
+        Title="CartaPresentacion" Height="720" Width="1178" WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="0,0,364,70">
         <Grid.RowDefinitions>
             <RowDefinition Height="70"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
         <Label Name="lable1" Margin="468,6,0,0" Content="Expediente:" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <TextBox  Name="txtNumExpediente" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="544,10,172,0" HorizontalContentAlignment="Left" TextChanged="txtNumExpediente_TextChanged" />
+        <TextBox  Name="txtNumExpediente" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="544,10,183,0" HorizontalContentAlignment="Left" TextChanged="txtNumExpediente_TextChanged" />
         <Label Name="lable2" Margin="630,6,0,0" Content="Año:" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <TextBox  Name="txtAnio" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="669,10,13,0" HorizontalContentAlignment="Left" TextChanged="txtAnio_TextChanged" />
+        <TextBox  Name="txtAnio" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="669,10,53,0" HorizontalContentAlignment="Left" TextChanged="txtAnio_TextChanged" />
 
         <Button Margin="784,10,-104,0" VerticalAlignment="Top" Content="Mostrar Documento" Name="btnViewDoc" Click="btnMostrarDocumento" />
-        <DocumentViewer Name="documentviewWord" VerticalAlignment="Top" HorizontalAlignment="Left" Height="550" Grid.Row="1" Margin="1,0,-1,0"/>
+        <DocumentViewer Name="documentviewWord" VerticalAlignment="Top" HorizontalAlignment="Left" Height="550" Grid.Row="1" Width="798"/>
 
-        <Grid HorizontalAlignment="Right" Height="500" Margin="0,0,-198,0" Grid.Row="1" VerticalAlignment="Top" Width="200">
+        <Grid HorizontalAlignment="Right" Height="365" Margin="0,0,-356,0" Grid.Row="1" VerticalAlignment="Top" Width="359">
 
             <Label x:Name="label_Fecha" Content="Fecha:" HorizontalAlignment="Left" Margin="10,0,0,0" Grid.Row="1" VerticalAlignment="Top"/>
 
@@ -39,20 +39,20 @@
             <Label x:Name="label_JNombre" Content="Nombre:" HorizontalAlignment="Left" Margin="10,300,0,0" VerticalAlignment="Top"/>
             <Label x:Name="label_Puesto" Content="Puesto:" HorizontalAlignment="Left" Margin="10,330,0,0" Grid.Row="1" VerticalAlignment="Top"/>
             <!-- INICIO CAMPOS EDITABLES-->
-            <DatePicker x:Name="Fecha" HorizontalAlignment="Right" Margin="0,4,0,0" VerticalAlignment="Top"/>
-            <TextBox x:Name="txtNombreAlumno" HorizontalAlignment="Right" Height="23" Margin="0,64,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
-            <TextBox x:Name="txtCarrera" HorizontalAlignment="Right" Height="23" Margin="0,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
-            <ComboBox x:Name="cBoxSexo" HorizontalAlignment="Right" Margin="0,124,0,0" VerticalAlignment="Top" Width="120">
+            <DatePicker x:Name="Fecha" HorizontalAlignment="Right" Margin="0,4,10,0" VerticalAlignment="Top" Width="265"/>
+            <TextBox x:Name="txtNombreAlumno" HorizontalAlignment="Right" Height="23" Margin="0,64,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" CharacterCasing="Upper"/>
+            <TextBox x:Name="txtCarrera" HorizontalAlignment="Right" Height="23" Margin="0,93,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" CharacterCasing="Upper"/>
+            <ComboBox x:Name="cBoxSexo" HorizontalAlignment="Right" Margin="0,124,10,0" VerticalAlignment="Top" Width="265">
                 <ComboBoxItem Content="H"></ComboBoxItem>
                 <ComboBoxItem Content="M"></ComboBoxItem>
             </ComboBox>
 
-            <TextBox x:Name="txtNombreDependencia" HorizontalAlignment="Right" Height="23" Margin="0,184,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
-            <TextBox x:Name="txtDireccion" HorizontalAlignment="Right" Height="23" Margin="0,214,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
-            <TextBox x:Name="txtPrograma" HorizontalAlignment="Right" Height="23" Margin="0,244,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
+            <TextBox x:Name="txtNombreDependencia" HorizontalAlignment="Right" Height="23" Margin="0,184,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" CharacterCasing="Upper"/>
+            <TextBox x:Name="txtDireccion" HorizontalAlignment="Right" Height="23" Margin="0,214,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" CharacterCasing="Upper"/>
+            <TextBox x:Name="txtPrograma" HorizontalAlignment="Right" Height="23" Margin="0,244,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" CharacterCasing="Upper"/>
 
-            <TextBox x:Name="txtNombreJefeDirecto" HorizontalAlignment="Right" Height="23" Margin="0,304,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
-            <TextBox x:Name="txtPuesto" HorizontalAlignment="Right" Height="23" Margin="0,334,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" CharacterCasing="Upper"/>
+            <TextBox x:Name="txtNombreJefeDirecto" HorizontalAlignment="Right" Height="23" Margin="0,304,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" CharacterCasing="Upper"/>
+            <TextBox x:Name="txtPuesto" HorizontalAlignment="Right" Height="23" Margin="0,334,10,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="265" CharacterCasing="Upper"/>
         </Grid>
 
         <Grid HorizontalAlignment="Left" Height="70" Margin="0,0,0,-70" Grid.Row="1" VerticalAlignment="Bottom" Width="800">
@@ -64,7 +64,7 @@
         <TextBox  x:Name="txtPlantilla" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="134,43,427,0" HorizontalContentAlignment="Left" IsReadOnly = "True"/>
         <Button HorizontalAlignment="Left" Margin="370,43,0,0" VerticalAlignment="Top" Content="Seleccionar" Width="83" x:Name="btnCargarPlantilla" Click="btnSeleccionarPlantilla" />
         <Label x:Name="labelLeyenda" Margin="468,41,0,0" Content="Leyenda:" VerticalAlignment="Top" HorizontalAlignment="Left" />
-        <TextBox  x:Name="txtLeyenda" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="530,43,-198,0" HorizontalContentAlignment="Left"/>
+        <TextBox  x:Name="txtLeyenda" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="530,43,-347,0" HorizontalContentAlignment="Left"/>
         <Label x:Name="lable1_Copy" Margin="10,6,0,0" Content="Guardar documentos en:" VerticalAlignment="Top" HorizontalAlignment="Left" />
         <TextBox  x:Name="txtRutaDocumentoGenerar" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="155,10,427,0" HorizontalContentAlignment="Left" IsReadOnly = "True"/>
         <Button HorizontalAlignment="Left" Margin="370,10,0,0" VerticalAlignment="Top" Content="Seleccionar" Width="84" x:Name="btnViewDoc_Copy" Click="btnBuscarRutaDocumentoGenerar" />
