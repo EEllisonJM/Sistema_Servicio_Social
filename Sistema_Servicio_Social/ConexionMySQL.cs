@@ -57,6 +57,23 @@ namespace Sistema_Servicio_Social
                                 ", ya se encentra registrado en el sistema." +
                                 "Los datos del alumno se actualizarán");
                         }
+                        else {/*Existe alumno, pero no no existe CartaPresentacion*/
+                              /*CREAR CARTA PRESENTACION*/
+                            db.Insert(//Insertar
+                                "carta_presentacion",//Tabla
+                                "(numExpediente,anio,numControl,nombreDependencia,direccionDependencia,programa,jefeDireccion,puestoJefeDireccion,leyenda)",//Atributos
+                                "(" +//Valores...
+                                numExp + "," +//numExpediente
+                                anio + "," +//Año
+                                values[2] + ",'" +//numControl
+                                values[10] + "','" +//nombreDependencia
+                                values[12] + "','" +//direccionDependencia
+                                values[11] + "','" +//programa
+                                values[13] + ' ' + values[14] + ' ' + values[15] + ' ' + values[16] + "','" +//jefeDireccion
+                                values[17] + "','" + leyenda + "')"//puesto y leyenda
+                                );
+                            numExp++;
+                        }
                     }
                     else
                     {/*ALUMNO NO EXISTE, INSERTAR DATOS*/

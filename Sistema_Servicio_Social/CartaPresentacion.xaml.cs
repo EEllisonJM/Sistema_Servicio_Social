@@ -110,7 +110,7 @@ namespace Sistema_Servicio_Social
         string getDependencia(string texto)
         {
             var WordsArray = texto.Split();
-            string aux = WordsArray[0];
+            string aux = WordsArray[0];/*Primer palabra en texto*/
             switch (aux)
             {
                 case "DEPARTAMENTO":
