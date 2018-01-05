@@ -121,14 +121,12 @@ namespace Sistema_Servicio_Social
                     return "esa división";
                 case "DIVISIÓN":
                     return "esa división";
-                case "JARDIN":
-                    return "ese instituto";
-                case "JARDÍN":
+                case "INSTITUTO":
                     return "ese instituto";
                 case "INSTITUCION":
-                    return "ese instituto";
+                    return "ese institución";
                 case "INSTITUCIÓN":
-                    return "ese instituto";
+                    return "ese institución";
                 case "ESCUELA":
                     return "ese instituto";
                 case "COMISION":
