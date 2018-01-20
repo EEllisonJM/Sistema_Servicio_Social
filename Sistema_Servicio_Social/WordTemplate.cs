@@ -18,32 +18,40 @@ namespace Sistema_Servicio_Social
             wordDoc = new Document();
             wordDoc = wordApp.Documents.Add(ref oTemplatePath, ref oMissing, ref oMissing, ref oMissing);
         }
-        public void reemplazarCampo(String campo, String texto)
+        public bool reemplazarCampo(String campo, String texto)
         {
-            foreach (Field myMergeField in wordDoc.Fields)
+            try
             {
-                Range rngFieldCode = myMergeField.Code;
-                fieldText = rngFieldCode.Text;                
-                if (fieldText.StartsWith(" MERGEFIELD"))//encuentra campo [MERGEFIELD]
+                foreach (Field myMergeField in wordDoc.Fields)
                 {
-                    Int32 endMerge = fieldText.IndexOf("\\");
-                    Int32 fieldNameLength = fieldText.Length - endMerge;
-
-                    String fieldName = fieldText.Substring(11, endMerge - 11);
-
-                    // GIVES THE FIELDNAMES AS THE USER HAD ENTERED IN .dot FILE
-                    fieldName = fieldName.Trim();
-                    // **** FIELD REPLACEMENT IMPLEMENTATION GOES HERE ****//
-                    // THE PROGRAMMER CAN HAVE HIS OWN IMPLEMENTATIONS HERE
-                    if (fieldName == campo)//if (fieldName == "Leyenda")
+                    Range rngFieldCode = myMergeField.Code;
+                    fieldText = rngFieldCode.Text;
+                    if (fieldText.StartsWith(" MERGEFIELD"))//encuentra campo [MERGEFIELD]
                     {
-                        myMergeField.Select();
-                        wordApp.Selection.TypeText(texto);//wordApp.Selection.TypeText("Soy leyenda");
+                        Int32 endMerge = fieldText.IndexOf("\\");
+                        Int32 fieldNameLength = fieldText.Length - endMerge;
+
+                        String fieldName = fieldText.Substring(11, endMerge - 11);
+
+                        // GIVES THE FIELDNAMES AS THE USER HAD ENTERED IN .dot FILE
+                        fieldName = fieldName.Trim();
+                        // **** FIELD REPLACEMENT IMPLEMENTATION GOES HERE ****//
+                        // THE PROGRAMMER CAN HAVE HIS OWN IMPLEMENTATIONS HERE
+                        if (fieldName == campo)//if (fieldName == "Leyenda")
+                        {
+                            myMergeField.Select();
+                            wordApp.Selection.TypeText(texto);//wordApp.Selection.TypeText("Soy leyenda");
+                        }
                     }
                 }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
             }
         }
-        public void guardarDocumento(String ruta, String nombre)
+    public void guardarDocumento(String ruta, String nombre)
         {
             wordDoc.SaveAs(ruta + "\\" + nombre + ".doc");//Documento con formato incluido
             //wordApp.Documents.Open(nombre+".doc");

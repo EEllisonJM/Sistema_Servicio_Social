@@ -84,7 +84,8 @@ namespace Sistema_Servicio_Social
             wt.reemplazarCampo("NumeroControl", list[0]);
             wt.reemplazarCampo("Carrera", list[2]);
             wt.reemplazarCampo("Dependencia", getDependencia(list[11]));
-            wt.reemplazarCampo("Programa", list[6]);
+            if(wt.reemplazarCampo("Programa", list[6]) == false)
+                System.Windows.MessageBox.Show("Se ha producido un error, favor de seleccionar la plantilla correcta.");
 
             numControl = list[0];
             wt.guardarDocumento(txtRutaDocumentoGenerar.Text, numControl);//[numControl.doc]
@@ -246,6 +247,7 @@ namespace Sistema_Servicio_Social
                 }
                 documentviewWord.Document = xpsDocument.GetFixedDocumentSequence();
             }
+
         }
         /*
          * Cargar el siguiente número de expediente al dar click en botón [Siguiente].
