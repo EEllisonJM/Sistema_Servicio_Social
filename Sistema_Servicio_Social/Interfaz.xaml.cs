@@ -38,6 +38,10 @@ namespace Sistema_Servicio_Social
                 }
             }
         }
+        private void btnDuplicidadCSV(object sender, RoutedEventArgs e)
+        {
+
+        }
         private void btnCargarDatos(object sender, RoutedEventArgs e)
         {
             if (txtRutaArchivo.Text != "")
