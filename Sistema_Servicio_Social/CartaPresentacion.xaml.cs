@@ -125,9 +125,9 @@ namespace Sistema_Servicio_Social
                 case "INSTITUTO":
                     return "ese instituto";
                 case "INSTITUCION":
-                    return "ese institución";
+                    return "esa institución";
                 case "INSTITUCIÓN":
-                    return "ese institución";
+                    return "esa institución";
                 case "ESCUELA":
                     return "ese instituto";
                 case "COMISION":
