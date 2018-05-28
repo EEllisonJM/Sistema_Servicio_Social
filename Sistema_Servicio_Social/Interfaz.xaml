@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema_Servicio_Social"
         mc:Ignorable="d"
-        Title="Interfaz" Height="365" Width="412" Background="#f30" >
+        Title="Interfaz" Height="401" Width="412" Background="#f30" >
     <Border Background="#FF6600" CornerRadius="20" Margin="15 15">
         <GroupBox VerticalAlignment="Top">
             <StackPanel>

@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema_Servicio_Social"
         mc:Ignorable="d"
-        Title="Login" Height="325" Width="395" FontSize="14" Background="#f30" ResizeMode="NoResize">
+        Title="Login" Height="345" Width="395" FontSize="14" Background="#f30" ResizeMode="NoResize">
     <Border Background="#FF6600" CornerRadius="25" Margin="20 15">
         <StackPanel Margin="20 15">
             <Label Content="Bienvenid@" Foreground="White" FontSize="25" HorizontalAlignment="Center" FontStyle="Italic"/>

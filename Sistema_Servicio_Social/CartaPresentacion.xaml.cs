@@ -4,20 +4,23 @@ using System.Windows;
 using System.Windows.Xps.Packaging;
 using Microsoft.Office.Interop.Word;
 using System.Collections.Generic;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 
 using Word = Microsoft.Office.Interop.Word;
 using System.Globalization;
 
+using System.Windows.Controls;
+
 namespace Sistema_Servicio_Social
 {
-    public partial class CartaPresentacion : System.Windows.Window
+    public partial class CartaPresentacion : UserControl//System.Windows.Window
     {
         DateTime dateTime;
         string wordDocument;
         string numControl;
         string dia, mes, anio, fecha;
         bool mostrar = false;
+
         public CartaPresentacion()
         {
             InitializeComponent();
@@ -84,7 +87,7 @@ namespace Sistema_Servicio_Social
             wt.reemplazarCampo("NumeroControl", list[0]);
             wt.reemplazarCampo("Carrera", list[2]);
             wt.reemplazarCampo("Dependencia", getDependencia(list[11]));
-            if(wt.reemplazarCampo("Programa", list[6]) == false)
+            if (wt.reemplazarCampo("Programa", list[6]) == false)
                 System.Windows.MessageBox.Show("Se ha producido un error, favor de seleccionar la plantilla correcta.");
 
             numControl = list[0];
@@ -338,7 +341,7 @@ namespace Sistema_Servicio_Social
         }
         private void btnBuscarRutaDocumentoGenerar(object sender, RoutedEventArgs e)
         {
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
+            System.Windows.Forms.FolderBrowserDialog folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             if (folderBrowserDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 if (folderBrowserDialog.SelectedPath.Length > 0)

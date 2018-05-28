@@ -25,8 +25,7 @@ namespace Sistema_Servicio_Social
                     "password", "'" + this.txtPassword.Password + "'"
                     ) == 1)
                 {/*TRUE*/
-                    MessageBox.Show("Bienvenid@ al sistema: " + this.txtUser.Text);
-                    Interfaz i = new Interfaz();
+                    MainWindow i = new MainWindow(this.txtUser.Text);
                     i.Show();
                     this.Close();
                 }

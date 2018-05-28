@@ -19,9 +19,9 @@ namespace Sistema_Servicio_Social
         }
         private void btnCartaPresentacion(object sender, RoutedEventArgs e)
         {
-            CartaPresentacion i = new CartaPresentacion();
-            i.Show();
-            this.Close();
+            //CartaPresentacion i = new CartaPresentacion();
+            //i.Show();
+            //this.Close();
         }
         private void btnAbrirArchivoCSV(object sender, RoutedEventArgs e)
         {

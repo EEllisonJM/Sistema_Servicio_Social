@@ -48,6 +48,7 @@ namespace Sistema_Servicio_Social
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex);
                 return false;
             }
         }
