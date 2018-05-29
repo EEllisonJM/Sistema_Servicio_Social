@@ -106,8 +106,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UserControlCreate.xaml.cs">
-      <DependentUpon>UserControlCreate.xaml</DependentUpon>
+    <Compile Include="UserControl_Backup.xaml.cs">
+      <DependentUpon>UserControl_Backup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl_Home.xaml.cs">
+      <DependentUpon>UserControl_Home.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControl_LoadFileCSV.xaml.cs">
+      <DependentUpon>UserControl_LoadFileCSV.xaml</DependentUpon>
     </Compile>
     <Compile Include="WordTemplate.cs" />
     <Page Include="CartaPresentacion.xaml">
@@ -145,11 +151,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControlCreate.xaml">
+    <Page Include="UserControl_Backup.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControlHome.xaml">
+    <Page Include="UserControl_LoadFileCSV.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControl_Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,7 +188,6 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <AppDesigner Include="Properties\" />
-    <None Include="Sistema_Servicio_Social_ClaveTemporal.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
@@ -246,6 +255,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\backup.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\backup1.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

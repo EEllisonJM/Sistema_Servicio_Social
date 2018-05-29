@@ -25,7 +25,7 @@ namespace Sistema_Servicio_Social
                     "password", "'" + this.txtPassword.Password + "'"
                     ) == 1)
                 {/*TRUE*/
-                    MainWindow i = new MainWindow(this.txtUser.Text);
+                    MainWindow i = new MainWindow();
                     i.Show();
                     this.Close();
                 }

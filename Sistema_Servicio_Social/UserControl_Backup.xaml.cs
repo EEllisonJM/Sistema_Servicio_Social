@@ -10,9 +10,9 @@ namespace Sistema_Servicio_Social
 {
     /*[UserControl Class]
      * Provides a simple way to create a control.*/
-    public partial class UserControlCreate : UserControl
+    public partial class UserControl_Backup: UserControl
 {
-        public UserControlCreate()
+        public UserControl_Backup()
         {
             InitializeComponent();
         }

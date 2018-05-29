@@ -8,10 +8,10 @@ namespace Sistema_Servicio_Social
      * manage the lifetime of windows and dialog boxes.*/
     public partial class MainWindow : Window
     {
-        public MainWindow(string nombreUsuario)
+        public MainWindow()
         {
             InitializeComponent();
-            usuario.Text = nombreUsuario.ToUpper();
+            //usuario.Text = nombreUsuario.ToUpper();
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -37,11 +37,19 @@ namespace Sistema_Servicio_Social
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "ItemHome":
-                    usc = new CartaPresentacion();
+                    usc = new UserControl_Home();
                     GridMain.Children.Add(usc);
                     break;
-                case "ItemCreate":
-                    usc = new UserControlCreate();
+                case "ItemFile":
+                    usc = new UserControl_LoadFileCSV();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "ItemBackupRestore":
+                    usc = new UserControl_Backup();
+                    GridMain.Children.Add(usc);
+                    break;
+                case "ItemFileAccount":
+                    usc = new CartaPresentacion();
                     GridMain.Children.Add(usc);
                     break;
                 default:
