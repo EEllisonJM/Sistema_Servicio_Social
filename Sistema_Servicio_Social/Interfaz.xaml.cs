@@ -38,6 +38,18 @@ namespace Sistema_Servicio_Social
                 }
             }
         }
+        private void btnDuplicidadCSV(object sender, RoutedEventArgs e)
+        {
+            if (txtRutaArchivo.Text != "")
+            {
+                DuplicidadCSV duplicidadCSV = new DuplicidadCSV();
+                duplicidadCSV.analizarCSV(txtRutaArchivo.Text);
+            }
+            else
+            {
+                MessageBox.Show("Seleccione el archivo CSV a analizar");
+            }
+        }
         private void btnCargarDatos(object sender, RoutedEventArgs e)
         {
             if (txtRutaArchivo.Text != "")
