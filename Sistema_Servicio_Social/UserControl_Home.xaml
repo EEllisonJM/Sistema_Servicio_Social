@@ -37,6 +37,7 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
             <materialDesign:PackIcon Kind="Gmail" Height="70" Width="70" Margin="5,10" HorizontalAlignment="Center"/>
             <Label Content="Gmail" FontSize="12" HorizontalAlignment="Center"/>
         </StackPanel>
+        <Label x:Name="label" FontSize="37" Content="Sistema - Servicio Social" HorizontalAlignment="Left" Margin="140,103,0,0" VerticalAlignment="Top" Height="80" Width="470"/>
 
     </Grid>
 </UserControl>

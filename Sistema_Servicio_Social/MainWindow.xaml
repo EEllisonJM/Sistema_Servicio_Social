@@ -30,38 +30,7 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid >
-        <Grid x:Name="GridMain" Background="AliceBlue" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="692" Width="1139" >
-            <StackPanel Background="AliceBlue" HorizontalAlignment="Left" Height="115" Margin="935,40,0,0" VerticalAlignment="Top" Width="115">
-                <materialDesign:PackIcon Kind="Account" Height="80" Width="80" Margin="5" HorizontalAlignment="Center"/>
-                <Label Content="das" FontSize="12" HorizontalAlignment="Center"/>
-            </StackPanel>
-
-            <StackPanel Background="GreenYellow" HorizontalAlignment="Left" Height="100" Margin="140,290,0,302" Width="350" Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="File" Height="80" Width="73" Margin="10,10,10,0"/>
-                <TextBlock FontSize="23" Text="Cargar archivo" VerticalAlignment="Center" Margin="8,37,8,19" Height="44" Width="179"/>
-            </StackPanel>
-            <StackPanel Background="Red" HorizontalAlignment="Left" Height="100" Margin="565,290,0,302" Width="350" Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="BackupRestore" Height="80" Width="73" Margin="10,10,10,0"/>
-                <TextBlock FontSize="23" Text="Copia de seguridad" VerticalAlignment="Center" Margin="8,37,8,19" Height="44" Width="199"/>
-            </StackPanel>
-            <StackPanel Background="Yellow" HorizontalAlignment="Left" Height="100" Margin="140,465,0,127" Width="350" Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="FileAccount" Height="80" Width="73" Margin="10,10,10,0"/>
-                <TextBlock FontSize="23" Text="Carta de presentacion" VerticalAlignment="Center" Margin="8,37,8,19" Height="44" Width="229"/>
-            </StackPanel>
-            <StackPanel Background="Turquoise" HorizontalAlignment="Left" Height="100" Margin="565,465,0,127" Width="350" Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="FileDocument" Height="80" Width="73" Margin="10,10,10,0"/>
-                <TextBlock FontSize="23" Text="Carta de terminacion" VerticalAlignment="Center" Margin="8,37,8,19" Height="44" Width="229"/>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Left" Height="115" Margin="835,40,0,0" VerticalAlignment="Top" Width="80">
-                <materialDesign:PackIcon Kind="Facebook" Height="70" Width="70" Margin="5,10" HorizontalAlignment="Center"/>
-                <Label Content="Facebook" FontSize="12" HorizontalAlignment="Center"/>
-            </StackPanel>
-            <StackPanel HorizontalAlignment="Left" Height="115" Margin="720,40,0,0" VerticalAlignment="Top" Width="80">
-                <materialDesign:PackIcon Kind="Gmail" Height="70" Width="70" Margin="5,10" HorizontalAlignment="Center"/>
-                <Label Content="Gmail" FontSize="12" HorizontalAlignment="Center"/>
-            </StackPanel>
-
-
+        <Grid x:Name="ContenedorPrincipal" Background="Turquoise" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="692" Width="1139" >            
         </Grid>
 
         <Grid x:Name="GridMenu" Width="75" HorizontalAlignment="Left" Background="#696969">
@@ -69,47 +38,44 @@
                 <DropShadowEffect BlurRadius="2" ShadowDepth="1" Color="#793802"/>
             </Grid.Effect>
             <StackPanel>
-                <Grid Height="150" Background="White" RenderTransformOrigin="0.5,0.5">
-                    <Grid.RenderTransform>
-                        <TransformGroup>
-                            <ScaleTransform/>
-                            <SkewTransform/>
-                            <RotateTransform/>
-                            <TranslateTransform/>
-                        </TransformGroup>
-                    </Grid.RenderTransform>
-                    <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonOpenMenu_Click">
-                        <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
+                <Grid Height="150" Background="White">                   
+                        <Button x:Name="ButtonOpenMenu" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonOpenMenu_Click" ToolTip="Expandir">                        
+                            <materialDesign:PackIcon Kind="Menu" Width="25" Height="25"/>
+                            
                     </Button>
                     <Button x:Name="ButtonCloseMenu" Visibility="Collapsed" Height="60" Width="60" Margin="5" HorizontalAlignment="Right" VerticalAlignment="Top" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF31577E" Click="ButtonCloseMenu_Click">
                         <materialDesign:PackIcon Kind="ArrowLeft" Width="25" Height="25"/>
                     </Button>
-
-                    <Image Height="80" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="65"/>
                 </Grid>
                 <ListView x:Name="ListViewMenu" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="ListViewMenu_SelectionChanged">
                     <ListViewItem x:Name="ItemHome" Height="60">
-                        <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Horizontal" ToolTip="Inicio">
                             <materialDesign:PackIcon Kind="Home" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"/>
+                            <TextBlock Text="Inicio" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="ItemFile" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="File" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Create" VerticalAlignment="Center" Margin="20 10"/>
+                            <TextBlock Text="Cargar archivo" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="ItemBackupRestore" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="BackupRestore" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Tickets" VerticalAlignment="Center"  Margin="20 10"/>
+                            <TextBlock Text="Copia de seguridad" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem x:Name="ItemFileAccount" Height="60">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="FileAccount" Height="25" Width="25" Margin="10"/>
-                            <TextBlock Text="Messages" VerticalAlignment="Center"  Margin="20 10"/>
+                            <TextBlock Text="Carta de presentacion" VerticalAlignment="Center"  Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
+                    <ListViewItem x:Name="ItemFileAccount_Copy" Height="60">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="FileCheck" Height="25" Width="25" Margin="10"/>
+                            <TextBlock Text="Carta de Terminación" VerticalAlignment="Center"  Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                 </ListView>

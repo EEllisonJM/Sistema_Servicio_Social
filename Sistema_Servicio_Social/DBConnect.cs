@@ -1,6 +1,10 @@
-﻿using MySql.Data.MySqlClient;
-using System.Collections.Generic;
+﻿using System;
+using System.IO;
 using System.Windows;
+using System.Diagnostics;
+using MySql.Data.MySqlClient;
+using System.Collections.Generic;
+
 namespace Sistema_Servicio_Social
 {
     class DBConnect
@@ -11,25 +15,23 @@ namespace Sistema_Servicio_Social
         private string uid;
         private string password;
         private string port;
-        //Constructor
+        /*Constructor*/
         public DBConnect()
         {
             Initialize();
-        }        
-        private void Initialize()//Inicializar valores
+        }
+        /*Initialize Attributes*/
+        private void Initialize()
         {
             server = "localhost";
             database = "servicio_social";
             uid = "root";
             port = "3306";
             password = "1234";
-            string connectionString;
-            connectionString = "PORT=" + port + ";" + "SERVER=" + server + ";" + "DATABASE=" +
-            database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";";
 
-            connection = new MySqlConnection(connectionString);
+            connection = new MySqlConnection("PORT=" + port + ";" + "SERVER=" + server + ";" + "DATABASE=" + database + ";" + "UID=" + uid + ";" + "PASSWORD=" + password + ";");
         }
-        //open connection to database
+        /*Open connection to database*/
         private bool OpenConnection()
         {
             try
@@ -39,24 +41,19 @@ namespace Sistema_Servicio_Social
             }
             catch (MySqlException ex)
             {
-                //When handling errors, you can your application's response based 
-                //on the error number.
-                //The two most common error numbers when connecting are as follows:
-                //0: Cannot connect to server.
-                //1045: Invalid user name and/or password.
                 switch (ex.Number)
                 {
-                    case 0:
-                        MessageBox.Show("Cannot connect to server.  Contact administrator");
+                    case 0://0: Cannot connect to server.
+                        MessageBox.Show("No es posible comunicarse con el servidor. Contacte al administrador.");
                         break;
-                    case 1045:
-                        MessageBox.Show("Invalid username/password, please try again");
+                    case 1045://1045: Invalid user name and/or password.
+                        MessageBox.Show("Usuario o contraseña invalidos, intentelo de nuevo.");
                         break;
                 }
                 return false;
             }
         }
-        //Close connection
+        /*Close connection*/
         private bool CloseConnection()
         {
             try
@@ -70,47 +67,38 @@ namespace Sistema_Servicio_Social
                 return false;
             }
         }
-        //Insert statement
-        public void Insert(string tabla,string atributos,string valores)
+        /*Insert statement*/
+        public void Insert(string tabla, string atributos, string valores)
         {//"INSERT INTO usuario (nombre,password) VALUES('juan', '12345');";
             //tabla => nombre de la tabla
-            //atributos => Separado por coma => (nombre,password)
+            //atributos => Separado por coma y dentro de parentesis => (nombre,password)
             //valores => los valores a insertar en la tabla => ('jaime',121)            
             string query = "INSERT INTO " + tabla + " " + atributos + " " +
                 " VALUES " + valores + " ;";
-            //open connection
+            /*open connection*/
             if (this.OpenConnection() == true)
-            {//create command and assign the query and connection from the constructor
+            {//Create command and assign the query and connection from the constructor
                 MySqlCommand cmd = new MySqlCommand(query, connection);
-                //Execute command
-                cmd.ExecuteNonQuery();
-                //close connection
-                this.CloseConnection();
+                cmd.ExecuteNonQuery();//Execute command                
+                this.CloseConnection();//close connection
             }
         }
-        //Update statement
-        public void Update(string tabla,string atributosValores,string atributo,string valor)
+        /*Update statement*/
+        public void Update(string tabla, string atributosValores, string atributo, string valor)
         {//"UPDATE Usuario SET nombre='Joe'WHERE name='John'";
             // => nombre='Juan' , password='123'
             string query =
                 "UPDATE " + tabla + " SET " + atributosValores +
-                " WHERE " + atributo + " = " + valor+ " ;";
-            //Open connection
+                " WHERE " + atributo + " = " + valor + " ;";
+            /*Open connection*/
             if (this.OpenConnection() == true)
-            {
-                //create mysql command
-                MySqlCommand cmd = new MySqlCommand();
-                //Assign the query using CommandText
-                cmd.CommandText = query;
-                //Assign the connection using Connection
-                cmd.Connection = connection;
-                //Execute query
-                cmd.ExecuteNonQuery();
-                //close connection
-                this.CloseConnection();
+            {//Create command and assign the query and connection from the constructor
+                MySqlCommand cmd = new MySqlCommand(query, connection);                
+                cmd.ExecuteNonQuery();//Execute query                
+                this.CloseConnection();//close connection
             }
         }
-        public void Delete(string table,string atributo,string value)
+        public void Delete(string table, string atributo, string value)
         {//"DELETE FROM tableinfo WHERE name='John Smith'";
             string query =
                 "DELETE FROM " + table +
@@ -122,13 +110,13 @@ namespace Sistema_Servicio_Social
                 this.CloseConnection();
             }
         }
-        //Count statement
-        public int Count(string table,string atributo1,string value1, string atributo2,string value2)
+        /*Count statement*/
+        public int Count(string table, string atributo1, string value1, string atributo2, string value2)
         {//string query = "SELECT Count(*) FROM usuario;";
             string query =
                 "SELECT Count(*) FROM " + table +
                 " WHERE " + atributo1 + " = " + value1 +
-                " and " + atributo2 + " = "+ value2 + " ;";
+                " and " + atributo2 + " = " + value2 + " ;";
             //SELECT Count(*) FROM usuario where nombre='John Smith' and password='33';
             int Count = -1;
             //Open Connection
@@ -152,7 +140,7 @@ namespace Sistema_Servicio_Social
         {//string query = "SELECT Count(*) FROM usuario;";
             string query =
                 "SELECT Count(*) FROM " + table +
-                " WHERE " + atributo1 + " = " + value1+" ;";
+                " WHERE " + atributo1 + " = " + value1 + " ;";
             //SELECT Count(*) FROM usuario where nombre='John Smith' and password='33';
             int Count = -1;
             //Open Connection
@@ -201,12 +189,12 @@ namespace Sistema_Servicio_Social
         public List<string> Select(string numExpediente, string anio)
         {
             string query = "SELECT " +
-                "A.numControl, A.nombre, A.carrera, A.sexo, A.e_mail,"+
-                "CP.leyenda, CP.programa, CP.numExpediente, CP.jefeDireccion, CP.puestoJefeDireccion, CP.direccionDependencia, CP.nombreDependencia, CP.anio "+
-                "FROM alumno as A INNER JOIN carta_presentacion as CP "+
-                "ON A.numControl= CP.numControl "+
-                "WHERE CP.numExpediente ="+numExpediente+
-                " AND CP.anio ="+anio+";";
+                "A.numControl, A.nombre, A.carrera, A.sexo, A.e_mail," +
+                "CP.leyenda, CP.programa, CP.numExpediente, CP.jefeDireccion, CP.puestoJefeDireccion, CP.direccionDependencia, CP.nombreDependencia, CP.anio " +
+                "FROM alumno as A INNER JOIN carta_presentacion as CP " +
+                "ON A.numControl= CP.numControl " +
+                "WHERE CP.numExpediente =" + numExpediente +
+                " AND CP.anio =" + anio + ";";
             //Create a list to store the result
             List<string> list = new List<string>();
             //Open connection
@@ -247,14 +235,80 @@ namespace Sistema_Servicio_Social
                 return list;
             }
         }
-        /*//Backup
-        public void Backup()
+        //Backup
+        public void Backup(String ubicacion, String name)
         {
+            try
+            {
+                /*DateTime Time = DateTime.Now;
+                int year = Time.Year;
+                int month = Time.Month;
+                int day = Time.Day;
+                int hour = Time.Hour;
+                int minute = Time.Minute;
+                int second = Time.Second;
+                int millisecond = Time.Millisecond;*/
+
+                //Save file to C:\ with the current date as a filename
+                string path;
+                //path = "C:\\MySqlBackup" + year + "-" + month + "-" + day + "-" + hour + "-" + minute + "-" + second + "-" + millisecond + ".sql";
+                path = ubicacion + "\\" + name + ".sql";//"C:\\MySqlBackup\\name.sql"
+                StreamWriter file = new StreamWriter(path);
+
+                ProcessStartInfo psi = new ProcessStartInfo();
+                psi.FileName = "mysqldump";
+                psi.RedirectStandardInput = false;
+                psi.RedirectStandardOutput = true;
+                /*mysqldump -u username -p password -h localhost myDB > "C:\Backup.sql"*/
+                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}",
+                    uid, password, server, database);
+                psi.UseShellExecute = false;
+
+                Process process = Process.Start(psi);
+
+                string output;
+                output = process.StandardOutput.ReadToEnd();
+                file.WriteLine(output);
+                process.WaitForExit();
+                file.Close();
+                process.Close();
+            }
+            catch (System.IO.IOException ex)
+            {
+                MessageBox.Show("Error , unable to backup!" + ex.Message);
+            }
         }
 
         //Restore
-        public void Restore()
+        public void Restore(String ruta)
         {
-        }*/
+            try
+            {
+                //Read file from C:\
+                string path;
+                path = ruta;//path = "C:\\MySqlBackup.sql";
+                StreamReader file = new StreamReader(path);
+                string input = file.ReadToEnd();
+                file.Close();
+
+                ProcessStartInfo psi = new ProcessStartInfo();
+                psi.FileName = "mysql";
+                psi.RedirectStandardInput = true;
+                psi.RedirectStandardOutput = false;
+                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}",
+                    uid, password, server, database);
+                psi.UseShellExecute = false;
+
+                Process process = Process.Start(psi);
+                process.StandardInput.WriteLine(input);
+                process.StandardInput.Close();
+                process.WaitForExit();
+                process.Close();
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("Error , unable to Restore!" + ex.Message);
+            }
+        }
     }
 }

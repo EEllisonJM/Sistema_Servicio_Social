@@ -11,12 +11,16 @@ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         <!--<Grid.Background>
                 <ImageBrush ImageSource="Images/backup1.jpg"/>
             </Grid.Background>-->
-        <Button x:Name="button" FontSize="23" Content="Copia de seguridad" HorizontalAlignment="Left" Margin="380,470,0,0" VerticalAlignment="Top" Width="385" Height="92"/>
-        <TextBox x:Name="textBox" FontSize="22" HorizontalAlignment="Left" Height="45" Margin="360,335,0,0" TextWrapping="Wrap" Text="Sas" VerticalAlignment="Top" Width="385" />
-        <Button x:Name="button_Copy" FontSize="23" Content="Explorar..." HorizontalAlignment="Left" Margin="750,336,0,0" VerticalAlignment="Top" Width="205" Height="45"/>
-        <Label x:Name="label" Content="Destino:" FontSize="23" HorizontalAlignment="Left" Margin="250,335,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label_Copy" Content="Nombre:" FontSize="23" HorizontalAlignment="Left" Margin="250,402,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="textBox_Copy" FontSize="22" HorizontalAlignment="Left" Height="45" Margin="360,398,0,0" TextWrapping="Wrap" Text="Mi archivo.csv" VerticalAlignment="Top" Width="385" />
-        <Label x:Name="label_Copy1" Content="Crear copia de seguridad de la base de datos" FontSize="33" HorizontalAlignment="Left" Margin="290,135,0,0" VerticalAlignment="Top" Height="60" Width="665"/>
+        <Button x:Name="button" FontSize="23" Content="Crear Copia de seguridad" HorizontalAlignment="Left" Margin="360,255,0,0" VerticalAlignment="Top" Width="370" Height="65" />
+        <TextBox x:Name="textBox" FontSize="22" HorizontalAlignment="Left" Height="45" Margin="360,182,0,0" TextWrapping="Wrap" Text="Sas" VerticalAlignment="Top" Width="385" />
+        <Button x:Name="button_Copy" FontSize="23" Content="Explorar..." HorizontalAlignment="Left" Margin="750,183,0,0" VerticalAlignment="Top" Width="205" Height="45"/>
+        <Label x:Name="label" Content="Destino:" FontSize="23" HorizontalAlignment="Left" Margin="250,182,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy1" Content="Copia de seguridad de la base de datos" FontSize="33" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="60" Width="665"/>
+        <TextBox x:Name="textBox_Copy1" FontSize="22" HorizontalAlignment="Left" Height="45" Margin="380,452,0,0" TextWrapping="Wrap" Text="Sas" VerticalAlignment="Top" Width="385" />
+        <Button x:Name="button_Copy2" FontSize="23" Content="Explorar..." HorizontalAlignment="Left" Margin="770,453,0,0" VerticalAlignment="Top" Width="205" Height="45"/>
+        <Label x:Name="label_Copy2" Content="Ubicación:" FontSize="23" HorizontalAlignment="Left" Margin="270,452,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label_Copy4" Content="Crear copia de seguridad:" FontSize="33" HorizontalAlignment="Left" Margin="170,115,0,0" VerticalAlignment="Top" Height="60" Width="410"/>
+        <Label x:Name="label_Copy5" Content="Recuperar copia de seguridad:" FontSize="33" HorizontalAlignment="Left" Margin="170,370,0,0" VerticalAlignment="Top" Height="60" Width="460"/>
+        <Button x:Name="button_Copy1" FontSize="23" Content="Recuperar Copia de seguridad" HorizontalAlignment="Left" Margin="360,530,0,0" VerticalAlignment="Top" Width="370" Height="65" />
     </Grid>
 </UserControl>

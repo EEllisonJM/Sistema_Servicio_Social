@@ -10,8 +10,8 @@ namespace Sistema_Servicio_Social
     {
         public MainWindow()
         {
-            InitializeComponent();
-            //usuario.Text = nombreUsuario.ToUpper();
+            InitializeComponent();            
+            ContenedorPrincipal.Children.Add(new UserControl_Home());
         }
 
         private void ButtonOpenMenu_Click(object sender, RoutedEventArgs e)
@@ -32,25 +32,25 @@ namespace Sistema_Servicio_Social
         private void ListViewMenu_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             UserControl usc = null;
-            GridMain.Children.Clear();
+            ContenedorPrincipal.Children.Clear();
 
             switch (((ListViewItem)((ListView)sender).SelectedItem).Name)
             {
                 case "ItemHome":
                     usc = new UserControl_Home();
-                    GridMain.Children.Add(usc);
+                    ContenedorPrincipal.Children.Add(usc);
                     break;
                 case "ItemFile":
                     usc = new UserControl_LoadFileCSV();
-                    GridMain.Children.Add(usc);
+                    ContenedorPrincipal.Children.Add(usc);
                     break;
                 case "ItemBackupRestore":
                     usc = new UserControl_Backup();
-                    GridMain.Children.Add(usc);
+                    ContenedorPrincipal.Children.Add(usc);
                     break;
                 case "ItemFileAccount":
                     usc = new CartaPresentacion();
-                    GridMain.Children.Add(usc);
+                    ContenedorPrincipal.Children.Add(usc);
                     break;
                 default:
                     break;

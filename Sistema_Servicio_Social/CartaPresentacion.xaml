@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Sistema_Servicio_Social"
         mc:Ignorable="d">
 
-    <Grid Background="AliceBlue" Width="1145" Height="655">
+    <Grid Background="#41ddb3" Width="1145" Height="655">
         <!--Define 2 Rows[]-->
         <Grid.RowDefinitions>
             <RowDefinition Height="75"></RowDefinition>

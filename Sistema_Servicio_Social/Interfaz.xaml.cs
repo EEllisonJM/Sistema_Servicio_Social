@@ -40,6 +40,7 @@ namespace Sistema_Servicio_Social
         }
         private void btnCargarDatos(object sender, RoutedEventArgs e)
         {
+
             if (txtRutaArchivo.Text != "")
             {
                 DateTime dateTime = DateTime.UtcNow.Date;
