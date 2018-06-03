@@ -4,22 +4,22 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Sistema_Servicio_Social"
-        mc:Ignorable="d">
+        mc:Ignorable="d" Height="692" Width="1139" >
 
-    <Grid Background="#41ddb3" Width="1145" Height="655">
+    <Grid Background="#41ddb3" Width="1145" Margin="0,18,-6,0">
         <!--Define 2 Rows[]-->
         <Grid.RowDefinitions>
             <RowDefinition Height="75"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Label Name="lable1" Margin="468,6,0,0" Content="Expediente:" VerticalAlignment="Top" HorizontalAlignment="Left" RenderTransformOrigin="0.521,0.731" />
+        <Label Name="lable1" FontWeight="Bold" Margin="468,6,0,0" Content="Expediente:" VerticalAlignment="Top" HorizontalAlignment="Left" RenderTransformOrigin="0.521,0.731" />
         <TextBox  Name="txtNumExpediente" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="544,6,530,0" HorizontalContentAlignment="Left" TextChanged="txtNumExpediente_TextChanged" />
-        <Label Name="lable2" Margin="615,6,0,0" Content="Año:" VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <Label Name="lable2" FontWeight="Bold" Margin="615,6,0,0" Content="Año:" VerticalAlignment="Top" HorizontalAlignment="Left" />
         <TextBox Name="txtAnio" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="654,3,421,0" HorizontalContentAlignment="Left" TextChanged="txtAnio_TextChanged" />
-        <Button Background="Black" Margin="745,3,65,0" VerticalAlignment="Top" Content="Mostrar Documento" Name="btnViewDoc" Click="btnMostrarDocumento" />
+        <Button Margin="745,3,65,0" VerticalAlignment="Top" Content="Mostrar Documento" Name="btnViewDoc" Click="btnMostrarDocumento" />
 
-        <DocumentViewer Name="documentviewWord" VerticalAlignment="Top" HorizontalAlignment="Left" Height="580" Grid.Row="1" Width="798" Margin="0,2,0,-2"/>
+        <DocumentViewer Name="documentviewWord" VerticalAlignment="Top" HorizontalAlignment="Left" Height="597" Grid.Row="1" Width="788" Margin="10,2,0,0"/>
 
         <Grid HorizontalAlignment="Right" Height="365" Margin="0,2,-17,0" Grid.Row="1" VerticalAlignment="Top" Width="359">
             <Grid.ColumnDefinitions>
@@ -27,21 +27,18 @@
                 <ColumnDefinition Width="216*"/>
             </Grid.ColumnDefinitions>
 
-            <Label x:Name="label_Fecha" Content="Fecha:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-
-            <Label x:Name="label_Alumno" Content="Alumno" HorizontalAlignment="Left" Margin="7,75,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="label_Nombre" Content="Nombre:" HorizontalAlignment="Left" Margin="12,106,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="label_Carrera" Content="Carrera:" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="label_Sexo" Content="Sexo:" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top"/>
-
-            <Label x:Name="label_Dependencia" Content="Dependencia" HorizontalAlignment="Left" Margin="0,195,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="label_DepNombre" Content="Nombre:" HorizontalAlignment="Left" Margin="12,226,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="label_DepDireccion" Content="Dirección:" HorizontalAlignment="Left" Margin="8,257,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="label_Programa" Content="Programa:" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top"/>
-
-            <Label x:Name="label_Jefe" Content="Jefe Directo" HorizontalAlignment="Left" Margin="0,288,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="label_JNombre" Content="Nombre:" HorizontalAlignment="Left" Margin="10,319,0,0" VerticalAlignment="Top"/>
-            <Label x:Name="label_Puesto" Content="Puesto:" HorizontalAlignment="Left" Margin="10,347,0,-8" VerticalAlignment="Top"/>
+            <Label x:Name="label_Fecha" FontWeight="Bold" Content="Fecha:" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_Alumno" FontWeight="Bold" Content="Alumno" HorizontalAlignment="Left" Margin="7,75,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_Nombre" FontWeight="Bold" Content="Nombre:" HorizontalAlignment="Left" Margin="12,106,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_Carrera" FontWeight="Bold" Content="Carrera:" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_Sexo" FontWeight="Bold" Content="Sexo:" HorizontalAlignment="Left" Margin="10,164,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_Dependencia" FontWeight="Bold" Content="Dependencia" HorizontalAlignment="Left" Margin="0,195,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_D_Nombre" FontWeight="Bold" Content="Nombre:" HorizontalAlignment="Left" Margin="12,226,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_Direccion" FontWeight="Bold" Content="Dirección:" HorizontalAlignment="Left" Margin="8,257,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_Programa" FontWeight="Bold" Content="Programa:" HorizontalAlignment="Left" Margin="10,32,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_Jefe" FontWeight="Bold" Content="Jefe Directo" HorizontalAlignment="Left" Margin="0,288,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_JDNombre" FontWeight="Bold" Content="Nombre:" HorizontalAlignment="Left" Margin="10,319,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label_Puesto" FontWeight="Bold" Content="Puesto:" HorizontalAlignment="Left" Margin="10,347,0,-8" VerticalAlignment="Top"/>
             <!-- INICIO CAMPOS EDITABLES-->
             <DatePicker x:Name="Fecha" HorizontalAlignment="Right" Margin="0,4,27,0" VerticalAlignment="Top" Width="248" Grid.ColumnSpan="2"/>
             <TextBox x:Name="txtNombreAlumno" HorizontalAlignment="Right" Height="26" Margin="0,98,27,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="248" CharacterCasing="Upper" Grid.ColumnSpan="2" />
@@ -69,19 +66,19 @@
             </ComboBox>
         </Grid>
 
-        <Grid HorizontalAlignment="Left" Height="70" Margin="855,0,-312,110" Grid.Row="1" VerticalAlignment="Bottom" Width="265" RenderTransformOrigin="0.324,0.614">
-            <Button x:Name="btnActualizar" Content="Actualizar Documento" HorizontalAlignment="Center" Margin="33,0,60,38" VerticalAlignment="Center" Width="172" Click="btnActualizar_Click" Background="Black"/>
-            <Button x:Name="btnSiguiente" Content="Siguiente" HorizontalAlignment="Right" Margin="0,49,100,-11" VerticalAlignment="Center" Width="95" Click="btnSiguiente_Click" Background="Black"/>
+        <Grid HorizontalAlignment="Left" Height="105" Margin="855,0,0,75" Grid.Row="1" VerticalAlignment="Bottom" Width="265" RenderTransformOrigin="0.324,0.614">
+            <Button x:Name="btnActualizar" Content="Actualizar Documento" HorizontalAlignment="Center" Margin="33,0,60,38" VerticalAlignment="Center" Width="172" Click="btnActualizar_Click"/>
+            <Button x:Name="btnSiguiente" Content="Siguiente" HorizontalAlignment="Right" Margin="0,49,100,-11" VerticalAlignment="Center" Width="95" Click="btnSiguiente_Click"/>
         </Grid>
         <Label x:Name="labelPlantilla" FontWeight="Bold" Margin="10,41,0,0" Content="Plantilla a utilizar: " VerticalAlignment="Top" HorizontalAlignment="Left" />
         <TextBox  x:Name="txtPlantilla" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="132,43,795,0" HorizontalContentAlignment="Left" IsReadOnly = "True"/>
-        <Button Background="Black" HorizontalAlignment="Left" Margin="355,38,0,0" VerticalAlignment="Top" Content="Seleccionar" Width="108" x:Name="btnCargarPlantilla" Click="btnSeleccionarPlantilla" />
+        <Button HorizontalAlignment="Left" Margin="355,38,0,0" VerticalAlignment="Top" Content="Seleccionar" Width="108" x:Name="btnCargarPlantilla" Click="btnSeleccionarPlantilla" />
 
-        <Label x:Name="labelLeyenda" Margin="468,41,0,0" Content="Leyenda:" VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <Label x:Name="labelLeyenda" FontWeight="Bold" Margin="468,41,0,0" Content="Leyenda:" VerticalAlignment="Top" HorizontalAlignment="Left" />
         <TextBox  x:Name="txtLeyenda" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="530,43,10,0" HorizontalContentAlignment="Left"/>
 
-        <Label x:Name="lable1_Copy"  FontWeight="Bold" Margin="10,9,0,0" Content="Guardar documentos en:" VerticalAlignment="Top" HorizontalAlignment="Left" />
+        <Label x:Name="lableSave" FontWeight="Bold" Margin="10,9,0,0" Content="Guardar documentos en:" VerticalAlignment="Top" HorizontalAlignment="Left" />
         <TextBox  x:Name="txtRutaDocumentoGenerar" VerticalAlignment="Top"  HorizontalAlignment="Stretch" Margin="184,6,795,0" HorizontalContentAlignment="Left" IsReadOnly = "True" RenderTransformOrigin="0.771,0.656"/>
-        <Button Background="Black" HorizontalAlignment="Left" Margin="355,3,0,0" VerticalAlignment="Top" Content="Seleccionar" Width="108" x:Name="btnViewDoc_Copy" Click="btnBuscarRutaDocumentoGenerar" />
+        <Button HorizontalAlignment="Left" Margin="355,3,0,0" VerticalAlignment="Top" Content="Seleccionar" Width="108" x:Name="btnViewDoc_Copy" Click="btnBuscarRutaDocumentoGenerar" />
     </Grid>
 </UserControl>

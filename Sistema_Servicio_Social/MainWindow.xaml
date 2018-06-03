@@ -30,7 +30,7 @@
         </EventTrigger>
     </Window.Triggers>
     <Grid >
-        <Grid x:Name="ContenedorPrincipal" Background="Turquoise" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="692" Width="1139" >            
+        <Grid x:Name="ContenedorPrincipal" Background="#41ddb3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Height="692" Width="1139" >            
         </Grid>
 
         <Grid x:Name="GridMenu" Width="75" HorizontalAlignment="Left" Background="#696969">
