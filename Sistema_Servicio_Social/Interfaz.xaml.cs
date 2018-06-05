@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Windows;
 
 namespace Sistema_Servicio_Social
@@ -105,6 +106,42 @@ namespace Sistema_Servicio_Social
             {
                 MessageBox.Show("Seleccione el archivo CSV a cargar");
             }
+        }
+
+        private void btnDescargarCSV(object sender, RoutedEventArgs e)
+        {
+            List<string> lista = Solicitud.get("https://docs.google.com/spreadsheets/d/12mePz3imNk_LiG4PWkB4KmNJ0pycqaZzTytamR-7B0s/export?format=csv");
+            if (lista.Count == 0)
+            {
+                Console.WriteLine("Sin Datos");
+            } else
+            {
+                String rutaDescargaCSV = "";
+                Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
+                // Set filter and RestoreDirectory
+                saveFileDialog.RestoreDirectory = true;
+                saveFileDialog.Filter = "Archivo de texto(*.csv)|*.csv";
+                bool? result = saveFileDialog.ShowDialog();
+                if (result == true)
+                {
+                    if (saveFileDialog.FileName.Length > 0)
+                    {
+                    rutaDescargaCSV = saveFileDialog.FileName;
+                    }
+                }
+
+                Solicitud.guardarCSV(rutaDescargaCSV, lista);
+            }
+        }
+
+        private void btnCrearRespaldo(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnUsuarios(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

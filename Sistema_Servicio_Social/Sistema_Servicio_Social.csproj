@@ -101,6 +101,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DuplicidadCSV.cs" />
+    <Compile Include="Solicitud.cs" />
     <Compile Include="WordTemplate.cs" />
     <Page Include="CartaPresentacion.xaml">
       <SubType>Designer</SubType>
