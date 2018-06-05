@@ -126,17 +126,33 @@ namespace Sistema_Servicio_Social
                 {
                     if (saveFileDialog.FileName.Length > 0)
                     {
-                    rutaDescargaCSV = saveFileDialog.FileName;
+                        rutaDescargaCSV = saveFileDialog.FileName;
+                        Solicitud.guardarCSV(rutaDescargaCSV, lista);
                     }
                 }
-
-                Solicitud.guardarCSV(rutaDescargaCSV, lista);
             }
         }
 
         private void btnCrearRespaldo(object sender, RoutedEventArgs e)
         {
-
+            String rutaRespaldo = "";
+            Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog();
+            // Set filter and RestoreDirectory
+            saveFileDialog.RestoreDirectory = true;
+            saveFileDialog.Filter = "Script de base de datos(*.sql)|*.sql";
+            bool? result = saveFileDialog.ShowDialog();
+            if (result == true)
+            {
+                if (saveFileDialog.FileName.Length > 0)
+                {
+                    rutaRespaldo = saveFileDialog.FileName;
+                    Console.WriteLine(rutaRespaldo);
+                    DBConnect db = new DBConnect();
+                    db.Backup(rutaRespaldo);
+                }
+            }
+            //string comando = "\"C:\\Program Files\\MySQL\\MySQL Server 5.7\\bin\\mysqldump.exe\" --databases servicio_social -u root -p servicio_social --result-file=Respaldo.sql";
+            //System.Diagnostics.Process.Start("CMD.exe", comando);
         }
 
         private void btnUsuarios(object sender, RoutedEventArgs e)

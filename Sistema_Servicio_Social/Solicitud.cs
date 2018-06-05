@@ -46,13 +46,19 @@ namespace Sistema_Servicio_Social
 
         public static void guardarCSV(string ruta, List<string> renglones)
         {
-            using (StreamWriter sw = File.AppendText(ruta))         //se crea el archivo
+            try
             {
-                for (int i=0;i<renglones.Count;i++)
+                using (StreamWriter sw = File.AppendText(ruta))         //se crea el archivo
                 {
-                    sw.WriteLine(renglones[i]);
+                    for (int i = 0; i < renglones.Count; i++)
+                    {
+                        sw.WriteLine(renglones[i]);
+                    }
+                    sw.Close();
                 }
-                sw.Close();
+            } catch(System.ArgumentException e)
+            {
+                Console.WriteLine("El archivo no fué guardado");
             }
         }
     }

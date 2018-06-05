@@ -1,6 +1,10 @@
-﻿using MySql.Data.MySqlClient;
-using System.Collections.Generic;
+﻿using System;
+using System.IO;
 using System.Windows;
+using System.Diagnostics;
+using MySql.Data.MySqlClient;
+using System.Collections.Generic;
+
 namespace Sistema_Servicio_Social
 {
     class DBConnect
@@ -247,12 +251,53 @@ namespace Sistema_Servicio_Social
                 return list;
             }
         }
-        /*//Backup
-        public void Backup()
+        //Backup
+        public void Backup(string ruta)
         {
+            try
+            {
+                /*DateTime Time = DateTime.Now;
+                int year = Time.Year;
+                int month = Time.Month;
+                int day = Time.Day;
+                int hour = Time.Hour;
+                int minute = Time.Minute;
+                int second = Time.Second;
+                int millisecond = Time.Millisecond;*/
+
+                //Save file to C:\ with the current date as a filename
+                string path;
+                //path = "C:\\MySqlBackup" + year + "-" + month + "-" + day + "-" + hour + "-" + minute + "-" + second + "-" + millisecond + ".sql";
+                path = ruta;//ubicacion + "\\" + name + ".sql";//"C:\\MySqlBackup\\name.sql"
+                StreamWriter file = new StreamWriter(path);
+
+                ProcessStartInfo psi = new ProcessStartInfo();
+                psi.FileName = "mysqldump";
+                psi.RedirectStandardInput = false;
+                psi.RedirectStandardOutput = true;
+                /*mysqldump -u username -p password -h localhost myDB > "C:\Backup.sql"*/
+                psi.Arguments = string.Format(@"-u{0} -p{1} -h{2} {3}",
+                    uid, password, server, database);
+                psi.UseShellExecute = false;
+
+                Process process = Process.Start(psi);
+
+                string output;
+                output = process.StandardOutput.ReadToEnd();
+                file.WriteLine(output);
+                process.WaitForExit();
+                file.Close();
+                process.Close();
+            }
+            catch (System.IO.IOException ex)
+            {
+                MessageBox.Show("Error , unable to backup!" + ex.Message);
+            } catch (System.ComponentModel.Win32Exception e){
+                MessageBox.Show("Error , no se puede generar el backup!\n" + e.Message);
+            }
         }
 
-        //Restore
+        /*//Restore
         public void Restore()
         {
         }*/
